@@ -1,0 +1,19 @@
+{
+  "name": "cooling-center",
+  "version": "1.0.0",
+  "description": "\"# Cooling Center\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchendoitt/cooling-center.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cchendoitt/cooling-center/issues"
+  },
+  "homepage": "https://github.com/cchendoitt/cooling-center#readme"
+}
