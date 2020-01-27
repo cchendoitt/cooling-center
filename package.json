@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "webpack",
     "prebuild": "yarn test && yarn roll-css",
-    "roll-css": "./node_modules/nyc-lib/css/roll-css.sh ./src/css/pods.theme.css ./src/css/pods.css",
+    "roll-css": "./node_modules/nyc-lib/css/roll-css.sh ./src/css/cooling-center.theme.css ./src/css/cooling-center.css",
     "predeploy": "yarn build",
     "deploy": "node deploy"
   },
