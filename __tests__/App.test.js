@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import coolingCenter from '../src/js/coolingCenter'
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import App from '../src/js/App';
 import decorations from '../src/js/decorations'
@@ -29,8 +30,8 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].decorations).toBe(decorations)
 
-    expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(process.env.GEOCLIENT_URL)
-    expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(process.env.DIRECTIONS_URL)
+    expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(coolingCenter.GEOCLIENT_URL)
+    expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(coolingCenter.DIRECTIONS_URL)
 
   })
 })

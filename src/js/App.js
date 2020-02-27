@@ -3,6 +3,7 @@
  */
 
 import $ from 'jquery'
+import coolingCenter from './coolingCenter'
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import decorations from './decorations'
@@ -32,8 +33,8 @@ class App extends FinderApp {
       facilityUrl: 'data/center.csv',
       facilityTabTitle: 'Cooling Centers',
       facilitySearch: { displayField: 'search_label', nameField: 'name' },
-      geoclientUrl: process.env.GEOCLIENT_URL,
-      directionsUrl: process.env.DIRECTIONS_URL
+      geoclientUrl: coolingCenter.GEOCLIENT_URL,
+      directionsUrl: coolingCenter.DIRECTIONS_URL
     })
   }
 }
