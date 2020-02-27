@@ -18,7 +18,7 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].title).toBe('Cooling Center Finder')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('Splash Message')
     expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['Screen reader instructions', 'View map to find your closest Cooling Center'])
-    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('../src/data/center.csv')
+    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('data/center.csv')
 
     expect(CsvPoint).toHaveBeenCalledTimes(1)
     expect(CsvPoint.mock.calls[0][0].x).toBe('X')

@@ -29,7 +29,7 @@ class App extends FinderApp {
         dataProjection: 'EPSG:2263'
       }),
       decorations: decorations,
-      facilityUrl: '../src/data/center.csv',
+      facilityUrl: 'data/center.csv',
       facilityTabTitle: 'Cooling Centers',
       facilitySearch: { displayField: 'search_label', nameField: 'name' },
       geoclientUrl: process.env.GEOCLIENT_URL,
