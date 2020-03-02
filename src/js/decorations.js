@@ -3,8 +3,16 @@
  */
 
  const decorations ={
-  getPhone() {
-    return this.get('PHONE')
+  extendFeature() {
+    this.setId(this.get('OBJECTID'))
+    this.set(
+      'search_label',
+      `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>
+      <span class="srch-lbl-sm">${this.getAddress1()}</span>`
+    )
+  },
+  getAccessible() {
+    return this.get('HANDICAP_ACCESS')
   },
   getAddress1() {
     return this.get('ADDRESS')
@@ -12,8 +20,49 @@
   getCityStateZip() {
     return ''
   },
+  getHours() {
+    return this.get('HOURS')
+  },
+  getExHours() {
+    return this.get('EXTENDED_HOURS')
+  },
   getName() {
     return this.get('FACILITY_NAME')
+  },
+  getPhone() {
+    return this.get('PHONE')
+  },
+  getStatus() {
+    return this.get('STATUS')
+  },
+  getType() {
+    return this.get('FACILITY_TYPE')
+  },
+  getZip() {
+    return this.get('ZIP_CODE')
+  },
+  detailsHtml() {
+    if (this.getStatus() === 'OPEN') {
+      const div = $('<div></div>')
+      let ul = $('<ul></ul>')
+      const status = `<li><b>Status: </b>${this.getStatus()}</li>`
+      const type = `<li><b>Facility Type: </b>${this.getType()}</li>`
+      const address = `<li><b>Address: </b>${this.getAddress1()}</li>`
+      const phone = `<li><b>Phone: </b>${this.getPhone()}</li>`
+      const hours = `<li><b>Hours: </b>${this.getHours()}</li>`
+      const exHours = `<li><b>Extended Hours: </b>${this.getExHours()}</li>`
+      const access = `<li><b>Wheelchair Accessible: </b>${this.getAccessible()}</li>`
+      
+      ul.append(status)
+      .append(type)
+      .append(address)
+      .append(phone)
+      .append(hours)
+      .append(exHours)
+      .append(access)
+
+      return div.append(ul)
+    }
   }
  }
  export default decorations
