@@ -9,23 +9,24 @@ const csvPoint = new CsvPoint({
   defaultDataProjection: 'EPSG:2263'
 })
 
-const featureSource = {
-  OBJECTID: 1,
-  FACILITY_NAME: 'FACILITY_NAME',
-  ADDRESS: 'ADDRESS',
-  BOROUGH: 'BOROUGH',
-  ZIP_CODE: 'ZIP_CODE',
-  PHONE: 'PHONE',
-  HANDICAP_ACCESS: 'YES',
-  EXTENDED_HOURS: 'YES',
+// Active Library
+const center1Source = {
+  OBJECTID: 41,
+  FACILITY_NAME: 'Inwood Library',
+  ADDRESS: '4790 Broadway',
+  BOROUGH: 'Manhattan',
+  ZIP_CODE: '10034',
+  PHONE: '(212)942-2445',
+  HANDICAP_ACCESS: 'Yes',
+  EXTENDED_HOURS: 'No',
   HOURS: 'HOURS',
   STATUS: 'OPEN',
-  X: 962810,
-  Y: 173464,
-  CTYPE: 'CTYPE',
-  FACILITY_TYPE: 'FACILITY_TYPE'
+  X: 1004774,
+  Y: 254661,
+  CTYPE: 1,
+  FACILITY_TYPE: 'Library'
 }
-const feature = csvPoint.readFeature(featureSource)
-nyc.mixin(feature, [decorations])
+const center1 = csvPoint.readFeature(center1Source)
+nyc.mixin(center1, [decorations])
 
-module.exports = {feature}
+module.exports = {center1}
