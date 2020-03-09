@@ -7,6 +7,7 @@
     "test": "jest",
     "build": "webpack",
     "prebuild": "yarn test && yarn roll-css",
+    "postbuild": "node replaceUrl",
     "roll-css": "./node_modules/nyc-lib/css/roll-css.sh ./src/css/cooling-center.theme.css ./src/css/cooling-center.css",
     "predeploy": "yarn build",
     "deploy": "node deploy"
@@ -35,6 +36,7 @@
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "coveralls": "^3.0.2",
+    "dotenv": "^8.2.0",
     "ghooks": "^2.0.4",
     "jest": "^24.8.0",
     "jest-canvas-mock": "^2.2.0",
