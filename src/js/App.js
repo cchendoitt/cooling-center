@@ -52,7 +52,21 @@ class App extends FinderApp {
       facilityTabTitle: 'Cooling Centers',
       facilitySearch: { displayField: 'search_label', nameField: 'name' },
       geoclientUrl: coolingCenter.GEOCLIENT_URL,
-      directionsUrl: coolingCenter.DIRECTIONS_URL
+      directionsUrl: coolingCenter.DIRECTIONS_URL,
+      filterChoiceOptions: [
+        {
+          title: 'Facility Type',
+          radio: false,
+          choices: [
+            {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Centers', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Centers', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Youth center'], label: 'Youth Centers', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true}
+
+          ]
+        }
+      ],
     })
     if(arcGisUrl) {
       let iconurl = this.constructIconUrl(arcGisUrl)
