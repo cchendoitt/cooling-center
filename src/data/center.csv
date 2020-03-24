@@ -1,6 +1,6 @@
 OBJECTID,FACILITY_NAME,ADDRESS,BOROUGH,ZIP_CODE,PHONE,HANDICAP_ACCESS,EXTENDED_HOURS,HOURS,STATUS,X,Y,CTYPE,FACILITY_TYPE,ICON
-1,Sage ISC,305 7th Ave  - 15th floor.,Manhattan,10001,(646) 576-8669,Yes,No,M - F 11a-8p; Sa 11a-6p,OPEN,986083.9999,211301,2,Senior center,mapbox-maki/danger#ff0000
-2,"Science, Industry and Business Library",188 Madison Av,Manhattan,10016,(917) 275-6975,Yes,No,M 10a-6p; Tu - Th 10a-8p; F - Sa 10a-6p,OPEN,988942.694,211838.3484,1,Library,mapbox-maki/library#ff0000
+1,Sage ISC,305 7th Ave  - 15th floor.,Manhattan,10001,(646) 576-8669,Yes,No,M - F 11a-8p; Sa 11a-6p,OPEN,986083.9999,211301,2,Senior center,
+2,"Science, Industry and Business Library",188 Madison Av,Manhattan,10016,(917) 275-6975,Yes,No,M 10a-6p; Tu - Th 10a-8p; F - Sa 10a-6p,OPEN,988942.694,211838.3484,1,Library,
 3,Stephen A Schwarzman Building,476 5 Av,Manhattan,10018,(917) 275-6975,Yes,No,M 10a-6p; Tu - W 10a-8p; Th - Sa 10a-6p; Su 1p-4:45p,OPEN,989169.7999,213685.5641,1,Library,
 4,Project Find Woodstock NSC,127 W 43 St,Manhattan,10036,(212) 575-0693,Yes,Hours may be extended during a heat emergency.,M - Su 8:30a-5p,OPEN,988459.5733,214783.9527,2,Senior center,
 5,Taft Senior Center,1365 5 Av - Enter development by fire house on 5 Av halfway bet 112 and 115 Sts,Manhattan,10029,(212) 987-4361,Yes,Hours may be extended during a heat emergency.,M - F 9a-5p,OPEN,998969.9115,230272.0254,1,Community center,
