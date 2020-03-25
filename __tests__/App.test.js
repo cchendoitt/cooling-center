@@ -73,7 +73,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(1)
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('Facility Type')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(6)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
@@ -99,6 +99,11 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['Library'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('Libraries')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
+    
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].values).toEqual(['School'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].label).toBe('Schools')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].checked).toBe(true)
 
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl.mock.calls[0][0]).toBe('http://cc-endpoint')
@@ -133,7 +138,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(1)
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('Facility Type')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(6)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
@@ -159,6 +164,11 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['Library'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('Libraries')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].values).toEqual(['School'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].label).toBe('Schools')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].checked).toBe(true)
 
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(0)
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(0)
