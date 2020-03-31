@@ -64,8 +64,6 @@ class App extends FinderApp {
             {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
             {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
             {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
-
-
           ]
         }
       ],
