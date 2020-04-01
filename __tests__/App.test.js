@@ -26,7 +26,7 @@ const mockContent = {
     return mockContent.messages[key]
   }
 }
-
+const addDescription = App.prototype.addDescription
 const constructIconUrl = App.prototype.constructIconUrl
 const fetchIconUrl = App.prototype.fetchIconUrl
 
@@ -35,6 +35,7 @@ beforeEach(() => {
   CsvPoint.mockClear()
   GeoJson.mockClear()
   IconArcGis.mockClear()
+  App.prototype.addDescription = jest.fn()
   App.prototype.constructIconUrl = jest.fn()
   App.prototype.fetchIconUrl = jest.fn()
 
@@ -105,6 +106,7 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].label).toBe('Schools')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].checked).toBe(true)
 
+    expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl.mock.calls[0][0]).toBe('http://cc-endpoint')
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(1)
@@ -170,12 +172,33 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].label).toBe('Schools')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].checked).toBe(true)
 
+    expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(0)
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(0)
 
   })
 })
 
+describe('addDescription', () => {
+  let list
+  beforeEach(() => {
+    list = $('<div id="facilities"><div class="list"></div></div>')
+    $('body').append(list)
+  })
+  afterEach(() => {
+    list.remove()
+  })
+
+  test('addDescription', () => {
+    const app = new App(mockContent)
+    app.addDescription = addDescription
+    app.addDescription()
+
+    expect($('#facilities .list').prev()[0]).not.toBe(undefined)
+    expect($('div.description')).toEqual($(`<div class="description"><div class="desc">${coolingCenter.DESCRIPTION_HTML}</div></div>`))
+
+  })
+})
 describe('constructIconUrl', () => {
   test('constructIconUrl', () => {
     expect.assertions(1)

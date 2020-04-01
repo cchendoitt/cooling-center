@@ -68,6 +68,7 @@ class App extends FinderApp {
         }
       ],
     })
+    this.addDescription()
     if(arcGisUrl) {
       let iconurl = this.constructIconUrl(arcGisUrl)
       this.fetchIconUrl(iconurl)
@@ -93,6 +94,12 @@ class App extends FinderApp {
       this.layer.setSource(new Source({}))
       this.layer.setSource(this.source)
     })
+  }
+  addDescription() {
+    let list = $('#facilities .list') 
+    let desc = coolingCenter.DESCRIPTION_HTML
+    let description = `<div class="description"><div class="desc">${desc}</div></div>`
+    $(description).insertBefore(list)
   }
 }
 export default App
