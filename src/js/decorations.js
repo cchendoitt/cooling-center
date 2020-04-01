@@ -11,6 +11,9 @@
       <span class="srch-lbl-sm">${this.getAddress1()}</span>`
     )
   },
+  cssClass() {
+    return `${this.getType()}-${this.getAccessible()}`.replace(/ /, '-').toLowerCase()
+  },
   getAccessible() {
     return this.get('HANDICAP_ACCESS')
   },
@@ -28,6 +31,21 @@
   },
   getName() {
     return this.get('FACILITY_NAME')
+  },
+  getIcon() {
+    const icon = $('<img>')
+    if (this.facilityStyle.iconArcGis) {
+      const img = this.facilityStyle.iconArcGis.style(this, 13).getImage()
+      if (img) {
+        icon.attr('src', img.getSrc())
+      }
+    }
+    return $('<div class="icon"></div>').append(icon)
+  },
+  nameHtml() {
+    return $('<h3 class="name" translate="no" notranslate></h3>')
+      .append(this.getIcon())
+      .append(this.getName())
   },
   getPhone() {
     return this.get('PHONE')

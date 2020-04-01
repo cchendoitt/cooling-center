@@ -47,7 +47,7 @@ class App extends FinderApp {
       },
       facilityFormat: format,
       facilityStyle: facilityStyle.pointStyle,
-      decorations: [{ content: content }, decorations],
+      decorations: [{content, facilityStyle}, decorations],
       facilityUrl: url,
       facilityTabTitle: 'Cooling Centers',
       facilitySearch: { displayField: 'search_label', nameField: 'name' },
@@ -93,6 +93,7 @@ class App extends FinderApp {
       facilityStyle.iconArcGis = iconArcGis
       this.layer.setSource(new Source({}))
       this.layer.setSource(this.source)
+      this.resetList()
     })
   }
   addDescription() {
