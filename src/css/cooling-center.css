@@ -14,3 +14,19 @@
   width: 18px;
   height: 18px;
 }
+.fnd #banner, .fnd #banner * {
+  color: #FBED30;
+}
+.description {
+  background-color: var(--color-medium);
+}
+.lst-it:nth-child(odd) .dtl .clps .content {
+  background-color: var(--color-light)
+}
+.lst-it:nth-child(even) .dtl .clps .content {
+  background-color: var(--color-medium);
+}
+.btn-sq:hover, .btn-rnd:hover {
+  background-color: #0B71D0;
+  color: var(--color-light);
+}
