@@ -6,7 +6,9 @@
   margin-top: -15px;
   border-bottom: 1px solid var(--color-border);
 }
-
+.fnd .facility a.btn {
+  width: calc(100% - 5px);
+}
 .facility .icon {
   float: left;
 }
