@@ -2,6 +2,8 @@ import OlFeature from 'ol/Feature'
 import decorations from '../src/js/decorations'
 import nyc from 'nyc-lib/nyc'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
+import facilityStyle from '../src/js/facility-style'
+
 
 const csvPoint = new CsvPoint({
   x: 'X',
@@ -27,6 +29,7 @@ const center1Source = {
   FACILITY_TYPE: 'Library'
 }
 const center1 = csvPoint.readFeature(center1Source)
+nyc.mixin(decorations, [{facilityStyle: facilityStyle}])
 nyc.mixin(center1, [decorations])
 
 module.exports = {center1}

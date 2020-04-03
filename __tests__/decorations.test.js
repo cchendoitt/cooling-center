@@ -2,6 +2,7 @@ import decorations from '../src/js/decorations'
 import Olfeature from 'ol/feature'
 import {center1} from './features.mock'
 import nyc from 'nyc-lib/nyc'
+import facilityStyle from '../src/js/facility-style'
 
 describe('decorations', () => {
   let container
@@ -24,7 +25,16 @@ describe('decorations', () => {
       <span class="srch-lbl-sm">${center1.get('ADDRESS')}</span>`)
     
   })
-  
+  test('cssClass', () => {
+    expect.assertions(1)
+    expect(center1.cssClass()).toBe('library-yes')
+  })
+  test('cssClass - does replacement', () => {
+    expect.assertions(1)
+    center1.set('FACILITY_TYPE', 'type with spaces')
+    expect(center1.cssClass()).toBe('type-with-spaces-yes')
+    center1.set('FACILITY_TYPE', 'Library')
+  })
   test('getAccessible', () => {
     expect.assertions(2)
     expect(center1.getAccessible()).toBe(`${center1.get('HANDICAP_ACCESS')}`)
@@ -54,6 +64,81 @@ describe('decorations', () => {
     expect(center1.getName()).toBe(`${center1.get('FACILITY_NAME')}`)
     expect(center1.getName()).not.toBeNull()
   })
+  describe('getIcon', () => {
+    const iconArcGis = facilityStyle.iconArcGis
+    afterEach(() => {
+      facilityStyle.iconArcGis = iconArcGis
+    })
+    test('getIcon - no img', () => {
+      expect.assertions(2)
+      let mockIcon = {
+        style: () => {
+          return {
+            getImage: () => {
+              return undefined
+            }
+          }
+        }
+      }
+      facilityStyle.iconArcGis = mockIcon
+      expect(center1.getIcon()).toEqual($('<div class="icon"><img></img></div>'))
+      expect(center1.getName()).not.toBeNull()
+    })
+    test('getIcon - w/ img src', () => {
+      expect.assertions(2)
+      let mockIcon = {
+        style: () => {
+          return {
+            getImage: () => {
+              return {
+                getSrc: jest.fn(() => {return 'mock-src'})
+              }
+            }
+          }
+        }
+      }
+      facilityStyle.iconArcGis = mockIcon
+      expect(center1.getIcon()).toEqual($('<div class="icon"><img src="mock-src"></img></div>'))
+      expect(center1.getName()).not.toBeNull()
+    })
+    test('getIcon - no img src', () => {
+      expect.assertions(2)
+      let mockIcon = {
+        style: () => {
+          return {
+            getImage: () => {
+              return {
+                getSrc: jest.fn()
+              }
+            }
+          }
+        }
+      }
+      facilityStyle.iconArcGis = mockIcon
+      expect(center1.getIcon()).toEqual($('<div class="icon"><img></img></div>'))
+      expect(center1.getName()).not.toBeNull()
+    })
+  })
+  describe('nameHtml', () => {
+    const getIcon = center1.getIcon()
+    const getName = center1.getName()
+    beforeEach(() => {
+      center1.getIcon = jest.fn(() => {return '<img>mock-icon</img>'})
+      center1.getName = jest.fn(() => {return 'mock-name'})
+    })
+    afterEach(() => {
+      center1.getIcon = getIcon
+      center1.getName = getName
+    })
+    test('nameHtml', () => {
+      let html = $('<h3 class="name" translate="no" notranslate></h3>')
+      .append(center1.getIcon())
+      .append(center1.getName())
+
+      expect(center1.nameHtml()).toEqual(html)
+    }) 
+  })
+ 
   test('getPhone', () => {
     expect.assertions(2)
     expect(center1.getPhone()).toBe(`${center1.get('PHONE')}`)

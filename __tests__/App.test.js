@@ -67,6 +67,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].decorations.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].decorations[0].content).toBe(mockContent)
+    expect(FinderApp.mock.calls[0][0].decorations[0].facilityStyle).toBe(facilityStyle)
     expect(FinderApp.mock.calls[0][0].decorations[1]).toBe(decorations)
 
     expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(coolingCenter.GEOCLIENT_URL)
@@ -133,6 +134,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].decorations.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].decorations[0].content).toBe(mockContent)
+    expect(FinderApp.mock.calls[0][0].decorations[0].facilityStyle).toBe(facilityStyle)
     expect(FinderApp.mock.calls[0][0].decorations[1]).toBe(decorations)
 
     expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(coolingCenter.GEOCLIENT_URL)

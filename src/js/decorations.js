@@ -12,7 +12,7 @@
     )
   },
   cssClass() {
-    return `${this.getType()}-${this.getAccessible()}`.replace(/ /, '-').toLowerCase()
+    return `${this.getType()}-${this.getAccessible()}`.replace(/ /g, '-').toLowerCase()
   },
   getAccessible() {
     return this.get('HANDICAP_ACCESS')
