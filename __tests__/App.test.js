@@ -29,6 +29,7 @@ const mockContent = {
 const addDescription = App.prototype.addDescription
 const constructIconUrl = App.prototype.constructIconUrl
 const fetchIconUrl = App.prototype.fetchIconUrl
+const filterIcons = App.prototype.filterIcons
 
 beforeEach(() => {
   FinderApp.mockClear()
@@ -38,12 +39,14 @@ beforeEach(() => {
   App.prototype.addDescription = jest.fn()
   App.prototype.constructIconUrl = jest.fn()
   App.prototype.fetchIconUrl = jest.fn()
+  App.prototype.filterIcons = jest.fn()
 
 })
 
 afterEach(() => {
   App.prototype.constructIconUrl = constructIconUrl
   App.prototype.fetchIconUrl = fetchIconUrl
+  App.prototype.filterIcons = filterIcons
 })
 
 describe('constructor', () => {
@@ -73,7 +76,8 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(coolingCenter.GEOCLIENT_URL)
     expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(coolingCenter.DIRECTIONS_URL)
 
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(1)
+    //TODO TEST OTHERE FILTER
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('Facility Type')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(6)
 
@@ -140,7 +144,8 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(coolingCenter.GEOCLIENT_URL)
     expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(coolingCenter.DIRECTIONS_URL)
 
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(1)
+    //TODO TEST OTHERE FILTER
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('Facility Type')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(6)
 
