@@ -18,12 +18,12 @@ const facilityStyle = {
       const style = facilityStyle.iconArcGis.style(feature, 2 * radius)
       if (style && style.getImage()) return style
     }
-    return facilityStyle.defaultStyle(feature, resolution)
+    return facilityStyle.defaultStyle(feature, resolution, radius)
   },
-  defaultStyle: (feature, resolution) => {
+  defaultStyle: (feature, resolution, radius) => {
     return new Style({
       image: new Circle({
-        radius: 16,
+        radius: radius,
         fill: new Fill({color: '#000'})
       })
     })
