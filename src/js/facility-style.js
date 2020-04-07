@@ -15,8 +15,18 @@ const facilityStyle = {
     const zoom = nycOl.TILE_GRID.getZForResolution(resolution)
     const radius = facilityStyle.calcRadius(zoom)
     if (facilityStyle.iconArcGis) {
-      return facilityStyle.iconArcGis.style(feature, 2 * radius)
+      const style = facilityStyle.iconArcGis.style(feature, 2 * radius)
+      if (style && style.getImage()) return style
     }
+    return facilityStyle.defaultStyle(feature, resolution)
+  },
+  defaultStyle: (feature, resolution) => {
+    return new Style({
+      image: new Circle({
+        radius: 16,
+        fill: new Fill({color: '#000'})
+      })
+    })
   },
   calcRadius: (zoom) => {
     let radius = 6

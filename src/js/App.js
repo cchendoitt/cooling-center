@@ -65,6 +65,14 @@ class App extends FinderApp {
             {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
             {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
           ]
+        },
+        {
+          title: 'Wheelchair Accessible',
+          radio: true,
+          choices: [
+            {name: 'HANDICAP_ACCESS', values: ['Yes'], label: 'Accessible', checked: false},
+            {name: 'HANDICAP_ACCESS', values: ['No'], label: 'Not Accessible', checked: true}
+          ]
         }
       ],
     })
@@ -77,6 +85,8 @@ class App extends FinderApp {
       const icon = new IconArcGis(iconStyle)
       facilityStyle.iconArcGis = icon
     }
+    $('.filter-chc-1').insertBefore('#facilities .list')
+    $('.filter-1').remove()
   }
   constructIconUrl(arcGisUrl) {
       let qstr = arcGisUrl.split('?')[1]
