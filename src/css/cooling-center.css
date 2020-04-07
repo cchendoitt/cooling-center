@@ -23,7 +23,7 @@
   background-color: var(--color-medium);
 }
 .lst-it:nth-child(odd) .dtl .clps .content {
-  background-color: var(--color-light)
+  background-color: var(--color-light);
 }
 .lst-it:nth-child(even) .dtl .clps .content {
   background-color: var(--color-medium);
@@ -35,4 +35,37 @@
 .tabs button.btn.active:focus, .tabs button.btn.active:focus * {
   background-color: var(--focus-ring-color);
   color: black;
+}
+.filter-chc-1 {
+  width: calc(95% - 8px);
+  margin-left: 10px;
+  padding-top: 10px;
+  margin-bottom: -5px;
+  border: none;
+}
+.filter-chc-1 .chc-chc {
+  display: inline-block;
+  padding: 0;
+  width: 50%;
+  border: none;
+}
+.filter-chc-1 label {
+  background-color: var(--color-button);
+  font-weight: bold;
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+.filter-chc-1 label[for="chc-chc-7"] {
+  background-image: url(../img/access1.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 25px;
+}
+.filter-chc-1 input:checked+label, #acc-filter input:checked+label * {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+.filter-chc-1 input {
+	display: none
 }

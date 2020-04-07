@@ -86,7 +86,7 @@ class App extends FinderApp {
       facilityStyle.iconArcGis = icon
       this.filterIcons()
     }
-    $('.filter-chc-1').insertBefore('#facilities .list')
+    $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
   }
   filterIcons() {
