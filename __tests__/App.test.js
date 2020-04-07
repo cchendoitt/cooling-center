@@ -29,6 +29,7 @@ const mockContent = {
 const addDescription = App.prototype.addDescription
 const constructIconUrl = App.prototype.constructIconUrl
 const fetchIconUrl = App.prototype.fetchIconUrl
+const filterIcons = App.prototype.filterIcons
 
 beforeEach(() => {
   FinderApp.mockClear()
@@ -38,12 +39,14 @@ beforeEach(() => {
   App.prototype.addDescription = jest.fn()
   App.prototype.constructIconUrl = jest.fn()
   App.prototype.fetchIconUrl = jest.fn()
+  App.prototype.filterIcons = jest.fn()
 
 })
 
 afterEach(() => {
   App.prototype.constructIconUrl = constructIconUrl
   App.prototype.fetchIconUrl = fetchIconUrl
+  App.prototype.filterIcons = filterIcons
 })
 
 describe('constructor', () => {

@@ -70,8 +70,8 @@ class App extends FinderApp {
           title: 'Wheelchair Accessible',
           radio: true,
           choices: [
-            {name: 'HANDICAP_ACCESS', values: ['Yes'], label: 'Accessible', checked: false},
-            {name: 'HANDICAP_ACCESS', values: ['No'], label: 'Not Accessible', checked: true}
+            {name: 'HANDICAP_ACCESS', values: ['Yes', 'No'], label: 'All', checked: true},
+            {name: 'HANDICAP_ACCESS', values: ['Yes'], label: ' Accessible'}
           ]
         }
       ],
@@ -84,9 +84,23 @@ class App extends FinderApp {
     else {
       const icon = new IconArcGis(iconStyle)
       facilityStyle.iconArcGis = icon
+      this.filterIcons()
     }
     $('.filter-chc-1').insertBefore('#facilities .list')
     $('.filter-1').remove()
+  }
+  filterIcons() {
+    const renderer = facilityStyle.iconArcGis.renderer
+    const filter = this.filters.choiceControls[0]
+    const labels = filter.find('label')
+    filter.choices.forEach((ch, i) => {
+      renderer.uniqueValueInfos.forEach(info => {
+        if (`${ch.values[0]},No` === info.value) {
+          const sym = info.symbol
+          $(labels[i]).prepend(`<img src="data:${sym.contentType};base64,${sym.imageData}">`)
+        }
+      })
+    })
   }
   constructIconUrl(arcGisUrl) {
       let qstr = arcGisUrl.split('?')[1]
@@ -104,6 +118,7 @@ class App extends FinderApp {
       this.layer.setSource(new Source({}))
       this.layer.setSource(this.source)
       this.resetList()
+      this.filterIcons()
     })
   }
   addDescription() {
