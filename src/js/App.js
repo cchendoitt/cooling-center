@@ -60,7 +60,6 @@ class App extends FinderApp {
           choices: [
             {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Centers', checked: true},
             {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Centers', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Youth center'], label: 'Youth Centers', checked: true},
             {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
             {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
             {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
