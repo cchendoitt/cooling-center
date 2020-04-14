@@ -9,7 +9,7 @@ import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import IconArcGis from 'nyc-lib/nyc/ol/style/IconArcGis'
 import Layer from 'ol/layer/Vector'
 import Source from 'ol/source/Vector'
-import Icon from 'ol/style/Icon';
+import Filters from 'nyc-lib/nyc/ol/Filters'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('nyc-lib/nyc/ol/format/CsvPoint')
@@ -226,7 +226,7 @@ describe('fetchIconUrl', () => {
   
   test('fetchIconUrl', done => {
     expect.assertions(6)
-    let app = new App(mockContent)
+    const app = new App(mockContent)
     app.layer = new Layer()
 
     app.fetchIconUrl = fetchIconUrl
@@ -242,5 +242,59 @@ describe('fetchIconUrl', () => {
       expect(Layer.prototype.setSource.mock.calls[1][0]).toBe(app.source)
       done()
     }, 100)
+  })
+})
+
+
+describe('filterIcons', () => {
+  const target = $('<div></div>')
+  const filterOptions = {
+    target,
+    choiceOptions: [
+      {
+        title: 'Facility Type',
+        radio: false,
+        choices: [
+          {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Centers', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Centers', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
+          {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
+        ]
+      }
+    ]
+  }
+  beforeEach(() => {
+    $('body').append(target)
+  })
+  afterEach(() => {
+    target.remove()
+  })
+
+  test('filterIcons', () => {
+    expect.assertions(5)
+    
+    const app = new App(mockContent)  
+
+    app.filterIcons = filterIcons
+    app.facilityStyle = {iconArcGis: {renderer: require('../src/js/iconStyle').default}}
+    app.filters = new Filters(filterOptions)
+    
+    app.filterIcons()
+  
+    const filter = app.filters.choiceControls[0]
+    const renderer = app.facilityStyle.iconArcGis.renderer
+    const labels = filter.find('label')
+
+    filter.choices.forEach((ch, i) => {
+      renderer.uniqueValueInfos.forEach(info => {
+        if (`${ch.values[0]},No` === info.value) {
+          const sym = info.symbol
+          const img = $(labels[i]).children().first()
+          expect(img.attr('src')).toBe(`data:${sym.contentType};base64,${sym.imageData}`)
+        }
+      })
+    })
+  
   })
 })

@@ -75,6 +75,7 @@ class App extends FinderApp {
         }
       ],
     })
+    this.facilityStyle = facilityStyle
     this.addDescription()
     if(arcGisUrl) {
       let iconurl = this.constructIconUrl(arcGisUrl)
@@ -89,7 +90,7 @@ class App extends FinderApp {
     $('.filter-1').remove()
   }
   filterIcons() {
-    const renderer = facilityStyle.iconArcGis.renderer
+    const renderer = this.facilityStyle.iconArcGis.renderer
     const filter = this.filters.choiceControls[0]
     const labels = filter.find('label')
     filter.choices.forEach((ch, i) => {
