@@ -37,17 +37,16 @@
   color: black;
 }
 .filter-chc-1 {
-  width: calc(95% - 8px);
-  margin-left: 10px;
-  padding-top: 10px;
-  margin-bottom: -5px;
-  border: none;
+  width: calc(100% - 5px);
+  overflow: hidden;
+  margin-top: 5px;
 }
 .filter-chc-1 .chc-chc {
   display: inline-block;
   padding: 0;
   width: 50%;
   border: none;
+  height: 30px;
 }
 .filter-chc-1 label {
   background-color: var(--color-button);
@@ -59,7 +58,7 @@
 .filter-chc-1 label[for="chc-chc-6"] {
   background-image: url(../img/access1.svg);
   background-repeat: no-repeat;
-  background-position: left;
+  background-position: 5px center;
   background-size: 25px;
 }
 .filter-chc-1 input:checked+label, #acc-filter input:checked+label * {
