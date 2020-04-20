@@ -67,5 +67,38 @@
   color: var(--color-light);
 }
 .filter-chc-1 input {
-	display: none
+	display: none;
+}
+.filter-icons {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  float: left;
+  margin: 5px;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+.filter-icons.community-center {
+  background-color: var(--community-center);
+}
+.filter-icons.senior-center {
+  background-color: var(--senior-center);
+}
+.filter-icons.school {
+  background-color: var(--school);
+}
+.filter-icons.cornerstone-program {
+  background-color: var(--cornerstone-program);
+}
+.filter-icons.library {
+  background-color: var(--library);
+}
+.filter-icons.default {
+  background-color: var(--default);
+}
+.filter-icons.accessible {
+  background-image: var(--accessibility-icon);
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: center;
 }

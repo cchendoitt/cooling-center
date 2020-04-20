@@ -30,6 +30,8 @@ const addDescription = App.prototype.addDescription
 const constructIconUrl = App.prototype.constructIconUrl
 const fetchIconUrl = App.prototype.fetchIconUrl
 const filterIcons = App.prototype.filterIcons
+const filterIconsUrl = App.prototype.filterIconsUrl
+
 
 beforeEach(() => {
   FinderApp.mockClear()
@@ -40,6 +42,7 @@ beforeEach(() => {
   App.prototype.constructIconUrl = jest.fn()
   App.prototype.fetchIconUrl = jest.fn()
   App.prototype.filterIcons = jest.fn()
+  App.prototype.filterIconsUrl = jest.fn()
 
 })
 
@@ -47,6 +50,8 @@ afterEach(() => {
   App.prototype.constructIconUrl = constructIconUrl
   App.prototype.fetchIconUrl = fetchIconUrl
   App.prototype.filterIcons = filterIcons
+  App.prototype.filterIconsUrl = filterIconsUrl
+
 })
 
 describe('constructor', () => {
@@ -170,6 +175,8 @@ describe('constructor', () => {
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(0)
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(0)
+    expect(App.prototype.filterIcons).toHaveBeenCalledTimes(1)
+    expect(App.prototype.filterIconsUrl).toHaveBeenCalledTimes(0)
 
   })
 })
@@ -225,7 +232,7 @@ describe('fetchIconUrl', () => {
   })
   
   test('fetchIconUrl', done => {
-    expect.assertions(6)
+    expect.assertions(7)
     const app = new App(mockContent)
     app.layer = new Layer()
 
@@ -240,11 +247,11 @@ describe('fetchIconUrl', () => {
       expect(Layer.prototype.setSource).toHaveBeenCalledTimes(2)
       expect(Layer.prototype.setSource.mock.calls[0][0] instanceof Source).toBe(true)
       expect(Layer.prototype.setSource.mock.calls[1][0]).toBe(app.source)
+      expect(App.prototype.filterIconsUrl).toHaveBeenCalledTimes(1)
       done()
     }, 100)
   })
 })
-
 
 describe('filterIcons', () => {
   const target = $('<div></div>')
@@ -277,10 +284,58 @@ describe('filterIcons', () => {
     const app = new App(mockContent)  
 
     app.filterIcons = filterIcons
-    app.facilityStyle = {iconArcGis: {renderer: require('../src/js/iconStyle').default}}
     app.filters = new Filters(filterOptions)
     
     app.filterIcons()
+  
+    const filter = app.filters.choiceControls[0]
+    const labels = filter.find('label')
+
+    filter.choices.forEach((ch, i) => {
+      const img = $(labels[i]).children().first()
+      const type = ch.values[0].replace(/ /g, '-').toLowerCase()
+      expect(img.attr('class')).toBe(`filter-icons ${type}`)
+    })
+  
+  })
+})
+
+
+describe('filterIconsUrl', () => {
+  const target = $('<div></div>')
+  const filterOptions = {
+    target,
+    choiceOptions: [
+      {
+        title: 'Facility Type',
+        radio: false,
+        choices: [
+          {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Centers', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Centers', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
+          {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
+        ]
+      }
+    ]
+  }
+  beforeEach(() => {
+    $('body').append(target)
+  })
+  afterEach(() => {
+    target.remove()
+  })
+
+  test('filterIconsUrl', () => {
+    expect.assertions(5)
+    
+    const app = new App(mockContent)  
+
+    app.filterIconsUrl = filterIconsUrl
+    app.facilityStyle = {iconArcGis: {renderer: require('../src/js/iconStyle').default}}
+    app.filters = new Filters(filterOptions)
+    
+    app.filterIconsUrl()
   
     const filter = app.filters.choiceControls[0]
     const renderer = app.facilityStyle.iconArcGis.renderer

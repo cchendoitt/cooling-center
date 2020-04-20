@@ -82,14 +82,12 @@ class App extends FinderApp {
       this.fetchIconUrl(iconurl)
     }
     else {
-      const icon = new IconArcGis(iconStyle)
-      facilityStyle.iconArcGis = icon
       this.filterIcons()
     }
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
   }
-  filterIcons() {
+  filterIconsUrl() {
     const renderer = this.facilityStyle.iconArcGis.renderer
     const filter = this.filters.choiceControls[0]
     const labels = filter.find('label')
@@ -100,6 +98,15 @@ class App extends FinderApp {
           $(labels[i]).prepend(`<img src="data:${sym.contentType};base64,${sym.imageData}">`)
         }
       })
+    })
+  }
+  filterIcons() {
+    const filter = this.filters.choiceControls[0]
+    const labels = filter.find('label')
+    filter.choices.forEach((ch, i) => {
+      let type = ch.values[0].replace(/ /g, '-').toLowerCase()
+      const iconDiv = $(`<div class="filter-icons ${type}"></div>`)
+      $(labels[i]).prepend(iconDiv)
     })
   }
   constructIconUrl(arcGisUrl) {
@@ -118,7 +125,7 @@ class App extends FinderApp {
       this.layer.setSource(new Source({}))
       this.layer.setSource(this.source)
       this.resetList()
-      this.filterIcons()
+      this.filterIconsUrl()
     })
   }
   addDescription() {

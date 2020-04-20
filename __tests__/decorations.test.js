@@ -4,6 +4,7 @@ import {center1} from './features.mock'
 import nyc from 'nyc-lib/nyc'
 import facilityStyle from '../src/js/facility-style'
 
+
 describe('decorations', () => {
   let container
   beforeEach(() => {
@@ -66,8 +67,14 @@ describe('decorations', () => {
   })
   describe('getIcon', () => {
     const iconArcGis = facilityStyle.iconArcGis
+    const iconClass = center1.iconClass()
+    beforeEach(() => {
+      facilityStyle.iconArcGis = iconArcGis
+      center1.iconClass = jest.fn(() => {return 'mock-icon'})
+    })
     afterEach(() => {
       facilityStyle.iconArcGis = iconArcGis
+      center1.iconClass = iconClass
     })
     test('getIcon - no img', () => {
       expect.assertions(2)
@@ -81,8 +88,8 @@ describe('decorations', () => {
         }
       }
       facilityStyle.iconArcGis = mockIcon
-      expect(center1.getIcon()).toEqual($('<div class="icon"><img></img></div>'))
-      expect(center1.getName()).not.toBeNull()
+      expect(center1.getIcon()).toBe('mock-icon')
+      expect(center1.iconClass).toHaveBeenCalledTimes(1)
     })
     test('getIcon - w/ img src', () => {
       expect.assertions(2)
@@ -115,8 +122,8 @@ describe('decorations', () => {
         }
       }
       facilityStyle.iconArcGis = mockIcon
-      expect(center1.getIcon()).toEqual($('<div class="icon"><img></img></div>'))
-      expect(center1.getName()).not.toBeNull()
+      expect(center1.getIcon()).toBe('mock-icon')
+      expect(center1.iconClass).toHaveBeenCalledTimes(1)
     })
   })
   describe('nameHtml', () => {
@@ -165,8 +172,38 @@ describe('decorations', () => {
     expect(center1.detailsHtml().html()).toBe('<ul><li><b>Status: </b>OPEN</li><li><b>Facility Type: </b>Library</li><li><b>Address: </b>4790 Broadway</li><li><b>Phone: </b>(212)942-2445</li><li><b>Hours: </b>HOURS</li><li><b>Extended Hours: </b>No</li><li><b>Wheelchair Accessible: </b>Yes</li></ul>')
   })
 
-  /* TODO */
-  test('detailsHtml - status CLOSED', () => {
+  describe('iconClass', () => {
+    const typesMap = Object.entries(facilityStyle.FACILITY_TYPE)
+    const iconClass = center1.iconClass
+    beforeEach(() => {
+      center1.iconClass = iconClass
+    })
+    afterEach(() => {
+      center1.set('HANDICAP_ACCESS', 'Yes')
+      center1.set('FACILITY_TYPE', 'Library')
+    })
+    test('iconClass - accessible', () => {
+      center1.set('HANDICAP_ACCESS', 'Yes')
+      typesMap.forEach((obj) => {
+        let type = obj[0].replace(/ /g, '-').toLowerCase()
+        let color = obj[1]
+        center1.set('FACILITY_TYPE', obj[0])
+        expect(center1.iconClass()).toEqual($(`<div class="filter-icons ${type} accessible"></div>`))
+      })
+    })
+    test('iconClass - accessible', () => {
+      center1.set('HANDICAP_ACCESS', 'Yes')
+      center1.set('FACILITY_TYPE', 'random-type')
+      expect(center1.iconClass()).toEqual($(`<div class="filter-icons default accessible"></div>`))
+    })
+    test('iconClass - not accessible', () => {
+      center1.set('HANDICAP_ACCESS', 'No')
+        typesMap.forEach((obj) => {
+          let type = obj[0].replace(/ /g, '-').toLowerCase()
+          let color = obj[1]
+          center1.set('FACILITY_TYPE', obj[0])
+          expect(center1.iconClass()).toEqual($(`<div class="filter-icons ${type} not-accessible"></div>`))
+        })
+      })
+    })
   })
-
-})

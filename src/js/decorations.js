@@ -36,11 +36,13 @@
     const icon = $('<img>')
     if (this.facilityStyle.iconArcGis) {
       const img = this.facilityStyle.iconArcGis.style(this, 13).getImage()
-      if (img) {
+      if (img && img.getSrc()) {
         icon.attr('src', img.getSrc())
+        return $('<div class="icon"></div>').append(icon)
       }
+      return this.iconClass()
     }
-    return $('<div class="icon"></div>').append(icon)
+    return this.iconClass()
   },
   nameHtml() {
     return $('<h3 class="name" translate="no" notranslate></h3>')
@@ -79,6 +81,15 @@
     .append(access)
 
     return div.append(ul)
+  },
+  iconClass() {
+    let type = this.getType()
+    if (this.facilityStyle.FACILITY_TYPE.hasOwnProperty(type))
+      type = type.replace(/ /g, '-').toLowerCase()
+    else
+      type = 'default'
+    const access = this.getAccessible()
+    return $(`<div class="filter-icons ${type} ${access === 'Yes' ? 'accessible' : 'not-accessible'}"></div>`)
   }
  }
  export default decorations
