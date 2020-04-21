@@ -27,6 +27,13 @@
 	<!--[if (gte IE 6)&(lte IE 8)]><script type="text/javascript" src="https://www1.nyc.gov/assets/home/js/libs/selectivizr.js"></script><![endif]-->
 	<!--[if IE 8]><script type="text/javascript" src="https://www1.nyc.gov/assets/home/js/libs/respond.min.js"></script><![endif]-->
 	<script src="https://www1.nyc.gov/assets/home/js/libs/modernizr-2.6.2.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<script>
+		$( document ).ready(function() {
+			const message = decodeURIComponent(window.location.search.substring(1)).split('=')[1];
+			$('#message b').append(message);
+		});
+	</script>
 </head>
 <body id="page"><div class="ls-canvas page" id="outer-wrap"><div class="ls-row" id="inner-wrap"><div class="ls-fxr" id="ls-gen29694709-ls-fxr"><div class="ls-col" id="ls-row-1-col-1"><div class="ls-col-body" id="ls-gen29694710-ls-col-body"><div class="ls-row main-header" id="top"><div class="ls-fxr" id="ls-gen29694711-ls-fxr"><div class="ls-col block" id="ls-row-1-col-1-row-1-col-1"><div class="ls-col-body" id="ls-gen29694712-ls-col-body"><div class="ls-row" id="ls-row-1-col-1-row-1-col-1-row-1"><div class="ls-fxr" id="ls-gen29694713-ls-fxr"><div class="ls-area" id="ls-row-1-col-1-row-1-col-1-row-1-area-1"><div class="ls-area-body" id="ls-gen29694714-ls-area-body"><div class="ls-cmp-wrap ls-1st" id="w1439326577703"><div class="iw_component" id="1439326577703"></div></div><div class="ls-cmp-wrap" id="w1439326577704"><div class="iw_component" id="1439326577704"><div class="agency-header"><div class="upper-header-black"><div class="container"><span class="upper-header-left"><a href="http://www1.nyc.gov"><img src="http://www1.nyc.gov/assets/home/images/global/nyc_white.png" alt="NYC" class="small-nyc-logo"></a><img src="http://www1.nyc.gov/assets/home/images/global/upper-header-divider.gif" alt=""><span class="upper-header-black-title">Emergency Management</span></span><span class="upper-header-padding"></span><span class="upper-header-right"><span class="upper-header-three-one-one"><a href="http://www1.nyc.gov/311/index.page">311</a></span><img src="http://www1.nyc.gov/assets/home/images/global/upper-header-divider.gif" alt=""><span class="upper-header-search"><a href="http://www1.nyc.gov/home/search/index.page">Search all NYC.gov websites</a></span></span></div></div></div><div role="banner" id="top" class="main-header"><div class="block"><div class="header-top"><div class="container"><a href="#" class="toggle-mobile-side-nav visible-phone" id="nav-open-btn">Menu</a><span class="welcome-text hidden-phone agency-header"></span><div class="agency-logo-wrapper"><a href="http://www1.nyc.gov/site/em/index.page"><img class="agency-logo" src="http://www1.nyc.gov/assets/em/images/content/header/logo.png" alt="Emergency Management"></a></div><div class="hidden-phone" id="header-links"><div class="language-selector"><div id="google_translate_element"></div></div><a class="text-size hidden-phone" href="http://www1.nyc.gov/home/text-size.page">Text-Size</a></div><a href="#" class="visible-phone nav-sprite-mobile" id="toggle-mobile-search"><span class="hidden">Search</span></a></div></div><div class="container nav-outer"><nav role="navigation" class="hidden-phone" id="nav"><div class="block"><h2 class="block-title visible-phone"></h2>
 
@@ -68,7 +75,7 @@
 <!--// BEGIN CONTENT AREA (THIS IS WHERE THE WEB APP GOES) -->
 
 <h1>Find a Cooling Center</h1>
-<p><b>At this time, the  Cooling Center Finder application is NOT activated.</b>
+<p id='message'><b></b></p>
 
 <p>A cooling center is a facility, such as a senior center or community center, where people may go to enjoy air-conditioned comfort during a heat emergency.</p>
 <p>There are many cooling centers around the City, most of which are open during regular business hours in case of a heat wave.</p>

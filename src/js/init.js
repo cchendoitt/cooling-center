@@ -8,14 +8,18 @@ const initializer = {
       url: coolingCenter.CONTENT_URL,
     }).then(content => {
       if(content.message('active') === 'no') {
-        initializer.redirect()
+        initializer.redirect(content.message('message'))
         return
       }
       new App(content)
     })
   },
-  redirect: () => {
-    window.location.href = 'inactive.html'
+  redirect: (msg) => {
+    let query = ''
+    if (msg) {
+      query = `?message=${encodeURIComponent(msg)}`
+    }
+    window.location.href = `inactive.html${query}`
   }
 }
 export default initializer
