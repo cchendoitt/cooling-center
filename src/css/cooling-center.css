@@ -101,3 +101,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.splash a.btn.rad-all.btn-no {
+  height: 43px;
+  white-space: normal;
+}
