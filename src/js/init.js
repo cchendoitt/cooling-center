@@ -2,8 +2,13 @@ import coolingCenter from './coolingCenter'
 import Content from 'nyc-lib/nyc/Content'
 import App from './App'
 
+
 const initializer = {
   init: () => {
+    const params = initializer.params()
+    const minutes = params.refresh
+    const hasBeenRefreshed = params.now > 0
+    initializer.refresh(minutes)
     Content.loadCsv({
       url: coolingCenter.CONTENT_URL,
     }).then(content => {
@@ -11,28 +16,32 @@ const initializer = {
         const msg = content.message('message') || ''
         return initializer.redirect(`inactive.html?message=${encodeURIComponent(msg)}`)
       }
-      new App(content)
+      new App(content, hasBeenRefreshed)
     })
   },
   redirect: (url) => {
+    console.warn(url)
     window.location.href = url
   },
-  refresh: (search) => {
+  params: () => {
+    const result = {}
+    const search = document.location.search
     if (search) {
       const params = search.substr(1).split('&')
       params.forEach(param => {
         const p = param.split('=')
-        const minutes = p[1]
-        if (p[0] === 'refresh' && !isNaN(minutes)) {
-          setTimeout(() => {
-            initializer.redirect(`./?refresh=${minutes}&now=${new Date().getTime()}`)
-          }, minutes * 1000 * 60)
-        } 
+        result[p[0]] = p[1]
       })
+    }
+    return result
+  },
+  refresh: (minutes) => {
+    if (minutes) {
+      setTimeout(() => {
+        initializer.redirect(`./?refresh=${minutes}&now=${new Date().getTime()}`)
+      }, minutes * 1000 * 60)
     }
   }
 }
-
-initializer.refresh(document.location.search)
 
 export default initializer
