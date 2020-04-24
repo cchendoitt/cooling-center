@@ -89,7 +89,7 @@
     else
       type = 'default'
     const access = this.getAccessible()
-    return $(`<div class="filter-icons ${type} ${access === 'Yes' ? 'accessible' : 'not-accessible'}"></div>`)
+    return $(`<div class="cc-icon ${type} ${access === 'Yes' ? 'accessible' : 'not-accessible'}"></div>`)
   }
  }
  export default decorations

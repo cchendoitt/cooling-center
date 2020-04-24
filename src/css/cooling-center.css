@@ -68,7 +68,7 @@
 .filter-chc-1 input {
 	display: none;
 }
-.filter-icons {
+.cc-icon {
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -77,25 +77,25 @@
   margin-top: 10px;
   margin-left: 0px;
 }
-.filter-icons.community-center {
+.cc-icon.community-center {
   background-color: var(--community-center);
 }
-.filter-icons.senior-center {
+.cc-icon.senior-center {
   background-color: var(--senior-center);
 }
-.filter-icons.school {
+.cc-icon.school {
   background-color: var(--school);
 }
-.filter-icons.cornerstone-program {
+.cc-icon.cornerstone-program {
   background-color: var(--cornerstone-program);
 }
-.filter-icons.library {
+.cc-icon.library {
   background-color: var(--library);
 }
-.filter-icons.default {
+.cc-icon.default {
   background-color: var(--default);
 }
-.filter-icons.accessible {
+.cc-icon.accessible {
   background-image: var(--accessibility-icon);
   background-size: 13px;
   background-repeat: no-repeat;

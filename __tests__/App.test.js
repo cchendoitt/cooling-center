@@ -294,7 +294,7 @@ describe('filterIcons', () => {
     filter.choices.forEach((ch, i) => {
       const img = $(labels[i]).children().first()
       const type = ch.values[0].replace(/ /g, '-').toLowerCase()
-      expect(img.attr('class')).toBe(`filter-icons ${type}`)
+      expect(img.attr('class')).toBe(`cc-icon ${type}`)
     })
   
   })

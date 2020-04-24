@@ -105,7 +105,7 @@ class App extends FinderApp {
     const labels = filter.find('label')
     filter.choices.forEach((ch, i) => {
       let type = ch.values[0].replace(/ /g, '-').toLowerCase()
-      const iconDiv = $(`<div class="filter-icons ${type}"></div>`)
+      const iconDiv = $(`<div class="cc-icon ${type}"></div>`)
       $(labels[i]).prepend(iconDiv)
     })
   }
