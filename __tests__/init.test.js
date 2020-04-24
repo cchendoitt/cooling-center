@@ -34,7 +34,7 @@ describe('init', () => {
   })
   
   test('init - active - no refresh', done => {
-    expect.assertions(9)
+    expect.assertions(10)
   
     messages = {active: 'yes'}
     params = {}
@@ -42,6 +42,7 @@ describe('init', () => {
     initializer.init()
   
     setTimeout(() => {
+      expect(initializer.params).toHaveBeenCalledTimes(1)
       expect(initializer.refresh).toHaveBeenCalledTimes(1)
       expect(initializer.refresh.mock.calls[0][0]).toBeUndefined()
       expect(Content.loadCsv).toHaveBeenCalledTimes(1)
@@ -56,7 +57,7 @@ describe('init', () => {
   })
   
   test('init - active - 1st refresh', done => {
-    expect.assertions(9)
+    expect.assertions(10)
   
     messages = {active: 'yes'}
     params = {refresh: '5'}
@@ -64,6 +65,7 @@ describe('init', () => {
     initializer.init()
   
     setTimeout(() => {
+      expect(initializer.params).toHaveBeenCalledTimes(1)
       expect(initializer.refresh).toHaveBeenCalledTimes(1)
       expect(initializer.refresh.mock.calls[0][0]).toBe('5')
       expect(Content.loadCsv).toHaveBeenCalledTimes(1)
@@ -78,7 +80,7 @@ describe('init', () => {
   })
   
   test('init - active - 2nd refresh', done => {
-    expect.assertions(9)
+    expect.assertions(10)
   
     messages = {active: 'yes'}
     params = {refresh: '15', now: `${new Date().getTime()}`}
@@ -86,6 +88,7 @@ describe('init', () => {
     initializer.init()
   
     setTimeout(() => {
+      expect(initializer.params).toHaveBeenCalledTimes(1)
       expect(initializer.refresh).toHaveBeenCalledTimes(1)
       expect(initializer.refresh.mock.calls[0][0]).toBe('15')
       expect(Content.loadCsv).toHaveBeenCalledTimes(1)
@@ -100,7 +103,7 @@ describe('init', () => {
   })
   
   test('init - not active - refresh', done => {
-    expect.assertions(7)
+    expect.assertions(8)
   
     messages = {active: 'no', message: 'mock-message'}
     params = {refresh: '10'}
@@ -108,6 +111,7 @@ describe('init', () => {
     initializer.init()
   
     setTimeout(() => {
+      expect(initializer.params).toHaveBeenCalledTimes(1)
       expect(initializer.refresh).toHaveBeenCalledTimes(1)
       expect(initializer.refresh.mock.calls[0][0]).toBe('10')
       expect(Content.loadCsv).toHaveBeenCalledTimes(1)
@@ -120,7 +124,7 @@ describe('init', () => {
   })
   
   test('init - not active - no refresh', done => {
-    expect.assertions(7)
+    expect.assertions(8)
   
     messages = {active: 'no', message: 'mock-message'}
     initializer.refresh = jest.fn()
@@ -129,6 +133,7 @@ describe('init', () => {
     initializer.init()
   
     setTimeout(() => {
+      expect(initializer.params).toHaveBeenCalledTimes(1)
       expect(initializer.refresh).toHaveBeenCalledTimes(1)
       expect(initializer.refresh.mock.calls[0][0]).toBeUndefined()
       expect(Content.loadCsv).toHaveBeenCalledTimes(1)
