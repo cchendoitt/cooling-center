@@ -12,26 +12,29 @@ const initializer = {
     Content.loadCsv({
       url: coolingCenter.CONTENT_URL,
     }).then(content => {
-      if(content.message('active') === 'no') {
-        const msg = content.message('message') || ''
-        return initializer.redirect(`inactive.html?message=${encodeURIComponent(msg)}`)
+      if (content.message('active') === 'no') {
+        const msg = content.message('message')
+        initializer.redirect(`inactive.html?message=${encodeURIComponent(msg)}`)
+        return
       }
       new App(content, hasBeenRefreshed)
     })
   },
   redirect: (url) => {
-    console.warn(url)
     window.location.href = url
+  },
+  search: () => {
+    return document.location.search
   },
   params: () => {
     const result = {}
-    const search = document.location.search
+    const search = initializer.search()
     if (search) {
       const params = search.substr(1).split('&')
       params.forEach(param => {
         const p = param.split('=')
         result[p[0]] = p[1]
-      })
+      }) 
     }
     return result
   },
