@@ -46,9 +46,15 @@ describe('decorations', () => {
     expect(center1.getAddress1()).toBe(`${center1.get('ADDRESS')}`)
     expect(center1.getAddress1()).not.toBeNull()
   })
+  test('getBorough', () => {
+    expect.assertions(2)
+    expect(center1.getBorough()).toBe(`${center1.get('BOROUGH')}`)
+    expect(center1.getBorough()).not.toBeNull()
+  })
   test('getCityStateZip', () => {
-    expect.assertions(1)
-    expect(center1.getCityStateZip()).toBe("")
+    expect.assertions(2)
+    expect(center1.getCityStateZip()).toBe(`${center1.get('BOROUGH')}, NY ${center1.get('ZIP_CODE')}`)
+    expect(center1.getCityStateZip()).not.toBeNull()
   })
   test('getHours', () => {
     expect.assertions(2)

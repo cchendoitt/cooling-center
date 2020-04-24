@@ -20,8 +20,11 @@
   getAddress1() {
     return this.get('ADDRESS')
   },
+  getBorough() {
+    return this.get('BOROUGH')
+  },
   getCityStateZip() {
-    return ''
+    return `${this.getBorough()}, NY ${this.getZip()}`
   },
   getHours() {
     return this.get('HOURS')
