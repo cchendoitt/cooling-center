@@ -8,18 +8,31 @@ const initializer = {
       url: coolingCenter.CONTENT_URL,
     }).then(content => {
       if(content.message('active') === 'no') {
-        initializer.redirect(content.message('message'))
-        return
+        const msg = content.message('message') || ''
+        return initializer.redirect(`inactive.html?message=${encodeURIComponent(msg)}`)
       }
       new App(content)
     })
   },
-  redirect: (msg) => {
-    let query = ''
-    if (msg) {
-      query = `?message=${encodeURIComponent(msg)}`
+  redirect: (url) => {
+    window.location.href = url
+  },
+  refresh: (search) => {
+    if (search) {
+      const params = search.substr(1).split('&')
+      params.forEach(param => {
+        const p = param.split('=')
+        const minutes = p[1]
+        if (p[0] === 'refresh' && !isNaN(minutes)) {
+          setTimeout(() => {
+            initializer.redirect(`./?refresh=${minutes}&now=${new Date().getTime()}`)
+          }, minutes * 1000 * 60)
+        } 
+      })
     }
-    window.location.href = `inactive.html${query}`
   }
 }
+
+initializer.refresh(document.location.search)
+
 export default initializer
