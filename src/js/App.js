@@ -11,7 +11,8 @@ import decorations from './decorations'
 import facilityStyle from './facility-style'
 import Source from 'ol/source/Vector'
 import IconArcGis from 'nyc-lib/nyc/ol/style/IconArcGis'
-import iconStyle from './iconStyle'
+import Translate from 'nyc-lib/nyc/lang/Translate'
+import message from './message'
 
 
 class App extends FinderApp {
@@ -60,7 +61,7 @@ class App extends FinderApp {
           title: 'Facility Type',
           radio: false,
           choices: [
-            {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Centers', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Community center'], label: '<span class="legend_comm">Community Centers</span>', checked: true},
             {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Centers', checked: true},
             {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
             {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
@@ -88,6 +89,14 @@ class App extends FinderApp {
     }
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
+  }
+  translateBtn(options) {
+    window.translateBtn = new Translate({
+      target: '#map',
+      languages: message.languages,
+      messages: message.messages,
+      button: true
+    })
   }
   filterIconsUrl() {
     const renderer = this.facilityStyle.iconArcGis.renderer
@@ -133,7 +142,7 @@ class App extends FinderApp {
   addDescription() {
     let list = $('#facilities .list') 
     let desc = coolingCenter.DESCRIPTION_HTML
-    let description = `<div class="description"><div class="desc">${desc}</div></div>`
+    let description = `<div class="description"><div class="panel_note desc">${desc}</div></div>`
     $(description).insertBefore(list)
   }
 }

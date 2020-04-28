@@ -87,7 +87,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('Community Centers')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('<span class="legend_comm">Community Centers</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].name).toBe('FACILITY_TYPE')
@@ -149,7 +149,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('Community Centers')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('<span class="legend_comm">Community Centers</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].name).toBe('FACILITY_TYPE')
@@ -197,7 +197,7 @@ describe('addDescription', () => {
     app.addDescription()
 
     expect($('#facilities .list').prev()[0]).not.toBe(undefined)
-    expect($('div.description')).toEqual($(`<div class="description"><div class="desc">${coolingCenter.DESCRIPTION_HTML}</div></div>`))
+    expect($('div.description')).toEqual($(`<div class="description"><div class="panel_note desc">${coolingCenter.DESCRIPTION_HTML}</div></div>`))
 
   })
 })
