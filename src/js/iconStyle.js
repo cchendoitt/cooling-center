@@ -20,8 +20,8 @@ const layerInfo = {
           "xoffset": 0,
           "yoffset": 0
         },
-        "value": "Community center,No",
-        "label": "Community center",
+        "value": "Community Center,No",
+        "label": "Community Center",
         "description": ""
       },
       {
@@ -36,8 +36,8 @@ const layerInfo = {
           "xoffset": 0,
           "yoffset": 0
         },
-        "value": "Community center,Yes",
-        "label": "Community center, Accessible",
+        "value": "Community Center,Yes",
+        "label": "Community Center, Accessible",
         "description": ""
       },
       {
@@ -148,8 +148,8 @@ const layerInfo = {
           "xoffset": 0,
           "yoffset": 0
         },
-        "value": "Senior center,No",
-        "label": "Senior center",
+        "value": "Senior Center,No",
+        "label": "Senior Center",
         "description": ""
       },
       {
@@ -164,8 +164,8 @@ const layerInfo = {
           "xoffset": 0,
           "yoffset": 0
         },
-        "value": "Senior center,Yes",
-        "label": "Senior center, Accessible",
+        "value": "Senior Center,Yes",
+        "label": "Senior Center, Accessible",
         "description": ""
       }
     ],

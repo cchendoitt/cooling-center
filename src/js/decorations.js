@@ -67,13 +67,13 @@
   detailsHtml() {
     const div = $('<div></div>')
     let ul = $('<ul></ul>')
-    const status = `<li><b>Status: </b>${this.getStatus()}</li>`
-    const type = `<li><b>Facility Type: </b>${this.getType()}</li>`
-    const address = `<li><b>Address: </b>${this.getAddress1()}</li>`
-    const phone = `<li><b>Phone: </b>${this.getPhone()}</li>`
-    const hours = `<li><b>Hours: </b>${this.getHours()}</li>`
-    const exHours = `<li><b>Extended Hours: </b>${this.getExHours()}</li>`
-    const access = `<li><b>Wheelchair Accessible: </b>${this.getAccessible()}</li>`
+    const msgs = translateBtn.messages[translateBtn.lang()];
+    const type = '<li><b><span class=pop_type>' + msgs['pop_type'] + `</span>: </b>${this.getType()}</li>`
+    const address = '<li><b><span class=pop_address>' + msgs['pop_address'] + `</span>: </b>${this.getAddress1()}</li>`
+    const phone = '<li><b><span class=pop_phone>' + msgs['pop_phone'] + `</span>: </b>${this.getPhone()}</li>`
+    const hours = '<li><b><span class=pop_hours>' + msgs['pop_hours'] + `</span>: </b>${this.getHours()}</li>`
+    const exHours = '<li><b><span class=pop_extended>' + msgs['pop_extended'] + `</span>: </b>${this.getExHours()}</li>`
+    const access = '<li><b><span class=pop_access>' + msgs['pop_access'] + `</span>: </b>${this.getAccessible()}</li>`
     
     ul.append(status)
     .append(type)
