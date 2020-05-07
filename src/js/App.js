@@ -46,7 +46,7 @@ class App extends FinderApp {
       buttonText: ['Screen reader instructions', 'View map to find your closest Cooling Center']
     }
     super({
-      title: 'Cooling Center Finder',
+      title: '<span class=cc_title>Cooling Center Finder</span>',
       splashOptions: splashOptions,
       facilityFormat: format,
       facilityStyle: facilityStyle.pointStyle,
@@ -144,6 +144,7 @@ class App extends FinderApp {
     let desc = coolingCenter.DESCRIPTION_HTML
     let description = `<div class="description"><div class="panel_note desc">${desc}</div></div>`
     $(description).insertBefore(list)
+    $('.srch input').attr('data-msg-key', 'search_addr').attr('data-msg-attr', 'placeholder')
   }
 }
 export default App

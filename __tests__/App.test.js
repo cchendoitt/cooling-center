@@ -62,7 +62,7 @@ describe('constructor', () => {
     expect(app instanceof FinderApp).toBe(true)
     expect(FinderApp).toHaveBeenCalledTimes(1)
 
-    expect(FinderApp.mock.calls[0][0].title).toBe('Cooling Center Finder')
+    expect(FinderApp.mock.calls[0][0].title).toBe('<span class=cc_title>Cooling Center Finder</span>')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('Splash Message')
     expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['Screen reader instructions', 'View map to find your closest Cooling Center'])
     expect(FinderApp.mock.calls[0][0].facilityUrl).toBe('http://cc-endpoint')
@@ -123,7 +123,7 @@ describe('constructor', () => {
     expect(app instanceof FinderApp).toBe(true)
     expect(FinderApp).toHaveBeenCalledTimes(1)
 
-    expect(FinderApp.mock.calls[0][0].title).toBe('Cooling Center Finder')
+    expect(FinderApp.mock.calls[0][0].title).toBe('<span class=cc_title>Cooling Center Finder</span>')
     expect(FinderApp.mock.calls[0][0].splashOptions.message).toBe('Splash Message')
     expect(FinderApp.mock.calls[0][0].splashOptions.buttonText).toEqual(['Screen reader instructions', 'View map to find your closest Cooling Center'])
     expect(FinderApp.mock.calls[0][0].facilityUrl).toBe(coolingCenter.CENTER_CSV_URL)
