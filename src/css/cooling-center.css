@@ -42,6 +42,9 @@
   background-color: var(--focus-ring-color);
   color: black;
 }
+.panel_note {
+  margin-top: 15px;
+}
 .filter-chc-1 {
   width: calc(100% - 5px);
   overflow: hidden;

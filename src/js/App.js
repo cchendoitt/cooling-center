@@ -142,7 +142,7 @@ class App extends FinderApp {
   addDescription() {
     let list = $('#facilities .list') 
     let desc = coolingCenter.DESCRIPTION_HTML
-    let description = `<div class="description"><div class="panel_note desc">${desc}</div></div>`
+    let description = `<div class="description"><div class="desc"><div class="panel_note">${desc}</div></div></div>`
     $(description).insertBefore(list)
     $('.srch input').attr('data-msg-key', 'search_addr').attr('data-msg-attr', 'placeholder')
   }

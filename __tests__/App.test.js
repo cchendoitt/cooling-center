@@ -197,7 +197,7 @@ describe('addDescription', () => {
     app.addDescription()
 
     expect($('#facilities .list').prev()[0]).not.toBe(undefined)
-    expect($('div.description')).toEqual($(`<div class="description"><div class="panel_note desc">${coolingCenter.DESCRIPTION_HTML}</div></div>`))
+    expect($('div.description')).toEqual($(`<div class="description"><div class="desc"><div class="panel_note">${coolingCenter.DESCRIPTION_HTML}</div></div></div>`))
 
   })
 })
