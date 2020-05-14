@@ -6,7 +6,6 @@ import facilityStyle from '../src/js/facility-style'
 import { translate } from 'ol/transform'
 import { closestOnCircle } from 'ol/coordinate'
 
-
 describe('decorations', () => {
   let container
   beforeEach(() => {
@@ -181,20 +180,20 @@ describe('decorations', () => {
     beforeEach(() => {
       global.translateBtn = {}
       translateBtn.lang = jest.fn(() => {return 'en'})
-      translateBtn.messages = {'en': {'pop_type' : center1.getType()}};
+      translateBtn.messages = {'en': {'pop_type': center1.getType(), 'pop_address': center1.getAddress1(), 'pop_phone': center1.getPhone(), 'pop_hours': center1.getHours(), 'pop_extended': center1.getExHours(), 'pop_access': center1.getAccessible()}}
     })
     
     afterEach(() => {
       delete global.translate
     })
     test('detailsHtml - status OPEN', () => {
-      expect.assertions(1)
+      expect.assertions(2)
       expect(center1.getStatus()).toBe('OPEN')
-      expect(center1.detailsHtml().html()).toBe('<ul><li><b>Facility Type: </b>Library</li><li><b>Address: </b>4790 Broadway</li><li><b>Phone: </b>(212)942-2445</li><li><b>Hours: </b>HOURS</li><li><b>Extended Hours: </b>No</li><li><b>Wheelchair Accessible: </b>Yes</li></ul>')
+      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Library</span>: </b>Library</li><li><b><span class="pop_address">4790 Broadway</span>: </b>4790 Broadway</li><li><b><span class="pop_phone">(212)942-2445</span>: </b>(212)942-2445</li><li><b><span class="pop_hours">HOURS</span>: </b>HOURS</li><li><b><span class="pop_extended">No</span>: </b>No</li><li><b><span class="pop_access">Yes</span>: </b>Yes</li></ul>')
     })
   })
 
-  describe.only('iconClass', () => {
+  describe('iconClass', () => {
     const typesMap = Object.entries(facilityStyle.FACILITY_TYPE)
     const iconClass = center1.iconClass
     beforeEach(() => {

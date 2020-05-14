@@ -75,8 +75,7 @@
     const exHours = '<li><b><span class=pop_extended>' + msgs['pop_extended'] + `</span>: </b>${this.getExHours()}</li>`
     const access = '<li><b><span class=pop_access>' + msgs['pop_access'] + `</span>: </b>${this.getAccessible()}</li>`
     
-    ul.append(status)
-    .append(type)
+    ul.append(type)
     .append(address)
     .append(phone)
     .append(hours)
