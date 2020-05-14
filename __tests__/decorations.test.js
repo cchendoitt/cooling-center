@@ -3,6 +3,8 @@ import Olfeature from 'ol/feature'
 import {center1} from './features.mock'
 import nyc from 'nyc-lib/nyc'
 import facilityStyle from '../src/js/facility-style'
+import { translate } from 'ol/transform'
+import { closestOnCircle } from 'ol/coordinate'
 
 
 describe('decorations', () => {
@@ -174,15 +176,25 @@ describe('decorations', () => {
   })
 
   
-  // Only OPEN centers will be displayed  
-  /*
-  test('detailsHtml - status OPEN', () => {
-    expect.assertions(2)
-    expect(center1.getStatus()).toBe('OPEN')
-    expect(center1.detailsHtml().html()).toBe('<ul><li><b>Status: </b>OPEN</li><li><b>Facility Type: </b>Library</li><li><b>Address: </b>4790 Broadway</li><li><b>Phone: </b>(212)942-2445</li><li><b>Hours: </b>HOURS</li><li><b>Extended Hours: </b>No</li><li><b>Wheelchair Accessible: </b>Yes</li></ul>')
-  })*/
+  // Only OPEN centers will be displayed 
+  describe ('detailsHtml', () => {
+    beforeEach(() => {
+      global.translateBtn = {}
+      translateBtn.lang = jest.fn(() => {return 'en'})
+      translateBtn.messages = {'en': {'pop_type' : center1.getType()}};
+    })
+    
+    afterEach(() => {
+      delete global.translate
+    })
+    test('detailsHtml - status OPEN', () => {
+      expect.assertions(1)
+      expect(center1.getStatus()).toBe('OPEN')
+      expect(center1.detailsHtml().html()).toBe('<ul><li><b>Facility Type: </b>Library</li><li><b>Address: </b>4790 Broadway</li><li><b>Phone: </b>(212)942-2445</li><li><b>Hours: </b>HOURS</li><li><b>Extended Hours: </b>No</li><li><b>Wheelchair Accessible: </b>Yes</li></ul>')
+    })
+  })
 
-  describe('iconClass', () => {
+  describe.only('iconClass', () => {
     const typesMap = Object.entries(facilityStyle.FACILITY_TYPE)
     const iconClass = center1.iconClass
     beforeEach(() => {

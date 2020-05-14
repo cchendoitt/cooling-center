@@ -63,21 +63,24 @@ class App extends FinderApp {
           choices: [
             {name: 'FACILITY_TYPE', values: ['Community Center'], label: '<span class=legend_comm>Community Center</span>', checked: true},
             {name: 'FACILITY_TYPE', values: ['Senior Center'], label: '<span class=legend_senior>Senior Center</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
-            {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
+            {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Program', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
+            {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
           ]
         },
         {
           title: 'Wheelchair Accessible',
           radio: true,
           choices: [
-            {name: 'HANDICAP_ACCESS', values: ['Yes', 'No'], label: 'All', checked: true},
-            {name: 'HANDICAP_ACCESS', values: ['Yes'], label: ' Accessible'}
+            {name: 'HANDICAP_ACCESS', values: ['Yes', 'No'], label: 'All Centers', checked: true},
+            {name: 'HANDICAP_ACCESS', values: ['Yes'], label: ' Accessible Only'}
           ]
         }
       ],
     })
+
+    this.addLangClasses()
+
     this.facilityStyle = facilityStyle
     this.addDescription()
     if(arcGisUrl) {
@@ -90,7 +93,12 @@ class App extends FinderApp {
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
   }
-  translateBtn(options) {
+  addLangClasses() {
+    const labels = this.filters.choiceControls[1].find('label')
+    $(labels[0]).addClass('acc_all')
+    $(labels[1]).addClass('acc_only')
+  }
+  translateBtn() {
     window.translateBtn = new Translate({
       target: '#map',
       languages: message.languages,

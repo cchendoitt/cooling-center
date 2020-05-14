@@ -10,9 +10,11 @@ import IconArcGis from 'nyc-lib/nyc/ol/style/IconArcGis'
 import Layer from 'ol/layer/Vector'
 import Source from 'ol/source/Vector'
 import Filters from 'nyc-lib/nyc/ol/Filters'
+import Translate from 'nyc-lib/nyc/lang/Translate';
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('nyc-lib/nyc/ol/format/CsvPoint')
+jest.mock('nyc-lib/nyc/lang/Translate')
 jest.mock('ol/format/GeoJSON')
 jest.mock('nyc-lib/nyc/ol/style/IconArcGis')
 jest.mock('ol/layer/Vector')
@@ -27,6 +29,7 @@ const mockContent = {
   }
 }
 const addDescription = App.prototype.addDescription
+const addLangClasses = App.prototype.addLangClasses
 const constructIconUrl = App.prototype.constructIconUrl
 const fetchIconUrl = App.prototype.fetchIconUrl
 const filterIcons = App.prototype.filterIcons
@@ -36,9 +39,11 @@ const filterIconsUrl = App.prototype.filterIconsUrl
 beforeEach(() => {
   FinderApp.mockClear()
   CsvPoint.mockClear()
+  Translate.mockClear()
   GeoJson.mockClear()
   IconArcGis.mockClear()
   App.prototype.addDescription = jest.fn()
+  App.prototype.addLangClasses = jest.fn()
   App.prototype.constructIconUrl = jest.fn()
   App.prototype.fetchIconUrl = jest.fn()
   App.prototype.filterIcons = jest.fn()
@@ -97,20 +102,21 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].values).toEqual(['Cornerstone Program'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('Cornerstone Programs')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('Cornerstone Program')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].values).toEqual(['Library'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('Libraries')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('Library')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].checked).toBe(true)
     
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['School'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('Schools')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('School')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
 
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
+    expect(App.prototype.addLangClasses).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl.mock.calls[0][0]).toBe('http://cc-endpoint')
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(1)
@@ -159,20 +165,21 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].values).toEqual(['Cornerstone Program'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('Cornerstone Programs')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('Cornerstone Program')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].values).toEqual(['Library'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('Libraries')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('Library')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['School'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('Schools')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('School')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
 
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
+    expect(App.prototype.addLangClasses).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(0)
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(0)
     expect(App.prototype.filterIcons).toHaveBeenCalledTimes(1)
@@ -264,9 +271,9 @@ describe('filterIcons', () => {
         choices: [
           {name: 'FACILITY_TYPE', values: ['Community Center'], label: 'Community Center', checked: true},
           {name: 'FACILITY_TYPE', values: ['Senior Center'], label: 'Senior Center', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
-          {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
+          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: '', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
+          {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
         ]
       }
     ]
@@ -312,9 +319,9 @@ describe('filterIconsUrl', () => {
         choices: [
           {name: 'FACILITY_TYPE', values: ['Community Center'], label: 'Community Center', checked: true},
           {name: 'FACILITY_TYPE', values: ['Senior Center'], label: 'Senior Center', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Programs', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Library'], label: 'Libraries', checked: true},
-          {name: 'FACILITY_TYPE', values: ['School'], label: 'Schools', checked: true}
+          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Program', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
+          {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
         ]
       }
     ]
@@ -352,4 +359,18 @@ describe('filterIconsUrl', () => {
     })
   
   })
+})
+
+test('translatBtn', () => {
+  expect.assertions(4)
+
+  const app = new App(mockContent)  
+
+  expect(window.translateBtn).toBeUndefined()
+
+  app.translateBtn()
+
+  expect(window.translateBtn instanceof Translate).toBe(true)
+  expect(Translate).toHaveBeenCalledTimes(1)
+  expect(Translate.mock.calls[0][0].target).toBe('#map')
 })

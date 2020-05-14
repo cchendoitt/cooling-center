@@ -67,7 +67,7 @@
   detailsHtml() {
     const div = $('<div></div>')
     let ul = $('<ul></ul>')
-    const msgs = translateBtn.messages[translateBtn.lang()];
+    const msgs = translateBtn.messages[translateBtn.lang()]
     const type = '<li><b><span class=pop_type>' + msgs['pop_type'] + `</span>: </b>${this.getType()}</li>`
     const address = '<li><b><span class=pop_address>' + msgs['pop_address'] + `</span>: </b>${this.getAddress1()}</li>`
     const phone = '<li><b><span class=pop_phone>' + msgs['pop_phone'] + `</span>: </b>${this.getPhone()}</li>`
