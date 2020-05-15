@@ -91,12 +91,12 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community Center'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('<span class=legend_comm>Community Center</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].name).toBe('FACILITY_TYPE')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].values).toEqual(['Senior Center'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].values).toEqual(['Senior center'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].label).toBe('<span class=legend_senior>Senior Center</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].checked).toBe(true)
 
@@ -120,6 +120,10 @@ describe('constructor', () => {
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl.mock.calls[0][0]).toBe('http://cc-endpoint')
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(1)
+  })
+  test('constructor - page refresh enabled', () => {
+    const app = new App(mockContent, true)
+    expect(FinderApp.mock.calls[0][0].splashOptions).toBeUndefined()
   })
   test('constructor - data as csv', () => {
     mockContent.messages.cc_url = ''
@@ -154,12 +158,12 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community Center'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('<span class=legend_comm>Community Center</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].name).toBe('FACILITY_TYPE')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].values).toEqual(['Senior Center'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].values).toEqual(['Senior center'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].label).toBe('<span class=legend_senior>Senior Center</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].checked).toBe(true)
 
@@ -269,9 +273,9 @@ describe('filterIcons', () => {
         title: 'Facility Type',
         radio: false,
         choices: [
-          {name: 'FACILITY_TYPE', values: ['Community Center'], label: 'Community Center', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Senior Center'], label: 'Senior Center', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: '', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Center', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Center', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Program', checked: true},
           {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
           {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
         ]
@@ -317,8 +321,8 @@ describe('filterIconsUrl', () => {
         title: 'Facility Type',
         radio: false,
         choices: [
-          {name: 'FACILITY_TYPE', values: ['Community Center'], label: 'Community Center', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Senior Center'], label: 'Senior Center', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Center', checked: true},
+          {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Center', checked: true},
           {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Program', checked: true},
           {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
           {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
@@ -358,6 +362,48 @@ describe('filterIconsUrl', () => {
       })
     })
   
+  })
+})
+describe('addLangClasses', () => {
+  const target = $('<div></div>')
+  const filterOptions ={
+    target,
+    choiceOptions: [
+      {
+        title: 'Sample filter',
+        radio: true,
+        choices: []
+      },
+      {
+        title: 'Wheelchair Accessible',
+        radio: true,
+        choices: [
+          {name: 'HANDICAP_ACCESS', values: ['Yes', 'No'], label: 'All Centers', checked: true},
+          {name: 'HANDICAP_ACCESS', values: ['Yes'], label: ' Accessible Only'}
+        ]
+      }
+    ]
+  }
+  beforeEach(() => {
+    $('body').append(target)
+  })
+  afterEach(() => {
+    target.remove()
+  })
+  test('addLangClasses', () => {
+    expect.assertions(2)
+
+    const app = new App(mockContent) 
+
+    app.addLangClasses = addLangClasses
+
+    app.filters = new Filters(filterOptions)
+    const filter = app.filters.choiceControls[1]
+    app.addLangClasses()
+    const labels = filter.find('label')
+
+    expect($(labels[1]).hasClass('acc_only')).toBe(true)
+    expect($(labels[0]).hasClass('acc_all')).toBe(true)
   })
 })
 

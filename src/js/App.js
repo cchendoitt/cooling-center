@@ -61,8 +61,8 @@ class App extends FinderApp {
           title: 'Facility Type',
           radio: false,
           choices: [
-            {name: 'FACILITY_TYPE', values: ['Community Center'], label: '<span class=legend_comm>Community Center</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Senior Center'], label: '<span class=legend_senior>Senior Center</span>', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Community center'], label: '<span class=legend_comm>Community Center</span>', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Senior center'], label: '<span class=legend_senior>Senior Center</span>', checked: true},
             {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Program', checked: true},
             {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
             {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
