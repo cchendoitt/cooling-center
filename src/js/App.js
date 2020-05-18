@@ -53,7 +53,7 @@ class App extends FinderApp {
       decorations: [{content, facilityStyle}, decorations],
       facilityUrl: url,
       facilityTabTitle: 'Cooling Centers',
-      facilitySearch: { displayField: 'search_label', nameField: 'name' },
+      facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
       geoclientUrl: coolingCenter.GEOCLIENT_URL,
       directionsUrl: coolingCenter.DIRECTIONS_URL,
       filterChoiceOptions: [
