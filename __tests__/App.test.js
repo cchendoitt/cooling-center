@@ -76,7 +76,7 @@ describe('constructor', () => {
     expect(GeoJson.mock.calls[0][0].dataProjection).toBe('EPSG:2263')
     expect(GeoJson.mock.calls[0][0].featureProjection).toBe('EPSG:3857')
     
-    expect(FinderApp.mock.calls[0][0].facilityTabTitle).toBe('Cooling Centers')
+    expect(FinderApp.mock.calls[0][0].facilityTabTitle).toBe('<span class=btn_cooling_centers>Cooling Centers</span>')
 
     expect(FinderApp.mock.calls[0][0].decorations.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].decorations[0].content).toBe(mockContent)
@@ -102,17 +102,17 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].values).toEqual(['Cornerstone Program'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('Cornerstone Program')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('<span class=legend_cornerstone>Cornerstone Program</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].values).toEqual(['Library'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('Library')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('<span class=legend_library>Library</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].checked).toBe(true)
     
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['School'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('School')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('<span class=legend_school>School</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
 
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
@@ -143,7 +143,7 @@ describe('constructor', () => {
     expect(CsvPoint.mock.calls[0][0].y).toBe('Y')    
     expect(CsvPoint.mock.calls[0][0].dataProjection).toBe('EPSG:2263')
     
-    expect(FinderApp.mock.calls[0][0].facilityTabTitle).toBe('Cooling Centers')
+    expect(FinderApp.mock.calls[0][0].facilityTabTitle).toBe('<span class=btn_cooling_centers>Cooling Centers</span>')
 
     expect(FinderApp.mock.calls[0][0].decorations.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].decorations[0].content).toBe(mockContent)
@@ -169,17 +169,17 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].values).toEqual(['Cornerstone Program'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('Cornerstone Program')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('<span class=legend_cornerstone>Cornerstone Program</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].values).toEqual(['Library'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('Library')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('<span class=legend_library>Library</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].checked).toBe(true)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['School'])
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('School')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('<span class=legend_school>School</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
 
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)

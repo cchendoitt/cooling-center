@@ -42,6 +42,10 @@
   background-color: var(--focus-ring-color);
   color: black;
 }
+
+.tabs>.btns h2 {
+  vertical-align: top;
+}
 .panel_note {
   margin-top: 15px;
 }

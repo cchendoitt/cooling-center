@@ -45,6 +45,8 @@ class App extends FinderApp {
       message: 'Splash Message',
       buttonText: ['Screen reader instructions', 'View map to find your closest Cooling Center']
     }
+
+    const detailButtonText = '<span class=dtl_btn_text>Details two</span>'
     super({
       title: '<span class=cc_title>Cooling Center Finder</span>',
       splashOptions: splashOptions,
@@ -52,10 +54,12 @@ class App extends FinderApp {
       facilityStyle: facilityStyle.pointStyle,
       decorations: [{content, facilityStyle}, decorations],
       facilityUrl: url,
-      facilityTabTitle: 'Cooling Centers',
+      facilityTabTitle: '<span class=btn_cooling_centers>Cooling Centers</span>',
       facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
       geoclientUrl: coolingCenter.GEOCLIENT_URL,
       directionsUrl: coolingCenter.DIRECTIONS_URL,
+      filterTabTitle: '<span class=filter_tab_title>Filters</span>',
+      detailButtonText: '<span class=dtl_btn_text>Details</span>',
       filterChoiceOptions: [
         {
           title: 'Facility Type',
@@ -63,9 +67,9 @@ class App extends FinderApp {
           choices: [
             {name: 'FACILITY_TYPE', values: ['Community center'], label: '<span class=legend_comm>Community Center</span>', checked: true},
             {name: 'FACILITY_TYPE', values: ['Senior center'], label: '<span class=legend_senior>Senior Center</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Program', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
-            {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
+            {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: '<span class=legend_cornerstone>Cornerstone Program</span>', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Library'], label: '<span class=legend_library>Library</span>', checked: true},
+            {name: 'FACILITY_TYPE', values: ['School'], label: '<span class=legend_school>School</span>', checked: true}
           ]
         },
         {
@@ -78,9 +82,9 @@ class App extends FinderApp {
         }
       ],
     })
-
+   
     this.addLangClasses()
-
+    
     this.facilityStyle = facilityStyle
     this.addDescription()
     if(arcGisUrl) {
