@@ -46,7 +46,6 @@ class App extends FinderApp {
       buttonText: ['Screen reader instructions', 'View map to find your closest Cooling Center']
     }
 
-    const detailButtonText = '<span class=dtl_btn_text>Details two</span>'
     super({
       title: '<span class=cc_title>Cooling Center Finder</span>',
       splashOptions: splashOptions,
@@ -59,10 +58,9 @@ class App extends FinderApp {
       geoclientUrl: coolingCenter.GEOCLIENT_URL,
       directionsUrl: coolingCenter.DIRECTIONS_URL,
       filterTabTitle: '<span class=filter_tab_title>Filters</span>',
-      detailButtonText: '<span class=dtl_btn_text>Details</span>',
       filterChoiceOptions: [
         {
-          title: 'Facility Type',
+          title: '<span class=pop_type>Facility Type</span>',
           radio: false,
           choices: [
             {name: 'FACILITY_TYPE', values: ['Community center'], label: '<span class=legend_comm>Community Center</span>', checked: true},
@@ -96,6 +94,7 @@ class App extends FinderApp {
     }
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
+    $('button.btn-0').html(`<span class=map_btn>Map</span>`)
   }
   addLangClasses() {
     const labels = this.filters.choiceControls[1].find('label')

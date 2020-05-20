@@ -87,7 +87,7 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(coolingCenter.DIRECTIONS_URL)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('Facility Type')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('<span class=pop_type>Facility Type</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
@@ -154,7 +154,7 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(coolingCenter.DIRECTIONS_URL)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('Facility Type')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('<span class=pop_type>Facility Type</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')

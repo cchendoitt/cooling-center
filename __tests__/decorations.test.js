@@ -5,6 +5,9 @@ import nyc from 'nyc-lib/nyc'
 import facilityStyle from '../src/js/facility-style'
 import { translate } from 'ol/transform'
 import { closestOnCircle } from 'ol/coordinate'
+import Collapsible from 'nyc-lib/nyc/Collapsible'
+
+jest.mock('nyc-lib/nyc/Collapsible')
 
 describe('decorations', () => {
   let container
@@ -12,6 +15,7 @@ describe('decorations', () => {
     $.resetMocks()
     container = $('<div></div>')
     $('body').append(container)
+    Collapsible.mockReset()
   })
   afterEach(() => {
     container.remove()
@@ -174,7 +178,38 @@ describe('decorations', () => {
     expect(center1.getZip()).not.toBeNull()
   })
 
-  
+  describe('detailsCollapsible', () => {
+    const detailsHtml = center1.detailsHtml
+    beforeEach(() => {
+      global.translateBtn = {}
+      center1.app = jest.fn(() => {
+        expandDetail: jest.fn()
+      })
+      center1.detailsHtml = jest.fn(() => {
+        return 'details'
+      })
+      translateBtn.lang = jest.fn(() => {return 'en'})
+      translateBtn.messages = {'en': {'dtl_btn_text': 'dtl_btn'}}
+    })
+    afterEach(() => {
+      delete global.translateBtn
+      center1.detailsHtml = detailsHtml
+    })
+    test('detailsCollapsible', () => {
+      expect.assertions(2)
+      center1.detailsCollapsible()
+      expect(Collapsible).toHaveBeenCalledTimes(1)
+      expect(Collapsible.mock.calls[0][0].title).toBe(`<span class=dtl_btn_text>dtl_btn</span>`)
+    })
+    test('detailsCollapsible - no detail', () => {
+      center1.detailsHtml = jest.fn(() => {
+        return undefined
+      })
+      expect.assertions(1)
+      center1.detailsCollapsible()
+      expect(Collapsible).toHaveBeenCalledTimes(0)
+    })
+  })
   // Only OPEN centers will be displayed 
   describe ('detailsHtml', () => {
     beforeEach(() => {
@@ -184,7 +219,7 @@ describe('decorations', () => {
     })
     
     afterEach(() => {
-      delete global.translate
+      delete global.translateBtn
     })
     test('detailsHtml - status OPEN', () => {
       expect.assertions(2)
@@ -192,7 +227,38 @@ describe('decorations', () => {
       expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Library</span>: </b>Library</li><li><b><span class="pop_address">4790 Broadway</span>: </b>4790 Broadway</li><li><b><span class="pop_phone">(212)942-2445</span>: </b>(212)942-2445</li><li><b><span class="pop_hours">HOURS</span>: </b>HOURS</li><li><b><span class="pop_extended">No</span>: </b>No</li><li><b><span class="pop_access">Yes</span>: </b>Yes</li></ul>')
     })
   })
-
+  describe('directionsButton', () => {
+    beforeEach(() => {
+      global.translateBtn = {}
+      translateBtn.lang = jest.fn(() => {return 'en'})
+      translateBtn.messages = {'en': {'dir_btn': 'dir_btn'}}
+    })
+    afterEach(() => {
+      delete global.translateBtn
+    })
+    test('directionsButton', () => {
+      expect.assertions(1)
+      const div = $('<div></div>') 
+      div.html(center1.directionsButton())
+      expect(div.html()).toBe(`<button class="btn btn-ico rad-all dir"><span class="dir_btn">dir_btn</span></button>`)
+    })
+  })
+  describe('mapButton', () => {
+    beforeEach(() => {
+      global.translateBtn = {}
+      translateBtn.lang = jest.fn(() => {return 'en'})
+      translateBtn.messages = {'en': {'map_btn': 'map_btn'}}
+    })
+    afterEach(() => {
+      delete global.translateBtn
+    })
+    test('mapButton', () => {
+      expect.assertions(1)
+      const div = $('<div></div>') 
+      div.html(center1.mapButton())
+      expect(div.html()).toBe(`<button class="btn btn-ico rad-all map"><span class="screen-reader-only">Locate this facility on the </span><span class="map_btn">map_btn</span></button>`)
+    })
+  })
   describe('iconClass', () => {
     const typesMap = Object.entries(facilityStyle.FACILITY_TYPE)
     const iconClass = center1.iconClass
