@@ -43,7 +43,12 @@ messages.en = {
 	pop_access: "Wheelchair Accessible",
 	search_addr: "Search for an address",
 	result_note1: "Click a cooling center name from the list below for more information, or use the map.",
-	result_note2: "Call the cooling center to confirm its hours before you go."
+	result_note2: "Call the cooling center to confirm its hours before you go.",
+	"btn-back-to-finder": "Back to finder",
+	"fld-lbl": "From my location: ",
+	dir_fld_input: "Enter an address...",
+	"to-lbl": "To: ",
+	"trip-planner": "TripPlanner"
 }
 
 messages.zh = {
@@ -76,7 +81,11 @@ messages.zh = {
 	search_addr: "搜尋地址",
 	result_note1: "從下方表單中點選避暑中心的名稱或使用地圖來了解更多資訊。 ",
 	result_note2: "在前往避暑中心之前，請聯絡中心來確認開放時間。",
-	fld_lbl: "From direction in Chinese"
+	"btn-back-to-finder": "回到搜尋器",
+	"fld-lbl": "從我的位置: ",
+	dir_fld_input: "輸入地址...",
+	"to-lbl": "前往: ",
+	"trip-planner": "路線規劃"
 }
 
 messages.fr = {
@@ -108,7 +117,12 @@ messages.fr = {
 	pop_access: "Accessible aux fauteuils roulants",
 	search_addr: "Rechercher une adresse",
 	result_note1: "Cliquez sur un nom de centre de refroidissement dans la liste ci-dessous pour plus d'informations ou utilisez la carte.",
-	result_note2: "Il est conseillé d’appeler le centre de refroidissement pour confirmer ses heures d’ouverture avant d’y aller."
+	result_note2: "Il est conseillé d’appeler le centre de refroidissement pour confirmer ses heures d’ouverture avant d’y aller.",
+	"btn-back-to-finder": "Retour à la recherche",
+	"fld-lbl": "Mon point de départ: ",
+	dir_fld_input: "Entrer une adresse...",
+	"to-lbl": "De: ",
+	"trip-planner": "Planificateur de trajet"
 }
 
 messages.ar = {
@@ -140,7 +154,12 @@ messages.ar = {
 	pop_access: "متاح بالكرسي المتحرك",
 	search_addr: "ابحث عن عنوان",
 	result_note1: "انقر على اسم مركز التبريد من القائمة في الأسفل للحصول على مزيد من المعلومات، او استخدم الخارطة.",
-	result_note2: "اتصل بمركز التبريد للتأكد من ساعات العمل قبل الذهاب اليه."
+	result_note2: "اتصل بمركز التبريد للتأكد من ساعات العمل قبل الذهاب اليه.",
+	"btn-back-to-finder": "العودة الى الباحث",
+	"fld-lbl": "من موقعي: ",
+	dir_fld_input: "أدخل عنوان...",
+	"to-lbl": "إلى: ",
+	"trip-planner": "مخطط الرحلة"
 }
 
 messages.bn = {
@@ -172,7 +191,12 @@ messages.bn = {
 	pop_access: "হুইলচেয়ার প্রবেশযোগ্য",
 	search_addr: 'কোনো ঠিকানার জন্য খুঁজুন',
 	result_note1: "আরো তথ্যের জন্য নিচের তালিকা থেকে একটি কুলিং সেন্টারের নামের উপর ক্লিক করুন, বা মানচিত্র ব্যবহার করুন৷",
-	result_note2: "কুলিং সেন্টার পরিচালনার সময়সূচি সম্পর্কে জানতে আপনি যাওয়ার আগে সেখানে ফোন করুন৷."
+	result_note2: "কুলিং সেন্টার পরিচালনার সময়সূচি সম্পর্কে জানতে আপনি যাওয়ার আগে সেখানে ফোন করুন৷.",
+	"btn-back-to-finder": "ফাইন্ডার-এ ফিরে যান",
+	"fld-lbl": "আমার অবস্থান থেকে: ",
+	dir_fld_input: "একটি ঠিকানা লিখুন...",
+	"to-lbl": "থেকে: ",
+	"trip-planner": "ট্রিপ প্ল্যানার"
 }
 
 messages.ht = {
@@ -204,7 +228,12 @@ messages.ht = {
 	pop_access: "Aksesib pou Chèz-Woulant",
 	search_addr: 'Chèche yon adrès',
 	result_note1: "Klike sou yon non sant refwadisman nan lis anba a pou jwenn plis enfòmasyon, oswa itilize kat la.",
-	result_note2: "Rele sant refwadisman an pou konfime lè yo louvri anvan ou ale."
+	result_note2: "Rele sant refwadisman an pou konfime lè yo louvri anvan ou ale.",
+	"btn-back-to-finder": "Retounen Nan Lokalizatè",
+	"fld-lbl": "Apati anplasman mwen: ",
+	dir_fld_input: "Antre yon adrès...",
+	"to-lbl": "Pou: ",
+	"trip-planner": "Planifikatè Vwayaj"
 }
 
 messages.ko = {
@@ -236,7 +265,12 @@ messages.ko = {
 	pop_access: "휠체어 이용 가능",
 	search_addr: '주소 검색',
 	result_note1: "더 많은 정보를 위해서는 다음 목록에서 쿨링 센터를 클릭하거나 지도를 이용하세요.  ",
-	result_note2: "출발하기 전에 쿨링 센터에 연락하여 운영 시간을 확인하세요."
+	result_note2: "출발하기 전에 쿨링 센터에 연락하여 운영 시간을 확인하세요.",
+	"btn-back-to-finder": "파인더로 돌아가기",
+	"fld-lbl": "내 위치에서: ",
+	dir_fld_input: "주소 입력하기...",
+	"to-lbl": "목적지: ",
+	"trip-planner": "여행 플래너"
 }
 
 messages.po = {
@@ -268,7 +302,12 @@ messages.po = {
 	pop_access: "Dostępne dla wózków inwalidzkich",
 	search_addr: 'Wyszukiwanie adresu',
 	result_note1: "W celu uzyskania dalszych informacji należy kliknąć na nazwę Centrum Chłodzenia lub posłużyć się mapą.",
-	result_note2: "Przed wyjściem z domu należy zadzwonić do Centrum Chłodzenia w celu sprawdzenia godzin otwarcia."
+	result_note2: "Przed wyjściem z domu należy zadzwonić do Centrum Chłodzenia w celu sprawdzenia godzin otwarcia.",
+	"btn-back-to-finder": "Wróć do wyszukiwania",
+	"fld-lbl": "Z mojej lokalizacji: ",
+	dir_fld_input: "Wpisz adres...",
+	"to-lbl": "Do: ",
+	"trip-planner": "Plan dojazdu"
 }
 
 messages.ru = {
@@ -300,7 +339,12 @@ messages.ru = {
 	pop_access: "Доступ для инвалидных колясок",
 	search_addr: 'Искать по адресу',
 	result_note1: "Для получения дополнительной информации щелкните на центр охлаждения в нижеприведенном списке или воспользуйтесь картой.",
-	result_note2: "Прежде чем отправиться в центр охлаждения, позвоните и уточните часы его работы."
+	result_note2: "Прежде чем отправиться в центр охлаждения, позвоните и уточните часы его работы.",
+	"btn-back-to-finder": "Обратно в поисковик",
+	"fld-lbl": "Из моего местоположения: ",
+	dir_fld_input: "Ввести адрес...",
+	"to-lbl": "В: ",
+	"trip-planner": "Планировщик поездки"
 }
 
 messages.es = {
@@ -332,7 +376,12 @@ messages.es = {
 	pop_access: "Acceso para sillas de ruedas",
 	search_addr: 'Busque una dirección',
 	result_note1: "Haga clic en el nombre de un centro de refrigeración de la lista a continuación para obtener más información o use el mapa.",
-	result_note2: "Llame al centro de refrigeración para confirmar el horario de operación antes de ir."
+	result_note2: "Llame al centro de refrigeración para confirmar el horario de operación antes de ir.",
+	"btn-back-to-finder": "Volver al buscador",
+	"fld-lbl": "Desde mi ubicación: ",
+	dir_fld_input: "Escriba una dirección...",
+	"to-lbl": "A: ",
+	"trip-planner": "Planificador de recorrido"
 }
 
 messages.ur = {
@@ -364,7 +413,12 @@ messages.ur = {
 	pop_access: "وہیل چیئر قابل رسائی",
 	search_addr: 'ایڈریس کو تلاش کریں',
 	result_note1: "مزید معلومات کے لئے نیچے کی فہرست میں سے کسی کولنگ سینٹر کے نام پر کلک کریں، یا نقشہ کا استعمال کریں۔",
-	result_note2: "اوقات کار کی تصدیق کے لئے جانے سے پہلے کولنگ سینٹر کو کال کریں۔"
+	result_note2: "اوقات کار کی تصدیق کے لئے جانے سے پہلے کولنگ سینٹر کو کال کریں۔",
+	"btn-back-to-finder": "میری لوکیشن سے",
+	"fld-lbl": "فائنڈر پر واپسی: ",
+	dir_fld_input: "ٹرپ پلاننر...",
+	"to-lbl": "کیلئے: ",
+	"trip-planner": "ایڈریس لکھیں"
 }
 
 export default {messages, languages}
