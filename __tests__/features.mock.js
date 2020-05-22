@@ -29,7 +29,7 @@ const center1Source = {
   FACILITY_TYPE: 'Library'
 }
 const center1 = csvPoint.readFeature(center1Source)
-nyc.mixin(decorations, [{facilityStyle: facilityStyle}])
-nyc.mixin(center1, [decorations])
+nyc.mixin(decorations.decorations, [{facilityStyle: facilityStyle}])
+nyc.mixin(center1, [decorations.decorations])
 
 module.exports = {center1}

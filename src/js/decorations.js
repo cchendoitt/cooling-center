@@ -4,8 +4,14 @@
 
  import Collapsible from 'nyc-lib/nyc/Collapsible'
 
+ const closedFeatures = []
+
  const decorations ={
   extendFeature() {
+    if (this.get('STATUS') == 'CLOSED') {
+      closedFeatures.push(this)
+    }
+
     this.setId(this.get('OBJECTID'))
     this.set(
       'search_label',
@@ -124,4 +130,4 @@
     return $(`<div class="cc-icon ${type} ${access === 'Yes' ? 'accessible' : 'not-accessible'}"></div>`)
   }
  }
- export default decorations
+ export default {decorations, closedFeatures}

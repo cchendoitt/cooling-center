@@ -51,7 +51,7 @@ class App extends FinderApp {
       splashOptions: splashOptions,
       facilityFormat: format,
       facilityStyle: facilityStyle.pointStyle,
-      decorations: [{content, facilityStyle}, decorations],
+      decorations: [{content, facilityStyle}, decorations.decorations],
       facilityUrl: url,
       facilityTabTitle: '<span class=btn_cooling_centers>Cooling Centers</span>',
       facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
@@ -156,6 +156,12 @@ class App extends FinderApp {
     let description = `<div class="description"><div class="desc"><div class="panel_note">${desc}</div></div></div>`
     $(description).insertBefore(list)
     $('.srch input').attr('data-msg-key', 'search_addr').attr('data-msg-attr', 'placeholder')
+  }
+  ready(features) {
+    decorations.closedFeatures.forEach(feature => {
+      this.source.removeFeature(feature)
+    })
+    super.ready(this.source.getFeatures())
   }
 }
 export default App
