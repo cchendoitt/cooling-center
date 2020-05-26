@@ -1,6 +1,6 @@
 import decorations from '../src/js/decorations'
 import Olfeature from 'ol/feature'
-import {center1} from './features.mock'
+import {center1, center2} from './features.mock'
 import nyc from 'nyc-lib/nyc'
 import facilityStyle from '../src/js/facility-style'
 import { translate } from 'ol/transform'
@@ -23,13 +23,15 @@ describe('decorations', () => {
   })
   test('extendfeature', () => {
     center1.extendFeature()
-    expect.assertions(3)
+    expect.assertions(5)
     
     expect(center1.getId()).toBe(center1.get('OBJECTID'))
     expect(center1.get('search_label')).not.toBeNull()
     expect(center1.get('search_label')).toBe(`<b><span class="srch-lbl-lg">${center1.get('FACILITY_NAME')}</span></b><br>
       <span class="srch-lbl-sm">${center1.get('ADDRESS')}</span>`)
-    
+    expect(center2.get('STATUS')).toBe('CLOSED')
+    center2.extendFeature()
+    expect(decorations.closedFeatures.length).toBe(1)
   })
   test('cssClass', () => {
     expect.assertions(1)

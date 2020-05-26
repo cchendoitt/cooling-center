@@ -28,8 +28,27 @@ const center1Source = {
   CTYPE: 1,
   FACILITY_TYPE: 'Library'
 }
+const closedCenterSource = {
+  OBJECTID: 99,
+  FACILITY_NAME: 'Bensonhurst NSC',
+  ADDRESS: '7802 Bay Pkwy',
+  BOROUGH: 'Brooklyn',
+  ZIP_CODE: '11214',
+  PHONE: '(718)331-6800',
+  HANDICAP_ACCESS: 'Yes',
+  EXTENDED_HOURS: 'No',
+  HOURS: 'HOURS',
+  STATUS: 'CLOSED',
+  X: 987099,
+  Y: 160188,
+  CTYPE: 2,
+  FACILITY_TYPE: 'Senior Center'
+}
+
 const center1 = csvPoint.readFeature(center1Source)
+const center2 = csvPoint.readFeature(closedCenterSource)
 nyc.mixin(decorations.decorations, [{facilityStyle: facilityStyle}])
 nyc.mixin(center1, [decorations.decorations])
+nyc.mixin(center2, [decorations.decorations])
 
-module.exports = {center1}
+module.exports = {center1, center2}

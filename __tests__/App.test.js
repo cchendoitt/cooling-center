@@ -420,3 +420,25 @@ test('translatBtn', () => {
   expect(Translate).toHaveBeenCalledTimes(1)
   expect(Translate.mock.calls[0][0].target).toBe('#map')
 })
+
+test('ready', () => {
+  expect.assertions(5)
+
+  decorations.closedFeatures = ['closed1', 'closed2']
+
+  const app = new App(mockContent)
+  app.source = {
+    removeFeature: jest.fn(),
+    getFeatures: jest.fn().mockImplementation(() => {
+      return 'mock-features'
+    })
+  }
+
+  app.ready()
+
+  expect(app.source.removeFeature).toHaveBeenCalledTimes(2)
+  expect(app.source.removeFeature.mock.calls[0][0]).toBe('closed1')
+  expect(app.source.removeFeature.mock.calls[1][0]).toBe('closed2')
+  expect(FinderApp.prototype.ready).toHaveBeenCalledTimes(1)
+  expect(FinderApp.prototype.ready.mock.calls[0][0]).toBe('mock-features')
+})

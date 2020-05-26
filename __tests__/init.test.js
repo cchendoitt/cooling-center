@@ -146,7 +146,6 @@ describe('init', () => {
   })
 })
 
-
 describe('params', () => {
   let search = ''
   beforeEach(() => {
