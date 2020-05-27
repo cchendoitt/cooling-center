@@ -72,15 +72,15 @@ class App extends FinderApp {
         },
         {
           title: 'Wheelchair Accessible',
-          radio: true,
+          toggle: true,
           choices: [
             {name: 'HANDICAP_ACCESS', values: ['Yes', 'No'], label: 'All Centers', checked: true},
-            {name: 'HANDICAP_ACCESS', values: ['Yes'], label: ' Accessible Only'}
+            {name: 'HANDICAP_ACCESS', values: ['Yes'], label: 'Accessible Only'}
           ]
         }
       ],
     })
-   
+    
     this.addLangClasses()
     
     this.facilityStyle = facilityStyle

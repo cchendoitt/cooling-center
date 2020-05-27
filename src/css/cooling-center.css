@@ -49,37 +49,12 @@
 .panel_note {
   margin-top: 15px;
 }
-.filter-chc-1 {
-  width: calc(100% - 5px);
-  overflow: hidden;
-  margin-top: 5px;
-}
-.filter-chc-1 .chc-chc {
-  display: inline-block;
-  padding: 0;
-  width: 50%;
-  border: none;
-  height: 30px;
-}
-.filter-chc-1 label {
-  background-color: var(--color-button);
-  font-weight: bold;
-  display: table;
-  width: 100%;
-  text-align: center;
-}
-.filter-chc-1 label[for="chc-chc-6"] {
+.tog .HANDICAP_ACCESS-1 label {
   background-image: url(../img/access1.svg);
-  background-repeat: no-repeat;
-  background-position: 5px center;
   background-size: 25px;
-}
-.filter-chc-1 input:checked+label, #acc-filter input:checked+label * {
-  background-color: var(--color-dark);
-  color: var(--color-light);
-}
-.filter-chc-1 input {
-	display: none;
+  background-repeat: no-repeat;
+  background-position: 3px 5px;
+  padding-left: 30px;
 }
 .cc-icon {
   width: 15px;
