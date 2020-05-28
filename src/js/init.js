@@ -7,14 +7,14 @@ const initializer = {
   init: () => {
     const params = initializer.params()
     const minutes = params.refresh
-    const hasBeenRefreshed = params.now > 0
+    const hasBeenRefreshed = params.refreshed === 'true'
     initializer.refresh(minutes)
     Content.loadCsv({
-      url: coolingCenter.CONTENT_URL,
+      url: coolingCenter.CONTENT_URL
     }).then(content => {
       if (content.message('active') === 'no') {
-        const msg = content.message('message')
-        initializer.redirect(`inactive.html?message=${encodeURIComponent(msg)}`)
+        const qstr = minutes ? `refresh=${minutes}` : ''
+        initializer.redirect(`inactive.html?${qstr}`)
         return
       }
       new App(content, hasBeenRefreshed)
@@ -41,7 +41,7 @@ const initializer = {
   refresh: (minutes) => {
     if (minutes) {
       setTimeout(() => {
-        initializer.redirect(`./?refresh=${minutes}&now=${new Date().getTime()}`)
+        initializer.redirect(`./?refresh=${minutes}&refreshed=true`)
       }, minutes * 1000 * 60)
     }
   }

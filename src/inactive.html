@@ -28,10 +28,32 @@
 	<!--[if IE 8]><script type="text/javascript" src="https://www1.nyc.gov/assets/home/js/libs/respond.min.js"></script><![endif]-->
 	<script src="https://www1.nyc.gov/assets/home/js/libs/modernizr-2.6.2.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
+	<script src="https://maps.nyc.gov/nyc-lib/v1.3.91/js/nyc-ol-lib.js"></script>
+  <script src="https://maps.nyc.gov/nyc-lib/v1.3.91/js/babel-polyfill.js"></script>
 	<script>
-		$( document ).ready(function() {
-			const message = decodeURIComponent(window.location.search.substring(1)).split('=')[1];
-			$('#message b').append(message);
+		$(document).ready(function() {
+			var cacheBust = nyc.cacheBust(5);
+			nyc.Content.loadCsv({
+	      url: './data/content.csv?' + cacheBust
+			}).then(function(content) {
+				$('#message b').append(content.message('message'));
+			});
+
+			var args = {};
+			var params = window.location.search.substring(1).split('&');
+			for (var i = 0; i < params.length; i++) {
+				var param = params[i].split('=');
+				args[param[0]] = param[1];
+			}
+			var minutes = args.refresh;
+			minutes = !isNaN(minutes) && minutes * 1 > 0 ? minutes * 1000 * 60 : 0;
+			if (minutes) {
+				setTimeout(function() {
+					document.location = './?refresh=' + args.refresh;
+				}, minutes);
+			}
 		});
 	</script>
 </head>
