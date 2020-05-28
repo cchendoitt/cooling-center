@@ -20,6 +20,15 @@
     )
     this.set('search_name', `${this.getName()}, ${this.getAddress1()}, ${this.getCityStateZip()}`)
   },
+  addressHtml() {
+    const html = $('<div class="addr notranslate"></div>')
+      .append(`<div class="ln1">${this.getAddress1()}</div>`)
+      .append(`<div class="ln3">${this.getCityStateZip()}</div>`)
+    if (this.getAddress2()) {
+      html.append(`<div class="ln2">${this.getAddress2()}</div>`)
+    }
+    return html
+  },
   cssClass() {
     return `${this.getType()}-${this.getAccessible()}`.replace(/ /g, '-').toLowerCase()
   },
@@ -28,6 +37,9 @@
   },
   getAddress1() {
     return this.get('ADDRESS')
+  },
+  getAddress2() {
+    return this.get('Entrance_info')
   },
   getBorough() {
     return this.get('BOROUGH')

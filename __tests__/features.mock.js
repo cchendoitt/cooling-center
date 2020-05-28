@@ -26,7 +26,8 @@ const center1Source = {
   X: 1004774,
   Y: 254661,
   CTYPE: 1,
-  FACILITY_TYPE: 'Library'
+  FACILITY_TYPE: 'Library',
+  Entrance_info: ''
 }
 const closedCenterSource = {
   OBJECTID: 99,
@@ -42,7 +43,8 @@ const closedCenterSource = {
   X: 987099,
   Y: 160188,
   CTYPE: 2,
-  FACILITY_TYPE: 'Senior Center'
+  FACILITY_TYPE: 'Senior Center',
+  Entrance_info: ''
 }
 
 const center1 = csvPoint.readFeature(center1Source)

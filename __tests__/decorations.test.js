@@ -33,6 +33,20 @@ describe('decorations', () => {
     center2.extendFeature()
     expect(decorations.closedFeatures.length).toBe(1)
   })
+  describe('addressHtml', () => {
+    test('addressHtml', () => {
+      const div = $('<div></div>') 
+      div.html(center1.addressHtml())
+      expect(div.html()).toBe('<div class="addr notranslate"><div class="ln1">4790 Broadway</div><div class="ln3">Manhattan, NY 10034</div></div>')
+    })
+    test('addressHtml w/ entrance info', () => {
+      const div = $('<div></div>') 
+      center1.set('Entrance_info', 'entrance info')
+      div.html(center1.addressHtml())
+      expect(div.html()).toBe('<div class="addr notranslate"><div class="ln1">4790 Broadway</div><div class="ln3">Manhattan, NY 10034</div><div class="ln2">entrance info</div></div>')
+    })
+  })
+
   test('cssClass', () => {
     expect.assertions(1)
     expect(center1.cssClass()).toBe('library-yes')

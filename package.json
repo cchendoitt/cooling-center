@@ -1,6 +1,6 @@
 {
   "name": "cooling-center",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "\"# Cooling Center\"",
   "main": "index.js",
   "scripts": {
