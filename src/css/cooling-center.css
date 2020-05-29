@@ -142,3 +142,20 @@
 #mta svg {
   fill: var(--color-dark);
 }
+@media only screen and (max-width : 485px) and (min-width : 416px) {
+  .fnd #banner * {
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: 5px;
+    width: 169px;
+    white-space: nowrap;
+  }
+}
+@media only screen and (max-width : 415px) {
+  .fnd #banner * {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: -3px;
+    width: 129px;
+  }
+}
