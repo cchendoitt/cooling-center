@@ -5,7 +5,7 @@
  import Collapsible from 'nyc-lib/nyc/Collapsible'
 
  const closedFeatures = []
-
+  
  const decorations ={
   extendFeature() {
     if (this.get('STATUS') == 'CLOSED') {
@@ -86,7 +86,7 @@
     return this.get('ZIP_CODE')
   },
   detailsCollapsible() {
-    const msgs = translateBtn.messages[translateBtn.lang()]
+    const msgs = global.nycTranslateInstance.messages[global.nycTranslateInstance.lang()]
     const details = this.detailsHtml()
     if (details) {
       const collapsible = new Collapsible({
@@ -102,8 +102,16 @@
   detailsHtml() {
     const div = $('<div></div>')
     let ul = $('<ul></ul>')
-    const msgs = translateBtn.messages[translateBtn.lang()]
-    const type = `<li><b><span class=pop_type>${msgs['pop_type']}</span>: </b>${this.getType()}</li>`
+    const msgs = global.nycTranslateInstance.messages[global.nycTranslateInstance.lang()]
+
+    const typeMap = {
+      "Community center": 'legend_comm',
+      "Senior center": 'legend_senior',
+      "Cornerstone Program": 'legend_cornerstone',
+      "Library": 'legend_library',
+      "School": 'legend_school',
+    }
+    const type = `<li><b><span class=pop_type>${msgs['pop_type']}</span>: </b><span class=${typeMap[this.getType()]}></span></li>`
     const address = `<li><b><span class=pop_address>${msgs['pop_address']}</span>: </b>${this.getAddress1()}</li>`
     const phone = `<li><b><span class=pop_phone>${msgs['pop_phone']}</span>: </b>${this.getPhone()}</li>`
     const hours = `<li><b><span class=pop_hours>${msgs['pop_hours']}</span>: </b>${this.getHours()}</li>`
@@ -120,13 +128,13 @@
     return div.append(ul)
   },
   directionsButton() {
-    const msgs = translateBtn.messages[translateBtn.lang()]
+    const msgs = global.nycTranslateInstance.messages[global.nycTranslateInstance.lang()]
     return $(`<button class="btn btn-ico rad-all dir"><span class="dir_btn">${msgs['dir_btn']}</span></button>`)
       .data('feature', this)
       .click(this.handleButton)
   },
   mapButton() {
-    const msgs = translateBtn.messages[translateBtn.lang()]
+    const msgs = global.nycTranslateInstance.messages[global.nycTranslateInstance.lang()]
     return $(`<button class="btn btn-ico rad-all map"><span class="map_btn">${msgs['map_btn']}</span></button>`)
       .prepend('<span class="screen-reader-only">Locate this facility on the </span>')
       .data('feature', this)

@@ -10,7 +10,8 @@ import IconArcGis from 'nyc-lib/nyc/ol/style/IconArcGis'
 import Layer from 'ol/layer/Vector'
 import Source from 'ol/source/Vector'
 import Filters from 'nyc-lib/nyc/ol/Filters'
-import Translate from 'nyc-lib/nyc/lang/Translate';
+import Translate from 'nyc-lib/nyc/lang/Translate'
+import message from '../src/js/message'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('nyc-lib/nyc/ol/format/CsvPoint')
@@ -407,18 +408,21 @@ describe('addLangClasses', () => {
   })
 })
 
-test('translatBtn', () => {
-  expect.assertions(4)
+test('translateBtn', () => {
+  expect.assertions(6)
 
   const app = new App(mockContent)  
 
-  expect(window.translateBtn).toBeUndefined()
+  expect(Translate).toHaveBeenCalledTimes(0)
 
   app.translateBtn()
 
-  expect(window.translateBtn instanceof Translate).toBe(true)
   expect(Translate).toHaveBeenCalledTimes(1)
   expect(Translate.mock.calls[0][0].target).toBe('#map')
+  expect(Translate.mock.calls[0][0].languages).toBe(message.languages)
+  expect(Translate.mock.calls[0][0].messages).toBe(message.messages)
+  expect(Translate.mock.calls[0][0].button).toBe(true)
+
 })
 
 test('ready', () => {

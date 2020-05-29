@@ -197,18 +197,18 @@ describe('decorations', () => {
   describe('detailsCollapsible', () => {
     const detailsHtml = center1.detailsHtml
     beforeEach(() => {
-      global.translateBtn = {}
+      global.nycTranslateInstance = {}
       center1.app = jest.fn(() => {
         expandDetail: jest.fn()
       })
       center1.detailsHtml = jest.fn(() => {
         return 'details'
       })
-      translateBtn.lang = jest.fn(() => {return 'en'})
-      translateBtn.messages = {'en': {'dtl_btn_text': 'dtl_btn'}}
+      nycTranslateInstance.lang = jest.fn(() => {return 'en'})
+      nycTranslateInstance.messages = {'en': {'dtl_btn_text': 'dtl_btn'}}
     })
     afterEach(() => {
-      delete global.translateBtn
+      delete global.nycTranslateInstance
       center1.detailsHtml = detailsHtml
     })
     test('detailsCollapsible', () => {
@@ -229,28 +229,28 @@ describe('decorations', () => {
   // Only OPEN centers will be displayed 
   describe ('detailsHtml', () => {
     beforeEach(() => {
-      global.translateBtn = {}
-      translateBtn.lang = jest.fn(() => {return 'en'})
-      translateBtn.messages = {'en': {'pop_type': center1.getType(), 'pop_address': center1.getAddress1(), 'pop_phone': center1.getPhone(), 'pop_hours': center1.getHours(), 'pop_extended': center1.getExHours(), 'pop_access': center1.getAccessible()}}
+      global.nycTranslateInstance = {}
+      nycTranslateInstance.lang = jest.fn(() => {return 'en'})
+      nycTranslateInstance.messages = {'en': {'pop_type': center1.getType(), 'pop_address': center1.getAddress1(), 'pop_phone': center1.getPhone(), 'pop_hours': center1.getHours(), 'pop_extended': center1.getExHours(), 'pop_access': center1.getAccessible()}}
     })
     
     afterEach(() => {
-      delete global.translateBtn
+      delete global.nycTranslateInstance
     })
     test('detailsHtml - status OPEN', () => {
       expect.assertions(2)
       expect(center1.getStatus()).toBe('OPEN')
-      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Library</span>: </b>Library</li><li><b><span class="pop_address">4790 Broadway</span>: </b>4790 Broadway</li><li><b><span class="pop_phone">(212)942-2445</span>: </b>(212)942-2445</li><li><b><span class="pop_hours">HOURS</span>: </b>HOURS</li><li><b><span class="pop_extended">No</span>: </b>No</li><li><b><span class="pop_access">Yes</span>: </b>Yes</li></ul>')
+      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Library</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">4790 Broadway</span>: </b>4790 Broadway</li><li><b><span class="pop_phone">(212)942-2445</span>: </b>(212)942-2445</li><li><b><span class="pop_hours">HOURS</span>: </b>HOURS</li><li><b><span class="pop_extended">No</span>: </b>No</li><li><b><span class="pop_access">Yes</span>: </b>Yes</li></ul>')
     })
   })
   describe('directionsButton', () => {
     beforeEach(() => {
-      global.translateBtn = {}
-      translateBtn.lang = jest.fn(() => {return 'en'})
-      translateBtn.messages = {'en': {'dir_btn': 'dir_btn'}}
+      global.nycTranslateInstance = {}
+      nycTranslateInstance.lang = jest.fn(() => {return 'en'})
+      nycTranslateInstance.messages = {'en': {'dir_btn': 'dir_btn'}}
     })
     afterEach(() => {
-      delete global.translateBtn
+      delete global.nycTranslateInstance
     })
     test('directionsButton', () => {
       expect.assertions(1)
@@ -261,12 +261,12 @@ describe('decorations', () => {
   })
   describe('mapButton', () => {
     beforeEach(() => {
-      global.translateBtn = {}
-      translateBtn.lang = jest.fn(() => {return 'en'})
-      translateBtn.messages = {'en': {'map_btn': 'map_btn'}}
+      global.nycTranslateInstance = {}
+      nycTranslateInstance.lang = jest.fn(() => {return 'en'})
+      nycTranslateInstance.messages = {'en': {'map_btn': 'map_btn'}}
     })
     afterEach(() => {
-      delete global.translateBtn
+      delete global.nycTranslateInstance
     })
     test('mapButton', () => {
       expect.assertions(1)

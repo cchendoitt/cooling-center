@@ -102,7 +102,7 @@ class App extends FinderApp {
     $(labels[1]).addClass('acc_only')
   }
   translateBtn() {
-    window.translateBtn = new Translate({
+    new Translate({
       target: '#map',
       languages: message.languages,
       messages: message.messages,
