@@ -67,6 +67,9 @@
   margin: 1px 3px 0 0;
   float: left;
 }
+#filters .cc-icon {
+  margin: 10px 5px 10px -5px;
+}
 .cc-icon.community-center {
   background-color: var(--community-center);
 }
