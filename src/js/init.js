@@ -24,7 +24,7 @@ const initializer = {
     window.location.href = url
   },
   search: () => {
-    return document.location.search
+    return window.location.search
   },
   params: () => {
     const result = {}

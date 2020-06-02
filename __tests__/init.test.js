@@ -79,15 +79,11 @@ describe('init', () => {
     }, 100)
   })
   
-  test.only('DONT LEAVE ME!!', () => {
-
-  })
-  
   test('init - active - 2nd refresh', done => {
     expect.assertions(10)
   
     messages = {active: 'yes'}
-    params = {refresh: '15', now: `${new Date().getTime()}`}
+    params = {refresh: '15', refreshed: 'true'}
   
     initializer.init()
   
@@ -109,7 +105,7 @@ describe('init', () => {
   test('init - not active - refresh', done => {
     expect.assertions(8)
   
-    messages = {active: 'no', message: 'mock-message'}
+    messages = {active: 'no'}
     params = {refresh: '10'}
   
     initializer.init()
@@ -122,7 +118,7 @@ describe('init', () => {
       expect(Content.loadCsv.mock.calls[0][0].url).toBe(coolingCenter.CONTENT_URL)
       expect(App).toHaveBeenCalledTimes(0)
       expect(initializer.redirect).toHaveBeenCalledTimes(1)
-      expect(initializer.redirect.mock.calls[0][0]).toBe('inactive.html?message=mock-message')
+      expect(initializer.redirect.mock.calls[0][0]).toBe('inactive.html?refresh=10')
       done()
     }, 100)
   })
@@ -130,7 +126,7 @@ describe('init', () => {
   test('init - not active - no refresh', done => {
     expect.assertions(8)
   
-    messages = {active: 'no', message: 'mock-message'}
+    messages = {active: 'no'}
     initializer.refresh = jest.fn()
     params = {}
   
@@ -144,12 +140,50 @@ describe('init', () => {
       expect(Content.loadCsv.mock.calls[0][0].url).toBe(coolingCenter.CONTENT_URL)
       expect(App).toHaveBeenCalledTimes(0)
       expect(initializer.redirect).toHaveBeenCalledTimes(1)
-      expect(initializer.redirect.mock.calls[0][0]).toBe('inactive.html?message=mock-message')
+      expect(initializer.redirect.mock.calls[0][0]).toBe('inactive.html?')
       done()
     }, 100)
   })
 })
+describe('redirect', () => {
+  global.window = Object.create(window)
+  const url = "http://dummy.com"
 
+  beforeEach(() => {
+    Object.defineProperty(window, "location", {
+      value: {
+        href: url
+      },
+      writable: true
+    })
+  })
+  afterEach(() => {
+    delete global.window.location
+  })
+  test('redirect',  () => {
+    const new_url = 'http://hello.com'
+    initializer.redirect(new_url)
+    expect(window.location.href).toBe(new_url)
+  })
+})
+describe('search', () => {
+  global.window = Object.create(window)
+  const searchStr = "searchStr"
+  beforeEach(() => {
+    Object.defineProperty(window, "location", {
+      value: {
+        search: searchStr
+      },
+      writable: true,
+    })
+  })
+  afterEach(() => {
+    delete global.window.location
+  })
+  test('search',  () => {
+    expect(initializer.search()).toBe(searchStr)
+  })
+})
 describe('params', () => {
   let search = ''
   beforeEach(() => {
@@ -168,9 +202,9 @@ describe('params', () => {
     expect.assertions(1)
 
     const now = new Date().getTime()
-    search = `?refresh=5&now=${now}`
+    search = `?refresh=5`
 
-    expect(initializer.params()).toEqual({refresh: '5', now: `${now}`})
+    expect(initializer.params()).toEqual({refresh: '5'})
   })
 })
 
@@ -195,7 +229,7 @@ describe('refresh', () => {
     expect(typeof setTimeout.mock.calls[0][0]).toBe('function')
     expect(setTimeout.mock.calls[0][1]).toBe(5 * 1000 * 60)
     expect(initializer.redirect).toHaveBeenCalledTimes(1)
-    expect(initializer.redirect.mock.calls[0][0].substr(0, 17)).toBe('./?refresh=5&now=')
+    expect(initializer.redirect.mock.calls[0][0].substr(0, 12)).toBe('./?refresh=5')
   })
 
   test('refresh - no', () => {
