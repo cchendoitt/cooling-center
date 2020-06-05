@@ -85,20 +85,6 @@
   getZip() {
     return this.get('ZIP_CODE')
   },
-  detailsCollapsible() {
-    const msgs = global.nycTranslateInstance.messages[global.nycTranslateInstance.lang()]
-    const details = this.detailsHtml()
-    if (details) {
-      const collapsible = new Collapsible({
-        target: $('<div class="dtl"></div>'),
-        title: `<span class=dtl_btn_text>${msgs['dtl_btn_text']}</span>`,
-        content: details,
-        collapsed: true
-      })
-      collapsible.on('change', this.app.expandDetail, this.app)
-      return collapsible.getContainer()
-    }
-  },
   detailsHtml() {
     const div = $('<div></div>')
     let ul = $('<ul></ul>')
@@ -126,19 +112,6 @@
     .append(access)
 
     return div.append(ul)
-  },
-  directionsButton() {
-    const msgs = global.nycTranslateInstance.messages[global.nycTranslateInstance.lang()]
-    return $(`<button class="btn btn-ico rad-all dir"><span class="dir_btn">${msgs['dir_btn']}</span></button>`)
-      .data('feature', this)
-      .click(this.handleButton)
-  },
-  mapButton() {
-    const msgs = global.nycTranslateInstance.messages[global.nycTranslateInstance.lang()]
-    return $(`<button class="btn btn-ico rad-all map"><span class="map_btn">${msgs['map_btn']}</span></button>`)
-      .prepend('<span class="screen-reader-only">Locate this facility on the </span>')
-      .data('feature', this)
-      .click(this.handleButton)
   },
   iconClass() {
     let type = this.getType()

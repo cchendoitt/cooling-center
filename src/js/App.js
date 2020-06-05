@@ -57,7 +57,6 @@ class App extends FinderApp {
       facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
       geoclientUrl: coolingCenter.GEOCLIENT_URL,
       directionsUrl: coolingCenter.DIRECTIONS_URL,
-      filterTabTitle: '<span class=filter_tab_title>Filters</span>',
       filterChoiceOptions: [
         {
           title: '<span class=pop_type>Facility Type</span>',
@@ -155,7 +154,6 @@ class App extends FinderApp {
     let desc = coolingCenter.DESCRIPTION_HTML
     let description = `<div class="description"><div class="desc"><div class="panel_note">${desc}</div></div></div>`
     $(description).insertBefore(list)
-    $('.srch input').attr('data-msg-key', 'search_addr').attr('data-msg-attr', 'placeholder')
   }
   ready(features) {
     decorations.closedFeatures.forEach(feature => {
