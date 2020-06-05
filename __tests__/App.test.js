@@ -392,7 +392,7 @@ describe('addLangClasses', () => {
     target.remove()
   })
   test('addLangClasses', () => {
-    expect.assertions(1)
+    expect.assertions(2)
 
     const app = new App(mockContent) 
 
@@ -403,7 +403,7 @@ describe('addLangClasses', () => {
     app.addLangClasses()
     const labels = filter.find('label')
 
-    // expect($(labels[1]).hasClass('acc_only')).toBe(true)
+    expect($(labels[1]).hasClass('acc_only')).toBe(true)
     expect($(labels[0]).hasClass('acc_all')).toBe(true)
   })
 })
@@ -422,7 +422,6 @@ test('translateBtn', () => {
   expect(Translate.mock.calls[0][0].languages).toBe(message.languages)
   expect(Translate.mock.calls[0][0].messages).toBe(message.messages)
   expect(Translate.mock.calls[0][0].button).toBe(true)
-
 })
 
 test('ready', () => {

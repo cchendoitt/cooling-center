@@ -1,16 +1,11 @@
-const languages = {
-	en: {code: 'en', name: 'English', native: 'English', hint: 'Translate'},
-	ar: {code: 'ar', name: 'Arabic', native: 'بالعربية', hint: 'بالعربية'},
-	bn: {code: 'bn', name: 'Bengali', native: 'বাংলা', hint: 'বাংলা'},
-	zh: {code: 'zh', name: 'Chinese', native: '繁體中文', hint: '繁體中文'},
-	fr: {code: 'fr', name: 'French', native: 'Francois', hint: 'Francois'},
-	ht: {code: 'ht', name: 'Haitian Creole', native: 'Kreyòl', hint: 'Kreyòl'},
-	ko: {code: 'ko', name: 'Korean', native: '한국어', hint: '한국어'},
-	po: {code: 'po', name: 'Polish', native: 'język polski', hint: 'język polski'},
-	ru: {code: 'ru', name: 'Russian', native: 'Русский', hint: 'Русский'},
-	es: {code: 'es', name: 'Spanish', native: 'Español', hint: 'Español'},
-	ur: {code: 'ur', name: 'Urdu', native: 'اردو', hint: 'اردو'}
-};
+import Translate from "nyc-lib/nyc/lang/Translate"
+
+const ccLanguages = ['en', 'ar', 'bn', 'zh', 'fr', 'ht', 'ko', 'po', 'ru', 'es', 'ur']
+const languages = {}
+
+ccLanguages.forEach(lang => {
+	languages[lang] = Translate.DEFAULT_LANGUAGES[lang]
+})
 
 const messages = {}
 
