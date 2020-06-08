@@ -19,6 +19,7 @@ const facilityStyle = {
     'Cornerstone Program': '#006FFF',
     'Senior center': '#BD7919',
     'Community center': '#79C67A',
+    'Other': '#FF7F7F'
   },
   DEFAULT_COLOR: '#085095',
   pointStyle: (feature, resolution) => {

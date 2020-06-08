@@ -70,7 +70,7 @@ describe('defaultStyle', () => {
     center1.set('HANDICAP_ACCESS','Yes')
   })
   test('defaultStyle - accessible', () => {
-    expect.assertions(20)
+    expect.assertions(23)
     let style, typesMap = Object.entries(facilityStyle.FACILITY_TYPE)
     typesMap.forEach((obj) => {
       let type = obj[0]
@@ -97,7 +97,7 @@ describe('defaultStyle', () => {
     expect(style[0].getImage().getStroke().getWidth()).toBe(1)
   })
   test('defaultStyle - not accessible', () => {
-    expect.assertions(16)
+    expect.assertions(19)
     center1.set('HANDICAP_ACCESS', 'No')
     let style, typesMap = Object.entries(facilityStyle.FACILITY_TYPE)
     typesMap.forEach((obj) => {

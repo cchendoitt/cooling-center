@@ -198,7 +198,7 @@ describe('decorations', () => {
     beforeEach(() => {
       global.nycTranslateInstance = {}
       nycTranslateInstance.lang = jest.fn(() => {return 'en'})
-      nycTranslateInstance.messages = {'en': {'pop_type': center1.getType(), 'pop_address': center1.getAddress1(), 'pop_phone': center1.getPhone(), 'pop_hours': center1.getHours(), 'pop_extended': center1.getExHours(), 'pop_access': center1.getAccessible()}}
+      nycTranslateInstance.messages = {'en': {'pop_type': 'Facility Type', 'pop_address': 'Address', 'pop_phone': 'Phone', 'pop_hours': 'Hours', 'pop_extended': 'Extended Hours', 'pop_access': 'Wheelchair Accessible'}}
     })
     
     afterEach(() => {
@@ -207,7 +207,7 @@ describe('decorations', () => {
     test('detailsHtml - status OPEN', () => {
       expect.assertions(2)
       expect(center1.getStatus()).toBe('OPEN')
-      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Library</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">4790 Broadway</span>: </b>4790 Broadway</li><li><b><span class="pop_phone">(212)942-2445</span>: </b>(212)942-2445</li><li><b><span class="pop_hours">HOURS</span>: </b>HOURS</li><li><b><span class="pop_extended">No</span>: </b>No</li><li><b><span class="pop_access">Yes</span>: </b>Yes</li></ul>')
+      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Facility Type</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">Address</span>: </b><div class="notranslate">4790 Broadway</div></li><li><b><span class="pop_phone">Phone</span>: </b><div class="notranslate">(212)942-2445</div></li><li><b><span class="pop_hours">Hours</span>: </b>HOURS</li><li><b><span class="pop_extended">Extended Hours</span>: </b>No</li><li><b><span class="pop_access">Wheelchair Accessible</span>: </b>Yes</li></ul>')
     })
   })
   describe('iconClass', () => {

@@ -66,7 +66,8 @@ class App extends FinderApp {
             {name: 'FACILITY_TYPE', values: ['Senior center'], label: '<span class=legend_senior>Senior Center</span>', checked: true},
             {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: '<span class=legend_cornerstone>Cornerstone Program</span>', checked: true},
             {name: 'FACILITY_TYPE', values: ['Library'], label: '<span class=legend_library>Library</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['School'], label: '<span class=legend_school>School</span>', checked: true}
+            {name: 'FACILITY_TYPE', values: ['School'], label: '<span class=legend_school>School</span>', checked: true},
+            {name: 'FACILITY_TYPE', values: ['Other'], label: '<span class=legend_other>Other</span>', checked: true}
           ]
         },
         {
@@ -93,7 +94,6 @@ class App extends FinderApp {
     }
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
-    $('button.btn-0').html(`<span class=map_btn>Map</span>`)
   }
   addLangClasses() {
     const labels = this.filters.choiceControls[1].find('label')

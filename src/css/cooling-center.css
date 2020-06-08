@@ -32,6 +32,9 @@
   margin: 0;
   padding: 5px 10px 5px 15px;
 }
+.dtl ul div {
+  display: inline-block;
+}
 .btn-sq:hover, .btn-rnd:hover {
   background-color: #0B71D0;
   color: var(--color-light);
@@ -70,6 +73,23 @@
 #filters .cc-icon {
   margin: 10px 5px 10px -5px;
 }
+.translated-rtl .dtl ul {
+  margin: 5px;
+}
+.translated-rtl .name .cc-icon {
+  float: right;
+  margin-left: 3px;
+}
+.translated-rtl #filters .cc-icon {
+  margin: 10px -5px 10px 5px;
+  float: right;
+}
+.translated-rtl .pop>.content .name {
+  padding-right: initial;
+}
+#filters .cc-icon {
+  margin: 10px 5px 10px -5px;
+}
 .cc-icon.community-center {
   background-color: var(--community-center);
 }
@@ -84,6 +104,9 @@
 }
 .cc-icon.library {
   background-color: var(--library);
+}
+.cc-icon.other {
+  background-color: var(--other);
 }
 .cc-icon.default {
   background-color: var(--default);

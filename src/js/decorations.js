@@ -96,10 +96,11 @@
       "Cornerstone Program": 'legend_cornerstone',
       "Library": 'legend_library',
       "School": 'legend_school',
+      "Other": 'legend_other'
     }
     const type = `<li><b><span class=pop_type>${msgs['pop_type']}</span>: </b><span class=${typeMap[this.getType()]}></span></li>`
-    const address = `<li><b><span class=pop_address>${msgs['pop_address']}</span>: </b>${this.getAddress1()}</li>`
-    const phone = `<li><b><span class=pop_phone>${msgs['pop_phone']}</span>: </b>${this.getPhone()}</li>`
+    const address = `<li><b><span class=pop_address>${msgs['pop_address']}</span>: </b><div class="notranslate">${this.getAddress1()}</div></li>`
+    const phone = `<li><b><span class=pop_phone>${msgs['pop_phone']}</span>: </b><div class="notranslate">${this.getPhone()}</div></li>`
     const hours = `<li><b><span class=pop_hours>${msgs['pop_hours']}</span>: </b>${this.getHours()}</li>`
     const exHours = `<li><b><span class=pop_extended>${msgs['pop_extended']}</span>: </b>${this.getExHours()}</li>`
     const access = `<li><b><span class=pop_access>${msgs['pop_access']}</span>: </b>${this.getAccessible()}</li>`

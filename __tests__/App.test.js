@@ -89,7 +89,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('<span class=pop_type>Facility Type</span>')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(6)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
@@ -115,6 +115,11 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['School'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('<span class=legend_school>School</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].values).toEqual(['Other'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].label).toBe('<span class=legend_other>Other</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].checked).toBe(true)
 
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
     expect(App.prototype.addLangClasses).toHaveBeenCalledTimes(1)
@@ -156,7 +161,7 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('<span class=pop_type>Facility Type</span>')
-    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(5)
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(6)
 
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
@@ -182,6 +187,11 @@ describe('constructor', () => {
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['School'])
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('<span class=legend_school>School</span>')
     expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].values).toEqual(['Other'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].label).toBe('<span class=legend_other>Other</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].checked).toBe(true)
 
     expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
     expect(App.prototype.addLangClasses).toHaveBeenCalledTimes(1)
