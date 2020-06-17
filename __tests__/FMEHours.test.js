@@ -1,4 +1,4 @@
-const HOURS = /^[0-9](:[0-9][0-9])?(a|p)-[0-9](:[0-9][0-9])?(a|p)$/i
+const HOURS = /(^[0-9](:[0-9][0-9])?(a|p)-[0-9](:[0-9][0-9])?(a|p)$)|(^Closed$)/i
 
 test('open close hours for Cooling Centers', () => {
     // pristine format
@@ -25,4 +25,9 @@ test('open close hours for Cooling Centers', () => {
      // no any other alphabetta in the hours string
      expect(HOURS.test('k9a-5p')).toBe(false)
      expect(HOURS.test('9a-5py')).toBe(false)
+
+     // Closed, ignore case
+     expect(HOURS.test('Closed')).toBe(true)
+     expect(HOURS.test('CLOSED')).toBe(true)
+     expect(HOURS.test('Close')).toBe(false)
 })
