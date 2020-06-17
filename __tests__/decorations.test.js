@@ -6,8 +6,22 @@ import facilityStyle from '../src/js/facility-style'
 import { translate } from 'ol/transform'
 import { closestOnCircle } from 'ol/coordinate'
 import Collapsible from 'nyc-lib/nyc/Collapsible'
+import EventHandling from 'nyc-lib/nyc/EventHandling'
 
 jest.mock('nyc-lib/nyc/Collapsible')
+
+let currentLang = 'en'
+beforeEach(() => {
+  const transl = new EventHandling()
+  transl.defaultLanguage = 'en'
+  transl.lang = jest.fn().mockImplementation(() => {
+    return currentLang
+  })
+  global.nycTranslateInstance = transl
+})
+afterEach(() => {
+  global.nycTranslateInstance = undefined
+})
 
 describe('decorations', () => {
   let container
@@ -78,9 +92,66 @@ describe('decorations', () => {
     expect(center1.getCityStateZip()).not.toBeNull()
   })
   test('getHours', () => {
-    expect.assertions(2)
-    expect(center1.getHours()).toBe(`${center1.get('HOURS')}`)
-    expect(center1.getHours()).not.toBeNull()
+    expect.assertions(48)
+
+    const hrs = center1.getHours()
+
+    expect($(hrs.rows[0].cells[0]).html()).toBe('Day')
+    expect($(hrs.rows[0].cells[0]).hasClass('day')).toBe(true)
+    expect($(hrs.rows[0].cells[1]).html()).toBe('Open')
+    expect($(hrs.rows[0].cells[1]).hasClass('open')).toBe(true)
+    expect($(hrs.rows[0].cells[2]).html()).toBe('Closed')
+    expect($(hrs.rows[0].cells[2]).hasClass('closed')).toBe(true)
+
+    expect($(hrs.rows[1].cells[0]).html()).toBe('Sunday')
+    expect($(hrs.rows[1].cells[0]).hasClass('sunday')).toBe(true)
+    expect($(hrs.rows[1].cells[1]).html()).toBe('<span class="closed">Closed</span>')
+    expect($(hrs.rows[1].cells[1]).hasClass('op')).toBe(true)
+    expect($(hrs.rows[1].cells[2]).html()).toBe('<span class="closed">Closed</span>')
+    expect($(hrs.rows[1].cells[2]).hasClass('cl')).toBe(true)
+
+    expect($(hrs.rows[2].cells[0]).html()).toBe('Monday')
+    expect($(hrs.rows[2].cells[0]).hasClass('monday')).toBe(true)
+    expect($(hrs.rows[2].cells[1]).html()).toBe('6:00 PM')
+    expect($(hrs.rows[2].cells[1]).hasClass('op')).toBe(true)
+    expect($(hrs.rows[2].cells[2]).html()).toBe('10:00 PM')
+    expect($(hrs.rows[2].cells[2]).hasClass('cl')).toBe(true)
+
+    expect($(hrs.rows[3].cells[0]).html()).toBe('Tuesday')
+    expect($(hrs.rows[3].cells[0]).hasClass('tuesday')).toBe(true)
+    expect($(hrs.rows[3].cells[1]).html()).toBe('6:00 PM')
+    expect($(hrs.rows[3].cells[1]).hasClass('op')).toBe(true)
+    expect($(hrs.rows[3].cells[2]).html()).toBe('10:00 PM')
+    expect($(hrs.rows[3].cells[2]).hasClass('cl')).toBe(true)
+
+    expect($(hrs.rows[4].cells[0]).html()).toBe('Wednesday')
+    expect($(hrs.rows[4].cells[0]).hasClass('wednesday')).toBe(true)
+    expect($(hrs.rows[4].cells[1]).html()).toBe('6:00 PM')
+    expect($(hrs.rows[4].cells[1]).hasClass('op')).toBe(true)
+    expect($(hrs.rows[4].cells[2]).html()).toBe('10:00 PM')
+    expect($(hrs.rows[4].cells[2]).hasClass('cl')).toBe(true)
+
+    expect($(hrs.rows[5].cells[0]).html()).toBe('Thursday')
+    expect($(hrs.rows[5].cells[0]).hasClass('thursday')).toBe(true)
+    expect($(hrs.rows[5].cells[1]).html()).toBe('6:00 PM')
+    expect($(hrs.rows[5].cells[1]).hasClass('op')).toBe(true)
+    expect($(hrs.rows[5].cells[2]).html()).toBe('10:00 PM')
+    expect($(hrs.rows[5].cells[2]).hasClass('cl')).toBe(true)
+
+    expect($(hrs.rows[6].cells[0]).html()).toBe('Friday')
+    expect($(hrs.rows[6].cells[0]).hasClass('friday')).toBe(true)
+    expect($(hrs.rows[6].cells[1]).html()).toBe('6:00 PM')
+    expect($(hrs.rows[6].cells[1]).hasClass('op')).toBe(true)
+    expect($(hrs.rows[6].cells[2]).html()).toBe('10:00 PM')
+    expect($(hrs.rows[6].cells[2]).hasClass('cl')).toBe(true)
+
+    expect($(hrs.rows[7].cells[0]).html()).toBe('Saturday')
+    expect($(hrs.rows[7].cells[0]).hasClass('saturday')).toBe(true)
+    expect($(hrs.rows[7].cells[1]).html()).toBe('10:00 AM')
+    expect($(hrs.rows[7].cells[1]).hasClass('op')).toBe(true)
+    expect($(hrs.rows[7].cells[2]).html()).toBe('5:00 PM')
+    expect($(hrs.rows[7].cells[2]).hasClass('cl')).toBe(true)
+
   })
   test('getExHours', () => {
     expect.assertions(2)
@@ -196,18 +267,14 @@ describe('decorations', () => {
   // Only OPEN centers will be displayed 
   describe ('detailsHtml', () => {
     beforeEach(() => {
-      global.nycTranslateInstance = {}
-      nycTranslateInstance.lang = jest.fn(() => {return 'en'})
-      nycTranslateInstance.messages = {'en': {'pop_type': 'Facility Type', 'pop_address': 'Address', 'pop_phone': 'Phone', 'pop_hours': 'Hours', 'pop_extended': 'Extended Hours', 'pop_access': 'Wheelchair Accessible'}}
+      global.nycTranslateInstance.messages = {'en': {'pop_type': 'Facility Type', 'pop_address': 'Address', 'pop_phone': 'Phone', 'pop_hours': 'Hours', 'pop_extended': 'Extended Hours', 'pop_access': 'Wheelchair Accessible'}}
     })
-    
-    afterEach(() => {
-      delete global.nycTranslateInstance
-    })
+
     test('detailsHtml - status OPEN', () => {
       expect.assertions(2)
       expect(center1.getStatus()).toBe('OPEN')
-      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Facility Type</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">Address</span>: </b><div class="notranslate">4790 Broadway</div></li><li><b><span class="pop_phone">Phone</span>: </b><div class="notranslate">(212)942-2445</div></li><li><b><span class="pop_hours">Hours</span>: </b>HOURS</li><li><b><span class="pop_extended">Extended Hours</span>: </b>No</li><li><b><span class="pop_access">Wheelchair Accessible</span>: </b>Yes</li></ul>')
+      console.warn(center1.detailsHtml().html());
+      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Facility Type</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">Address</span>: </b><div class="notranslate">4790 Broadway</div></li><li><b><span class="pop_phone">Phone</span>: </b><div class="notranslate">(212)942-2445</div></li><li><b><span class="pop_hours">Hours</span>: </b><table><thead><tr><th class="day">Day</th><th class="open">Open</th><th class="closed">Closed</th></tr></thead><tbody><tr><td class="sunday">Sunday</td><td class="op"><span class="closed">Closed</span></td><td class="cl"><span class="closed">Closed</span></td></tr><tr><td class="monday">Monday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="tuesday">Tuesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="wednesday">Wednesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="thursday">Thursday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="friday">Friday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="saturday">Saturday</td><td class="op">10:00 AM</td><td class="cl">5:00 PM</td></tr></tbody></table></li><li><b><span class="pop_extended">Extended Hours</span>: </b>No</li><li><b><span class="pop_access">Wheelchair Accessible</span>: </b>Yes</li></ul>')
     })
   })
   describe('iconClass', () => {

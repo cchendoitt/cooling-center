@@ -168,6 +168,15 @@
 #mta svg {
   fill: var(--color-dark);
 }
+.facility table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.facility th, .facility td {
+  border: 1px solid var(--color-dark-translucent);
+  width: 33%;
+  text-align: center;
+}
 @media only screen and (max-width : 485px) and (min-width : 416px) {
   .fnd #banner * {
     font-size: 16px;

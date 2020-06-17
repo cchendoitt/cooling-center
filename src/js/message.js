@@ -28,7 +28,17 @@ messages.en = {
 	pop_phone: "Phone",
 	pop_hours: "Hours",
 	pop_extended: "Extended Hours",
-	pop_access: "Wheelchair Accessible"
+	pop_access: "Wheelchair Accessible",
+    day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 messages.zh = {
 	cc_title: "尋找紐約市避暑中心",
@@ -91,7 +101,17 @@ messages.ar = {
 	pop_phone: "الهاتف",
 	pop_hours: "ساعات العمل",
 	pop_extended: "ساعات العمل الممتدة",
-	pop_access: "متاح بالكرسي المتحرك"
+	pop_access: "متاح بالكرسي المتحرك",
+    day: "يوم",
+	open: "افتح",
+	closed: "مغلق",
+	sunday:	"الأحد",
+	monday: "الأثنين",
+	tuesday: "الثلاثاء",
+	wednesday:"الأربعاء",
+	thursday: "الخميس",	
+	friday: "الجمعة",
+	saturday: "السبت"  
 }
 
 messages.bn = {

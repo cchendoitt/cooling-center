@@ -4,9 +4,11 @@
 
  import Collapsible from 'nyc-lib/nyc/Collapsible'
 
- const closedFeatures = []
+const closedFeatures = []
   
- const decorations ={
+const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="open">Open</th><th class="closed">Closed</th></tr></thead><tbody><tr><td class="sunday">Sunday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="monday">Monday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="tuesday">Tuesday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="wednesday">Wednesday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="thursday">Thursday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="friday">Friday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="saturday">Saturday</td><td class="op"></td><td class="cl"></td></tr></tbody></table>'
+
+ const decorations = {
   extendFeature() {
     if (this.get('STATUS') == 'CLOSED') {
       closedFeatures.push(this)
@@ -47,8 +49,50 @@
   getCityStateZip() {
     return `${this.getBorough()}, NY ${this.getZip()}`
   },
-  getHours() {
-    return this.get('HOURS')
+  times(day, row) {
+    const times = this.get(day)
+    if (times) {
+      const hoursOfOp = []
+      times.split('-').forEach(time => {
+        const ampm = `${time.substr(time.length - 1).toUpperCase()}M`
+        const parts = time.split(':')
+        let hr = parts[0]
+        let min = parts[1]
+        if (isNaN(hr)) {
+          hr = hr.substr(0, hr.length - 1)
+        }
+        if (min) {
+          min = min.substr(0, min.length - 1)
+        } else {
+          min = '00'
+        }
+        if (global.nycTranslateInstance.lang() !== global.nycTranslateInstance.defaultLanguage) {
+          if (ampm === 'PM') {
+            hoursOfOp.push(`${(hr * 1) + 12}:${min}`)
+          } else {
+            hoursOfOp.push(`${hr}:${min}`)
+          }
+        } else {
+          hoursOfOp.push(`${hr}:${min} ${ampm}`)
+        }
+      })
+      $(row).find('.op').html(hoursOfOp[0])
+      $(row).find('.cl').html(hoursOfOp[1])
+    } else {
+      $(row).find('.op, .cl').html('<span class="closed">Closed</span>')
+    }
+  },
+  getHours(table) {
+    const me = this
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    table = table || $(HOURS_TABLE).get(0)
+    days.forEach((day, i) => {
+      this.times(day, table.rows[i + 1])
+    })
+    global.nycTranslateInstance.on('change', () => {
+      me.getHours(table)
+    })
+    return table
   },
   getExHours() {
     return this.get('EXTENDED_HOURS')
@@ -101,7 +145,7 @@
     const type = `<li><b><span class=pop_type>${msgs['pop_type']}</span>: </b><span class=${typeMap[this.getType()]}></span></li>`
     const address = `<li><b><span class=pop_address>${msgs['pop_address']}</span>: </b><div class="notranslate">${this.getAddress1()}</div></li>`
     const phone = `<li><b><span class=pop_phone>${msgs['pop_phone']}</span>: </b><div class="notranslate">${this.getPhone()}</div></li>`
-    const hours = `<li><b><span class=pop_hours>${msgs['pop_hours']}</span>: </b>${this.getHours()}</li>`
+    const hours = $(`<li><b><span class=pop_hours>${msgs['pop_hours']}</span>: </b></li>`).append(this.getHours())
     const exHours = `<li><b><span class=pop_extended>${msgs['pop_extended']}</span>: </b>${this.getExHours()}</li>`
     const access = `<li><b><span class=pop_access>${msgs['pop_access']}</span>: </b>${this.getAccessible()}</li>`
     
