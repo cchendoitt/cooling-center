@@ -1,4 +1,3 @@
-import OlFeature from 'ol/Feature'
 import decorations from '../src/js/decorations'
 import nyc from 'nyc-lib/nyc'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
@@ -21,7 +20,13 @@ const center1Source = {
   PHONE: '(212)942-2445',
   HANDICAP_ACCESS: 'Yes',
   EXTENDED_HOURS: 'No',
-  HOURS: 'HOURS',
+  Monday: '6p-10p',
+  Tuesday: '6p-10p',
+  Wednesday: '6p-10p',
+  Thursday: '6p-10p',
+  Friday: '6p-10p',
+  Saturday: '10a-5p',
+  Sunday: '',
   STATUS: 'OPEN',
   X: 1004774,
   Y: 254661,
@@ -38,7 +43,13 @@ const closedCenterSource = {
   PHONE: '(718)331-6800',
   HANDICAP_ACCESS: 'Yes',
   EXTENDED_HOURS: 'No',
-  HOURS: 'HOURS',
+  Monday: '6p-10p',
+  Tuesday: '6p-10p',
+  Wednesday: '6p-10p',
+  Thursday: '6p-10p',
+  Friday: '6p-10p',
+  Saturday: '10:30a-5:30p',
+  Sunday: '',
   STATUS: 'CLOSED',
   X: 987099,
   Y: 160188,
