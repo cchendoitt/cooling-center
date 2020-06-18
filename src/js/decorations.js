@@ -67,7 +67,7 @@ const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="open">
           min = '00'
         }
         if (global.nycTranslateInstance.lang() !== global.nycTranslateInstance.defaultLanguage) {
-          if (ampm === 'PM') {
+          if (ampm === 'PM' && hr < 12) {
             hoursOfOp.push(`${(hr * 1) + 12}:${min}`)
           } else {
             hoursOfOp.push(`${hr}:${min}`)
@@ -165,7 +165,7 @@ const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="open">
     else
       type = 'default'
     const access = this.getAccessible()
-    return $(`<div class="cc-icon ${type} ${access === 'Yes' ? 'accessible' : 'not-accessible'}"></div>`)
+    return $(`<div class="ico chc-${type} ${access === 'Yes' ? 'accessible' : 'not-accessible'}"></div>`)
   }
  }
  export default {decorations, closedFeatures}

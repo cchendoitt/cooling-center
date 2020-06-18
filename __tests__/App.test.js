@@ -33,7 +33,6 @@ const addDescription = App.prototype.addDescription
 const addLangClasses = App.prototype.addLangClasses
 const constructIconUrl = App.prototype.constructIconUrl
 const fetchIconUrl = App.prototype.fetchIconUrl
-const filterIcons = App.prototype.filterIcons
 const filterIconsUrl = App.prototype.filterIconsUrl
 
 
@@ -47,7 +46,6 @@ beforeEach(() => {
   App.prototype.addLangClasses = jest.fn()
   App.prototype.constructIconUrl = jest.fn()
   App.prototype.fetchIconUrl = jest.fn()
-  App.prototype.filterIcons = jest.fn()
   App.prototype.filterIconsUrl = jest.fn()
 
 })
@@ -55,7 +53,6 @@ beforeEach(() => {
 afterEach(() => {
   App.prototype.constructIconUrl = constructIconUrl
   App.prototype.fetchIconUrl = fetchIconUrl
-  App.prototype.filterIcons = filterIcons
   App.prototype.filterIconsUrl = filterIconsUrl
 
 })
@@ -197,7 +194,6 @@ describe('constructor', () => {
     expect(App.prototype.addLangClasses).toHaveBeenCalledTimes(1)
     expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(0)
     expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(0)
-    expect(App.prototype.filterIcons).toHaveBeenCalledTimes(1)
     expect(App.prototype.filterIconsUrl).toHaveBeenCalledTimes(0)
 
   })
@@ -274,55 +270,6 @@ describe('fetchIconUrl', () => {
     }, 100)
   })
 })
-
-describe('filterIcons', () => {
-  const target = $('<div></div>')
-  const filterOptions = {
-    target,
-    choiceOptions: [
-      {
-        title: 'Facility Type',
-        radio: false,
-        choices: [
-          {name: 'FACILITY_TYPE', values: ['Community center'], label: 'Community Center', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Senior center'], label: 'Senior Center', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: 'Cornerstone Program', checked: true},
-          {name: 'FACILITY_TYPE', values: ['Library'], label: 'Library', checked: true},
-          {name: 'FACILITY_TYPE', values: ['School'], label: 'School', checked: true}
-        ]
-      }
-    ]
-  }
-  beforeEach(() => {
-    $('body').append(target)
-  })
-  afterEach(() => {
-    target.remove()
-  })
-
-  test('filterIcons', () => {
-    expect.assertions(5)
-    
-    const app = new App(mockContent)  
-
-    app.filterIcons = filterIcons
-    app.filters = new Filters(filterOptions)
-    
-    app.filterIcons()
-  
-    const filter = app.filters.choiceControls[0]
-    const labels = filter.find('label')
-
-    filter.choices.forEach((ch, i) => {
-      const img = $(labels[i]).children().first()
-      const type = ch.values[0].replace(/ /g, '-').toLowerCase()
-      expect(img.attr('class')).toBe(`cc-icon ${type}`)
-    })
-  
-  })
-})
-
-
 describe('filterIconsUrl', () => {
   const target = $('<div></div>')
   const filterOptions = {

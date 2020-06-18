@@ -9,13 +9,14 @@
 .fnd .facility a.phone {
   width: calc(100% - 35px);
 }
-.facility .icon {
+.facility .ico, #filters .ico {
   float: left;
-}
-.facility .icon, .facility .icon img {
   width: 18px;
   height: 18px;
+  border-radius: 50%;
+  margin-right: 3px;
 }
+
 .fnd #banner, .fnd #banner * {
   color: #FBED30;
 }
@@ -63,59 +64,52 @@
   background-position: 3px 5px;
   padding-left: 30px;
 }
-.cc-icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  margin: 1px 3px 0 0;
-  float: left;
-}
-#filters .cc-icon {
-  margin: 10px 5px 10px -5px;
+#filters .ico {
+  margin: 8px 5px 10px -5px;
 }
 .translated-rtl .dtl ul {
   margin: 5px;
 }
-.translated-rtl .name .cc-icon {
+.translated-rtl .name .ico {
   float: right;
   margin-left: 3px;
 }
-.translated-rtl #filters .cc-icon {
-  margin: 10px -5px 10px 5px;
+.translated-rtl #filters .ico {
+  margin: 8px -5px 10px 5px;
   float: right;
 }
 .translated-rtl .pop>.content .name {
   padding-right: initial;
 }
-#filters .cc-icon {
-  margin: 10px 5px 10px -5px;
-}
-.cc-icon.community-center {
+.ico.chc-community-center {
   background-color: var(--community-center);
 }
-.cc-icon.senior-center {
+.ico.chc-senior-center {
   background-color: var(--senior-center);
 }
-.cc-icon.school {
+.ico.chc-school {
   background-color: var(--school);
 }
-.cc-icon.cornerstone-program {
+.ico.chc-cornerstone-program {
   background-color: var(--cornerstone-program);
 }
-.cc-icon.library {
+.ico.chc-library {
   background-color: var(--library);
 }
-.cc-icon.other {
+.ico.chc-other {
   background-color: var(--other);
 }
-.cc-icon.default {
+.ico.chc-default {
   background-color: var(--default);
 }
-.cc-icon.accessible {
+.ico.accessible {
   background-image: var(--accessibility-icon);
-  background-size: 11px;
+  background-size: 14px;
   background-repeat: no-repeat;
   background-position: center;
+}
+.chc-chc .ico {
+  border-radius: 50%;
 }
 .splash a.btn.rad-all.btn-no {
   height: 43px;

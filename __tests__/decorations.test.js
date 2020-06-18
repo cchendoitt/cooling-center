@@ -293,13 +293,13 @@ describe('decorations', () => {
         let type = obj[0].replace(/ /g, '-').toLowerCase()
         let color = obj[1]
         center1.set('FACILITY_TYPE', obj[0])
-        expect(center1.iconClass()).toEqual($(`<div class="cc-icon ${type} accessible"></div>`))
+        expect(center1.iconClass()).toEqual($(`<div class="ico chc-${type} accessible"></div>`))
       })
     })
     test('iconClass - accessible', () => {
       center1.set('HANDICAP_ACCESS', 'Yes')
       center1.set('FACILITY_TYPE', 'random-type')
-      expect(center1.iconClass()).toEqual($(`<div class="cc-icon default accessible"></div>`))
+      expect(center1.iconClass()).toEqual($(`<div class="ico chc-default accessible"></div>`))
     })
     test('iconClass - not accessible', () => {
       center1.set('HANDICAP_ACCESS', 'No')
@@ -307,7 +307,7 @@ describe('decorations', () => {
           let type = obj[0].replace(/ /g, '-').toLowerCase()
           let color = obj[1]
           center1.set('FACILITY_TYPE', obj[0])
-          expect(center1.iconClass()).toEqual($(`<div class="cc-icon ${type} not-accessible"></div>`))
+          expect(center1.iconClass()).toEqual($(`<div class="ico chc-${type} not-accessible"></div>`))
         })
       })
     })

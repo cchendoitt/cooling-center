@@ -62,12 +62,12 @@ class App extends FinderApp {
           title: '<span class=pop_type>Facility Type</span>',
           radio: false,
           choices: [
-            {name: 'FACILITY_TYPE', values: ['Community center'], label: '<span class=legend_comm>Community Center</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Senior center'], label: '<span class=legend_senior>Senior Center</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: '<span class=legend_cornerstone>Cornerstone Program</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Library'], label: '<span class=legend_library>Library</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['School'], label: '<span class=legend_school>School</span>', checked: true},
-            {name: 'FACILITY_TYPE', values: ['Other'], label: '<span class=legend_other>Other</span>', checked: true}
+            {name: 'FACILITY_TYPE', values: ['Community center'], label: '<span class=legend_comm>Community Center</span>', checked: true, icon: true},
+            {name: 'FACILITY_TYPE', values: ['Senior center'], label: '<span class=legend_senior>Senior Center</span>', checked: true, icon: true},
+            {name: 'FACILITY_TYPE', values: ['Cornerstone Program'], label: '<span class=legend_cornerstone>Cornerstone Program</span>', checked: true, icon: true},
+            {name: 'FACILITY_TYPE', values: ['Library'], label: '<span class=legend_library>Library</span>', checked: true, icon: true},
+            {name: 'FACILITY_TYPE', values: ['School'], label: '<span class=legend_school>School</span>', checked: true, icon: true},
+            {name: 'FACILITY_TYPE', values: ['Other'], label: '<span class=legend_other>Other</span>', checked: true, icon: true}
           ]
         },
         {
@@ -88,9 +88,6 @@ class App extends FinderApp {
     if(arcGisUrl) {
       let iconurl = this.constructIconUrl(arcGisUrl)
       this.fetchIconUrl(iconurl)
-    }
-    else {
-      this.filterIcons()
     }
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
@@ -119,15 +116,6 @@ class App extends FinderApp {
           $(labels[i]).prepend(`<img src="data:${sym.contentType};base64,${sym.imageData}">`)
         }
       })
-    })
-  }
-  filterIcons() {
-    const filter = this.filters.choiceControls[0]
-    const labels = filter.find('label')
-    filter.choices.forEach((ch, i) => {
-      let type = ch.values[0].replace(/ /g, '-').toLowerCase()
-      const iconDiv = $(`<div class="cc-icon ${type}"></div>`)
-      $(labels[i]).prepend(iconDiv)
     })
   }
   constructIconUrl(arcGisUrl) {
