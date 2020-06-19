@@ -43,7 +43,7 @@ messages.en = {
 messages.zh = {
 	cc_title: "尋找紐約市避暑中心",
 	btn_cooling_centers: '避暑中心',
-	panel_note: "<p>紐約市在設有空調公共設施中為那些在熱浪中感到身體不適的人們開設避暑中心。</p><p>若要尋找一個避暑中心，只需在地圖的左上角的搜索框中輸入您的地址或街道交叉點，再按下“Enter” 鍵，或放大和平移動地圖到您的鄰居位置。</p><p>若要搜尋或查詢有輪椅通道的中心，請按下方的「僅限有輪椅通道」按鈕；點選「所有的中心」切換回所有中心的搜尋或查詢狀態。</p><p><b>注意：</b> 請每天查閲此網站。避暑中心開放時間可能會更改。</p><p><a href='http://www1.nyc.gov/site/em/ready/extreme-heat.page' target='_blank'>詳細了解如何保持涼爽的各種方式</a>。</p>",
+	panel_note: '<p>紐約市在設有空調的公共設施中為那些在熱浪中感到不適的人們開設避暑中心。</p><p>若要尋找一個避暑中心，只需在地圖左上角的搜索框中輸入您的地址或街道交叉點，再按下"Enter"鍵，或放大和平移地圖到您的鄰里位置。</p><p>若要搜尋或查詢有輪椅通道的中心，請按下方的「僅限有輪椅通道」按鈕；點選「所有的中心」切換回所有中心的搜尋或查詢狀態。</p><p><b>注意：</b> 請每天查閲此網站。避暑中心開放時間可能會更改。</p><p><a href="http://www1.nyc.gov/site/em/ready/extreme-heat.page" target="_blank">詳細了解如何保持涼爽的各種方式</a>。</p>',
 	acc_all: "所有中心",
 	acc_only: "只顯示無障礙設施",
 	btn_legend: '說明',
@@ -59,18 +59,28 @@ messages.zh = {
 	pop_phone: "電話號碼",
 	pop_hours: "開放時間",
 	pop_extended: "加開時間",
-	pop_access: "無障礙設施"
+	pop_access: "無障礙設施",
+	day: "天",
+	open: "開門",
+	closed: "關閉",
+	sunday:	"星期天",
+	monday: "星期一",
+	tuesday: "星期二",
+	wednesday:"星期三",
+	thursday: "星期四",	
+	friday: "星期五",
+	saturday: "星期六"
 }
 messages.fr = {
-	cc_title: "Centre de rafraîchissement",
+	cc_title: "Centres de rafraîchissement",
 	btn_cooling_centers: 'Centers de<br>Rafraîchissement',
-	panel_note: "<p>La ville de New York ouvre des centres de refroidissement dans des établissements publics climatisés pour les personnes éprouvant une gêne physique lors de canicule.</p><p>Pour trouver un centre de refroidissement, tapez simplement votre adresse ou intersection de rues dans le champ de recherche du coin supérieur gauche de la carte, puis appuyez sur Enter (Saisir); ou effectuez un zoom et déplacez la carte vers votre quartier.</p><p>Pour rechercher ou afficher uniquement les centres accessibles aux fauteuils roulants, cliquez sur le bouton Accessible Only (Accessibles uniquement) ci-dessous; cliquez sur All Centers (Tous les centres) pour revenir à la recherche de tous les centres ou afficher le statut.</p> <p><b>REMARQUE:</b> Revenez sur ce site quotidiennement. Les centres de refroidissement peuvent changer d'heures d’ouverture.</p><p><a href='http://www1.nyc.gov/site/em/ready/extreme-heat.page' target='_blank'>En savoir plus sur les moyens de rester au frais.</a></p>",
+	panel_note: "<p>La ville de New York ouvre des centres de rafraîchissement dans des établissements publics climatisés pour les personnes éprouvant une gêne physique lors de canicule.</p><p>Pour trouver un centre de rafraîchissement, tapez simplement votre adresse ou intersection de rues dans le champ de recherche du coin supérieur gauche de la carte, puis appuyez sur \"Enter\" (Entrer) ; ou effectuez un zoom et déplacez la carte vers votre quartier. </p><p>Pour rechercher ou afficher uniquement les centres accessibles aux fauteuils roulants, cliquez sur le bouton Accès handicapé ci-dessous ; cliquez sur Tous les centres pour revenir à la recherche de tous les centres ou afficher le statut. </p><p><b>REMARQUE :</b> Revenez sur ce site quotidiennement. Les centres de rafraîchissement peuvent changer d'heures d’ouverture. </p><p><a href='http://www1.nyc.gov/site/em/ready/extreme-heat.page' target='_blank'>En savoir plus sur les moyens de rester au frais.</a></p>",
 	acc_all: "Tous les centres",
 	acc_only: "Accessible uniquement",
 	btn_legend: 'Légende',
 	legend_comm: "Centre communautaire",
 	legend_senior: "Centre pour personnes âgées",	
-  legend_cornerstone: "Programme Cornerstone",
+  	legend_cornerstone: "Programme Cornerstone",
 	legend_library: "Bibliothèque",
 	legend_school: "École",
 	legend_other: "Autre",
@@ -80,7 +90,17 @@ messages.fr = {
 	pop_phone: "Téléphone",
 	pop_hours: "Heures",
 	pop_extended: "Heures ajoutées",
-	pop_access: "Accessible aux fauteuils roulants"
+	pop_access: "Accessible aux fauteuils roulants",
+	day: "Journée",
+	open: "Ouverte",
+	closed: "Fermée",
+	sunday:	"Dimanche",
+	monday: "Lundi",
+	tuesday: "Mardi",
+	wednesday:"Mercredi",
+	thursday: "Jeudi",	
+	friday: "Vendredi",
+	saturday: "Samedi"
 }
 messages.ar = {
 	cc_title: "الباحث عن مركز تبريد في مدينة نيويورك",
@@ -91,9 +111,9 @@ messages.ar = {
 	btn_legend: "مفتاح الخريطة",
 	legend_comm: "مركز مجتمعي ",
 	legend_senior: "مركز للكبار السن",
-  legend_cornerstone: "يرنامج Cornerstone",
-	legend_library: "المكتبة",
-	legend_school: "المدرسة",
+  	legend_cornerstone: "يرنامج Cornerstone",
+	legend_library: "مكتبة",
+	legend_school: "مدرسة",
 	legend_other: "آخر",
 	pop_name: "الاسم",
 	pop_type: "نوع المرفق",
@@ -133,7 +153,17 @@ messages.bn = {
 	pop_phone: "ফোন",
 	pop_hours: "সময়সূচি",
 	pop_extended: "সম্প্রসারিত সময়সূচি",
-	pop_access: "হুইলচেয়ার প্রবেশযোগ্য"
+	pop_access: "হুইলচেয়ার প্রবেশযোগ্য",
+	day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 messages.ht = {
 	cc_title: "Zouti pou Chèche Sant Refwadisman",
@@ -154,7 +184,17 @@ messages.ht = {
 	pop_phone: "Telefòn",
 	pop_hours: "Orè Fonksyonman",
 	pop_extended: "Orè Pwolonje",
-	pop_access: "Aksesib pou Chèz-Woulant"
+	pop_access: "Aksesib pou Chèz-Woulant",
+	day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 messages.ko = {
 	cc_title: "뉴욕시 쿨링 센터 검색",
@@ -175,7 +215,17 @@ messages.ko = {
 	pop_phone: "전화번호",
 	pop_hours: "운영 시간",
 	pop_extended: "연장 운영 시간",
-	pop_access: "휠체어 이용 가능"
+	pop_access: "휠체어 이용 가능",
+	day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 messages.po = {
 	cc_title: "Znajdź Centrum Chłodzenia",
@@ -196,7 +246,17 @@ messages.po = {
 	pop_phone: "Numer telefonu",
 	pop_hours: "Godziny otwarcia",
 	pop_extended: "Przedłużone godzin otwarcia",
-	pop_access: "Dostępne dla wózków inwalidzkich"
+	pop_access: "Dostępne dla wózków inwalidzkich",
+	day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 messages.ru = {
 	cc_title: "Поиск центров охлаждения",
@@ -219,7 +279,17 @@ messages.ru = {
 	pop_phone: "Телефон",
 	pop_hours: "Часы работы",
 	pop_extended: "Продленные часы работы",
-	pop_access: "Доступ для инвалидных колясок"
+	pop_access: "Доступ для инвалидных колясок",
+	day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 messages.es = {
 	cc_title: "Directorio de centros de refrigeración",
@@ -240,7 +310,17 @@ messages.es = {
 	pop_phone: "Teléfono",
 	pop_hours: "Horario",
 	pop_extended: "Horario extendido",
-	pop_access: "Acceso para sillas de ruedas"
+	pop_access: "Acceso para sillas de ruedas",
+	day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 messages.ur = {
 	cc_title: "کولنگ سینٹر  تلاش کرنے کا ذریعہ",
@@ -261,7 +341,17 @@ messages.ur = {
 	pop_phone: 'فون',
 	pop_hours: "اوقات",
 	pop_extended: "توسیع شدہ اوقات",
-	pop_access: "وہیل چیئر قابل رسائی"
+	pop_access: "وہیل چیئر قابل رسائی",
+	day: "Day",
+	open: "Open",
+	closed: "Closed",
+	sunday:	"Sunday",
+	monday: "Monday",
+	tuesday: "Tuesday",
+	wednesday:"Wednesday",
+	thursday: "Thursday",	
+	friday: "Friday",
+	saturday: "Saturday"
 }
 
 export default {messages, languages}
