@@ -98,10 +98,10 @@ describe('decorations', () => {
 
     expect($(hrs.rows[0].cells[0]).html()).toBe('Day')
     expect($(hrs.rows[0].cells[0]).hasClass('day')).toBe(true)
-    expect($(hrs.rows[0].cells[1]).html()).toBe('Open')
-    expect($(hrs.rows[0].cells[1]).hasClass('open')).toBe(true)
-    expect($(hrs.rows[0].cells[2]).html()).toBe('Closed')
-    expect($(hrs.rows[0].cells[2]).hasClass('closed')).toBe(true)
+    expect($(hrs.rows[0].cells[1]).html()).toBe('Opens')
+    expect($(hrs.rows[0].cells[1]).hasClass('opens')).toBe(true)
+    expect($(hrs.rows[0].cells[2]).html()).toBe('Closes')
+    expect($(hrs.rows[0].cells[2]).hasClass('closes')).toBe(true)
 
     expect($(hrs.rows[1].cells[0]).html()).toBe('Sunday')
     expect($(hrs.rows[1].cells[0]).hasClass('sunday')).toBe(true)
@@ -274,7 +274,7 @@ describe('decorations', () => {
       expect.assertions(2)
       expect(center1.getStatus()).toBe('OPEN')
       console.warn(center1.detailsHtml().html());
-      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Facility Type</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">Address</span>: </b><div class="notranslate">4790 Broadway</div></li><li><b><span class="pop_phone">Phone</span>: </b><div class="notranslate">(212)942-2445</div></li><li><b><span class="pop_hours">Hours</span>: </b><table><thead><tr><th class="day">Day</th><th class="open">Open</th><th class="closed">Closed</th></tr></thead><tbody><tr><td class="sunday">Sunday</td><td class="op"><span class="closed">Closed</span></td><td class="cl"><span class="closed">Closed</span></td></tr><tr><td class="monday">Monday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="tuesday">Tuesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="wednesday">Wednesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="thursday">Thursday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="friday">Friday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="saturday">Saturday</td><td class="op">10:00 AM</td><td class="cl">5:00 PM</td></tr></tbody></table></li><li><b><span class="pop_extended">Extended Hours</span>: </b><span class="msg_no"></span></li><li><b><span class="pop_access">Wheelchair Accessible</span>: </b><span class="msg_yes"></span></li></ul>')
+      expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Facility Type</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">Address</span>: </b><div class="notranslate">4790 Broadway</div></li><li><b><span class="pop_phone">Phone</span>: </b><div class="notranslate">(212)942-2445</div></li><li><b><span class="pop_hours">Hours</span>: </b><table><thead><tr><th class="day">Day</th><th class="opens">Opens</th><th class="closes">Closes</th></tr></thead><tbody><tr><td class="sunday">Sunday</td><td class="op"><span class="closed">Closed</span></td><td class="cl"><span class="closed">Closed</span></td></tr><tr><td class="monday">Monday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="tuesday">Tuesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="wednesday">Wednesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="thursday">Thursday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="friday">Friday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="saturday">Saturday</td><td class="op">10:00 AM</td><td class="cl">5:00 PM</td></tr></tbody></table></li><li><b><span class="pop_extended">Extended Hours</span>: </b><span class="msg_no"></span></li><li><b><span class="pop_access">Wheelchair Accessible</span>: </b><span class="msg_yes"></span></li></ul>')
     })
   })
   describe('iconClass', () => {
