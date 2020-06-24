@@ -375,7 +375,7 @@ test('translateBtn', () => {
   app.translateBtn()
 
   expect(Translate).toHaveBeenCalledTimes(1)
-  expect(Translate.mock.calls[0][0].target).toBe('#map')
+  expect(Translate.mock.calls[0][0].target).toBe('body')
   expect(Translate.mock.calls[0][0].languages).toBe(message.languages)
   expect(Translate.mock.calls[0][0].messages).toBe(message.messages)
   expect(Translate.mock.calls[0][0].button).toBe(true)

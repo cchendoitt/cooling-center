@@ -99,7 +99,7 @@ class App extends FinderApp {
   }
   translateBtn() {
     new Translate({
-      target: '#map',
+      target: 'body',
       languages: message.languages,
       messages: message.messages,
       button: true
