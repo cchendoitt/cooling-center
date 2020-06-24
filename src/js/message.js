@@ -40,9 +40,8 @@ messages.en = {
 	thursday: "Thursday",	
 	friday: "Friday",
 	saturday: "Saturday",
-	msg_yes: 'Yes',
-	msg_no: 'No',
-	msg_extended: 'Hours may be extended during a heat emergency'
+	msg_extended: 'Hours may be extended during a heat emergency',
+	'msg-vw-list': 'View Cooling Center list'
 }
 messages.zh = {
 	cc_title: "尋找紐約市避暑中心",
@@ -75,8 +74,6 @@ messages.zh = {
 	thursday: "星期四",    
 	friday: "星期五",
 	saturday: "星期六",
-	msg_yes: "有",
-	msg_no: "沒有",
 	msg_extended: "高溫緊急情況下開放時間可能會延長"
 }
 messages.fr = {
@@ -110,8 +107,6 @@ messages.fr = {
 	thursday: "Jeudi",    
 	friday: "Vendredi",
 	saturday: "Samedi",
-	msg_yes: "Oui",
-	msg_no: "Non",
 	msg_extended: "Les horaires peuvent être prolongés en cas de canicule"
 }
 messages.ar = {
@@ -145,8 +140,6 @@ messages.ar = {
 	thursday: "الخميس",    
 	friday: "الجمعة",
 	saturday: "السبت",
-	msg_yes: "نعم",
-	msg_no: "لا",
 	msg_extended: ": قد تمدد ساعات العمل أثناء طوارئ ارتفاع درجات الحرارة"  
 }
 
@@ -181,8 +174,6 @@ messages.bn = {
 	thursday: "বৃহস্পতিবার",    
 	friday: "শুক্রবার",
 	saturday: "শনিবার",
-	msg_yes: "হ্যাঁ",
-	msg_no: "না",
 	msg_extended: "তাপ সংক্রান্ত জরুরি পরিস্থিতিতে সময় বাড়ানো হতে পারে"
 }
 messages.ht = {
@@ -216,8 +207,6 @@ messages.ht = {
 	thursday: "Jedi",	
 	friday: "Vandredi",
 	saturday: "Samdi",
-	msg_yes: 'Wi',
-	msg_no: 'Non',
 	msg_extended: 'Èdtan yo ka pwolonje pandan yon ijans chalè.'
 }
 messages.ko = {
@@ -251,8 +240,6 @@ messages.ko = {
 	thursday: "목요일",    
 	friday: "금요일",
 	saturday: "토요일",
-	msg_yes: "예",
-	msg_no: "아니요",
 	msg_extended: "폭염 비상시에는 운영 시간 변경 가능"
 }
 messages.po = {
@@ -286,8 +273,6 @@ messages.po = {
 	thursday: "czwartek",	
 	friday: "piątek",
 	saturday: "sobota",
-	msg_yes: "Tak",
-	msg_no: "Nie",
 	msg_extended: "Godziny otwarcia mogą być przedłużone w czasie zagrażających zdrowiu temperatur."
 }
 messages.ru = {
@@ -323,8 +308,6 @@ messages.ru = {
 	thursday: "четверг",	
 	friday: "пятница",
 	saturday: "суббота",
-	msg_yes: "Да",
-	msg_no: "Нет",
 	msg_extended: "в случае экстремальной жары часы могут быть продлены"
 }
 messages.es = {
@@ -358,8 +341,6 @@ messages.es = {
 	thursday: "Jueves",	
 	friday: "Viernes",
 	saturday: "Sábado",
-	msg_yes: "Si",
-	msg_no: "No",
 	msg_extended: "El horario puede extenderse durante una emergencia de calor."
 }
 messages.ur = {
@@ -393,8 +374,6 @@ messages.ur = {
 	thursday: "جمعرات",	
 	friday: "جمعہ",
 	saturday: "ہفتہ",
-	msg_yes: 'ہاں',
-	msg_no: 'نہیں',
 	msg_extended: 'شدید گرمی کے دوران اوقات میں توسیع کی جاسکتی ہے'
 }
 
