@@ -14,6 +14,7 @@ import FilterAndSort from 'nyc-lib/nyc/ol/source/FilterAndSort'
 import IconArcGis from 'nyc-lib/nyc/ol/style/IconArcGis'
 import Translate from 'nyc-lib/nyc/lang/Translate'
 import message from './message'
+import nyc from 'nyc-lib/nyc'
 
 class App extends FinderApp {
   /**
@@ -98,11 +99,13 @@ class App extends FinderApp {
     const url = me.source.getUrl().split('?')[0]
     setInterval(() => {
       const source = new FilterAndSort({
-        url: `${url}?nyc.cacheBust(.33)`,
+        url: `${url}?${nyc.cacheBust(.33)}`,
         format: me.source.getFormat()
       })
       source.autoLoad().then(features => {
         me.source = source
+        me.filters.source = source
+        me.filters.filter()
         me.layer.setSource(source)
         me.resetList()
       })
