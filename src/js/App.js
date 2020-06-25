@@ -10,10 +10,10 @@ import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import decorations from './decorations'
 import facilityStyle from './facility-style'
 import Source from 'ol/source/Vector'
+import FilterAndSort from 'nyc-lib/nyc/ol/source/FilterAndSort'
 import IconArcGis from 'nyc-lib/nyc/ol/style/IconArcGis'
 import Translate from 'nyc-lib/nyc/lang/Translate'
 import message from './message'
-
 
 class App extends FinderApp {
   /**
@@ -91,6 +91,22 @@ class App extends FinderApp {
     }
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
+    this.setRefresh()
+  }
+  setRefresh() {
+    const me = this
+    const url = me.source.getUrl().split('?')[0]
+    setInterval(() => {
+      const source = new FilterAndSort({
+        url: `${url}?nyc.cacheBust(.33)`,
+        format: me.source.getFormat()
+      })
+      source.autoLoad().then(features => {
+        me.source = source
+        me.layer.setSource(source)
+        me.resetList()
+      })
+    }, 20 * 1000)
   }
   addLangClasses() {
     const labels = this.filters.choiceControls[1].find('label')
