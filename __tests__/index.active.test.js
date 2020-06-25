@@ -1,14 +1,13 @@
 import App from '../src/js/App'
 import Content from 'nyc-lib/nyc/Content'
 import coolingCenter from '../src/js/coolingCenter'
-import initializer from '../src/js/init'
 
 jest.mock('../src/js/App')
 jest.mock('nyc-lib/nyc/Content')
 
 
 let mockContent
-const origRedirect = initializer.redirect
+const origRedirect = coolingCenter.redirect
 beforeEach(() => {
   mockContent = {
     messages: {
@@ -22,7 +21,7 @@ beforeEach(() => {
     }
   }
   App.mockClear()
-  initializer.redirect = jest.fn()
+  coolingCenter.redirect = jest.fn()
   Content.mockClear()
   Content.loadCsv.mockImplementation(() => {
     return new Promise(resolve => {
@@ -31,7 +30,7 @@ beforeEach(() => {
   })
 })
 afterEach(() => {
-  initializer.redirect = origRedirect
+  coolingCenter.redirect = origRedirect
 })
 
 test('constructs instance of App', done => {

@@ -23,9 +23,8 @@ class App extends FinderApp {
    * @constructor
    * @param {module:nyc-lib/nyc/Content~Content} content The cc content
    * @param {string} url The cc data URL
-   * @param {boolean} hasBeenRefreshed Has the page automatically refreshed 
    */
-  constructor(content, hasBeenRefreshed) {
+  constructor(content) {
     let format
     const arcGisUrl = content.message('cc_url')
     let url = arcGisUrl
@@ -42,14 +41,8 @@ class App extends FinderApp {
         featureProjection: 'EPSG:3857'
       })
     }
-    const splashOptions = hasBeenRefreshed ? undefined : {
-      message: 'Splash Message',
-      buttonText: ['Screen reader instructions', 'View map to find your closest Cooling Center']
-    }
-
     super({
       title: '<span class=cc_title>Cooling Center Finder</span>',
-      splashOptions: splashOptions,
       facilityFormat: format,
       facilityStyle: facilityStyle.pointStyle,
       decorations: [{content, facilityStyle}, decorations.decorations],
@@ -80,6 +73,12 @@ class App extends FinderApp {
           ]
         }
       ],
+      refresh: {
+        minutes: .2, 
+        callback: () => {
+          coolingCenter.status(true)
+        }
+      }
     })
     
     this.addLangClasses()
@@ -92,24 +91,6 @@ class App extends FinderApp {
     }
     $('.desc').append($('.filter-chc-1'))
     $('.filter-1').remove()
-    this.setRefresh()
-  }
-  setRefresh() {
-    const me = this
-    const url = me.source.getUrl().split('?')[0]
-    setInterval(() => {
-      const source = new FilterAndSort({
-        url: `${url}?${nyc.cacheBust(.33)}`,
-        format: me.source.getFormat()
-      })
-      source.autoLoad().then(features => {
-        me.source = source
-        me.filters.source = source
-        me.filters.filter()
-        me.layer.setSource(source)
-        me.resetList()
-      })
-    }, 20 * 1000)
   }
   addLangClasses() {
     const labels = this.filters.choiceControls[1].find('label')

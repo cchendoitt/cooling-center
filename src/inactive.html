@@ -41,19 +41,9 @@
 				$('#message b').append(content.message('message'));
 			});
 
-			var args = {};
-			var params = window.location.search.substring(1).split('&');
-			for (var i = 0; i < params.length; i++) {
-				var param = params[i].split('=');
-				args[param[0]] = param[1];
-			}
-			var minutes = args.refresh;
-			minutes = !isNaN(minutes) && minutes * 1 > 0 ? minutes * 1000 * 60 : 0;
-			if (minutes) {
-				setTimeout(function() {
-					document.location = './?refresh=' + args.refresh;
-				}, minutes);
-			}
+			setTimeout(function() {
+				document.location = './';
+			}, .2 * 60 * 1000);
 		});
 	</script>
 </head>

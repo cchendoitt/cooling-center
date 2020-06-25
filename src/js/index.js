@@ -1,3 +1,3 @@
-import initializer from './init'
+import coolingCenter from './coolingCenter'
 
-initializer.init()
+coolingCenter.status()

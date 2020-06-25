@@ -3,6 +3,8 @@
  */
 
 import nyc from 'nyc-lib/nyc'
+import Content from 'nyc-lib/nyc/Content'
+import App from './App'
 
 /**
  * @private
@@ -24,7 +26,21 @@ const coolingCenter = {
     + '<p>To find a cooling center, simply type your address or intersection into the search field on the upper-left corner of the map and then hit "Enter"; or zoom and pan the map to your neighborhood location.</p>'
     + '<p>To search or view only accessible centers, click the Accessible Only button below; click All Centers to switch back all centers search or view status.'
     + '<p><b>NOTE:</b> Please check this site daily. Cooling centers may change hours of operation.</p>'
-    + '<a href="https://www1.nyc.gov/site/em/ready/extreme-heat.page">Learn more about ways to stay cool.</a>'
+    + '<a href="https://www1.nyc.gov/site/em/ready/extreme-heat.page">Learn more about ways to stay cool.</a>',
+  status: (app) => {
+    Content.loadCsv({
+      url: coolingCenter.CONTENT_URL
+    }).then(content => {
+      if (content.message('active') === 'no') {
+        coolingCenter.redirect()
+      } else if (!app) {
+        new App(content)
+      }
+    })
+  },
+  redirect: () => {
+    window.location.href = 'inactive.html'
+  }
 }
 
 export default coolingCenter
