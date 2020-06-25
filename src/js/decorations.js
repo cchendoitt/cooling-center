@@ -143,8 +143,8 @@ const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="opens"
       "Other": 'legend_other'
     }
     const otherMap = {
-      "No": 'msg_no',
-      "Yes": 'msg_yes',
+      "No": 'msg-no',
+      "Yes": 'msg-yes',
       "Hours may be extended during a heat emergency.": 'msg_extended',
     }
     
