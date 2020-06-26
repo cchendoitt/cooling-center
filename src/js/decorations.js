@@ -10,7 +10,7 @@ const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="opens"
 
  const decorations = {
   extendFeature() {
-    if (this.get('STATUS') == 'CLOSED') {
+    if (this.get('STATUS') !== 'OPEN') {
       closedFeatures.push(this)
     }
 

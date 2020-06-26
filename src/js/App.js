@@ -77,6 +77,7 @@ class App extends FinderApp {
         minutes: .2, 
         callback: () => {
           coolingCenter.status(true)
+          finderApp.removeFeatures.call(finderApp)
         }
       }
     })
@@ -143,10 +144,14 @@ class App extends FinderApp {
     let description = `<div class="description"><div class="desc"><div class="panel_note">${desc}</div></div></div>`
     $(description).insertBefore(list)
   }
-  ready(features) {
+  removeFeatures() {
     decorations.closedFeatures.forEach(feature => {
       this.source.removeFeature(feature)
     })
+    decorations.closedFeatures.length = 0
+  }
+  ready(features) {
+    this.removeFeatures()
     super.ready(this.source.getFeatures())
   }
 }
