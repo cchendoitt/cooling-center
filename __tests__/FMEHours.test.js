@@ -1,8 +1,14 @@
-const HOURS = /(^$)|(^\s+$)|(^[0-9](:[0-9][0-9])?(a|p)-[0-9](:[0-9][0-9])?(a|p)$)/i
+const HOURS = /(^$)|(^\s+$)|(^[0-9][0-9]?(:[0-9][0-9])?(a|p)-[0-9][0-9]?(:[0-9][0-9])?(a|p)$)/i
 
 test('open close hours for Cooling Centers', () => {
     // pristine format
     expect(HOURS.test('9a-5p')).toBe(true)
+    expect(HOURS.test('10a-5p')).toBe(true)
+    expect(HOURS.test('9a-11p')).toBe(true)
+    expect(HOURS.test('10a-11p')).toBe(true)
+    expect(HOURS.test('9:30a-5p')).toBe(true)
+    expect(HOURS.test('10:30a-5:30p')).toBe(true)
+    expect(HOURS.test('10:30a-11:00p')).toBe(true)
 
     // but with an extra space 
     expect(HOURS.test('9a- 5p')).toBe(false)
