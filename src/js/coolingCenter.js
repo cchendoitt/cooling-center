@@ -33,9 +33,9 @@ const coolingCenter = {
       url: coolingCenter.CONTENT_URL
     }).then(content => {
       if (content.message('active') === 'no') {
-        coolingCenter.redirect('inactive.html')
+        coolingCenter.redirect(`inactive.html?${cacheBust}`)
       } else if (!app) {
-        const app = new App(content)
+        new App(content)
         coolingCenter.automation = content.message('automation')
       } else if (content.message('automation') !== coolingCenter.automation) {
         coolingCenter.redirect('./')
