@@ -56,7 +56,7 @@ messages.zh = {
 	legend_library: "圖書館",
 	legend_school: "學校",
 	legend_other: "其他",
-	pop_name: "設施名称",
+	pop_name: "設施名稱",
 	pop_type: "設施種類",
 	pop_address: "地址",
 	pop_phone: "電話號碼",
@@ -66,7 +66,7 @@ messages.zh = {
 	day: "日期",
 	opens: "開放時間",
 	closes: "關門時間",
-	closed: "關門時間",
+	closed: "沒有開放",
 	sunday:    "星期天",
 	monday: "星期一",
 	tuesday: "星期二",
@@ -74,11 +74,12 @@ messages.zh = {
 	thursday: "星期四",    
 	friday: "星期五",
 	saturday: "星期六",
-	msg_extended: "高溫緊急情況下開放時間可能會延長"
+	msg_extended: "高溫緊急情況下開放時間可能會延長",
+	'msg-vw-list': '查看所有避暑中心'
 }
 messages.fr = {
 	cc_title: "Centres de rafraîchissement",
-	btn_cooling_centers: 'Centers de<br>rafraîchissement',
+	btn_cooling_centers: 'Centres de<br>rafraîchissement',
 	panel_note: "<p>La ville de New York ouvre des centres de rafraîchissement dans des établissements publics climatisés pour les personnes éprouvant une gêne physique lors de canicule.</p><p>Pour trouver un centre de rafraîchissement, tapez simplement votre adresse ou intersection de rues dans le champ de recherche du coin supérieur gauche de la carte, puis appuyez sur \"Enter\" (Entrer) ; ou effectuez un zoom et déplacez la carte vers votre quartier. </p><p>Pour rechercher ou afficher uniquement les centres accessibles aux fauteuils roulants, cliquez sur le bouton Accès handicapé ci-dessous ; cliquez sur Tous les centres pour revenir à la recherche de tous les centres ou afficher le statut. </p><p><b>REMARQUE :</b> Revenez sur ce site quotidiennement. Les centres de rafraîchissement peuvent changer d'heures d’ouverture. </p><p><a href='http://www1.nyc.gov/site/em/ready/extreme-heat.page' target='_blank'>En savoir plus sur les moyens de rester au frais.</a></p>",
 	acc_all: "Tous les centres",
 	acc_only: "Accès handicapé", 
@@ -97,8 +98,8 @@ messages.fr = {
 	pop_extended: "Horaires prolongés ",
 	pop_access: "Accessible aux fauteuils roulants ",
 	day: "Jour",
-	opens: "Ouvert",
-	closes: "Fermé",
+	opens: "Ouvre à",
+	closes: "Ferme à",
 	closed: "Fermé",
 	sunday: "Dimanche",
 	monday: "Lundi",
@@ -107,12 +108,13 @@ messages.fr = {
 	thursday: "Jeudi",    
 	friday: "Vendredi",
 	saturday: "Samedi",
-	msg_extended: "Les horaires peuvent être prolongés en cas de canicule"
+	msg_extended: "Les horaires peuvent être prolongés en cas de canicule",
+	"msg-vw-list": "Voir la liste des centres de rafraîchissement"
 }
 messages.ar = {
 	cc_title: "الباحث عن مركز تبريد في مدينة نيويورك",
 	btn_cooling_centers: "مراكز التبريد",
-	panel_note: 'تفتح مدينة نيويورك مراكز تبريد في المرافق العامة المكيفة لاستخدامها من طرف من يتضايقون من موجة الحر.<p>للعثور على مركز تبريد، ما عليك سوى كتابة عنوانك أو  أسم  أقرب تقاطع  في حقل البحث في الزاوية العلوية اليسرى من الخريطة ثم الضغط على "إدخال" ؛ أو تكبير الخريطة وتحريكها إلى موقع منطقتك.</p><p>للبحث او لعرض المراكز المتاحة فقط، انقر على زر المتاح فقط؛ انقر على زر جميع المراكز للعودة الى مكان البحث العام او الى حالة العرض.</p><p>ملاحظة: يرجى مراجعة الموقع يوميا. قد تغير مراكز التبريد ساعات العمل.</p><p><a href="http://www1.nyc.gov/site/em/ready/extreme-heat.page" target="_blank">تعرف على المزيد لكي تبقى باردا.<a></p>',
+	panel_note: 'تفتح مدينة نيويورك مراكز تبريد في المرافق العامة المكيفة لاستخدامها من طرف من يتضايقون من موجة الحر.<p>للعثور على مركز تبريد، ما عليك سوى كتابة عنوانك أو  أسم  أقرب تقاطع  في حقل البحث في الزاوية العلوية اليسرى من الخريطة ثم الضغط على \"إدخال\" ؛ أو تكبير الخريطة وتحريكها إلى موقع منطقتك.</p><p>للبحث او لعرض المراكز المتاحة فقط، انقر على زر المتاح فقط؛ انقر على زر جميع المراكز للعودة الى مكان البحث العام او الى حالة العرض.</p><p>ملاحظة: يرجى مراجعة الموقع يوميا. قد تغير مراكز التبريد ساعات العمل.</p><p><a href=\"http://www1.nyc.gov/site/em/ready/extreme-heat.page\" target=\"_blank\">تعرف على المزيد لكي تنعم بمكان بارد.<a></p>',
 	acc_all: "كافة المراكز", 
 	acc_only: "المراكز المتاحة فقط",
 	btn_legend: "مفتاح الخريطة",
@@ -130,8 +132,8 @@ messages.ar = {
 	pop_extended: "ساعات العمل الممتدة",
 	pop_access: "متاح بالكرسي المتحرك",
 	day: "يوم",
-	opens: "افتح",
-	closes: "مغلق",
+	opens: "يفتح",
+	closes: "يغلق",
 	closed: "مغلق",
 	sunday:    "الأحد",
 	monday: "الأثنين",
@@ -140,13 +142,14 @@ messages.ar = {
 	thursday: "الخميس",    
 	friday: "الجمعة",
 	saturday: "السبت",
-	msg_extended: ": قد تمدد ساعات العمل أثناء طوارئ ارتفاع درجات الحرارة"  
+	msg_extended: "قد تمدد ساعات العمل أثناء طوارئ ارتفاع درجات الحرارة",
+	"msg-vw-list": "شاهد قائمة مراكز التبريد"
 }
 
 messages.bn = {
 	cc_title: "কুলিং সেন্টার ফাইন্ডার",
 	btn_cooling_centers: 'কুলিং সেন্টার',
-	panel_note: 'তাপদাহে শারীরিক অস্বাচ্ছন্দ্যের শিকার হওয়া ব্যক্তিদের জন্য নিউ ইয়র্ক সিটি শীতাতপ নিয়ন্ত্রিত সরকারি স্থাপনাগুলোতে কুলিং সেন্টার খুলে থাকে৷<p>একটি কুলিং সেন্টার খুঁজে বের করতে, মানচিত্রের উপরে বাম কোণে অনুসন্ধানের ঘরে আপনার ঠিকানা বা ইন্টারসেকশনের নাম লিখুন এবং “Enter” চাপুন; অথবা মানচিত্রে আপনার মহল্লার অবস্থানের জায়গায় জুম ও প্যান করুন৷</p><p>শুধু হুইলচেয়ার প্রবেশযোগ্য সেন্টারগুলো খুঁজতে, নিচের “Accessible Only” (শুধু হুইলচেয়ার প্রবেশযোগ্য) বাটনে ক্লিক করুন; সব কেন্দ্র খোঁজার জন্য ফিরে যেতে বা স্ট্যাটাস দেখতে “All Centers” (সব কেন্দ্র) অপশনে ক্লিক করুন৷</p><p><b>দ্রষ্টব্য:</b> অনুগ্রহ করে এই সাইট প্রতিদিন চেক করুন৷ কুলিং সেন্টারগুলো খোলা থাকার সময়সূচি পরিবর্তিত হতে পারে৷</p><p><a href="http://www1.nyc.gov/site/em/ready/extreme-heat.page" target="_blank">ঠাণ্ডা থাকার উপায়গুলো সম্পর্কে আরো জানুন৷</a></p>',
+	panel_note: 'তাপদাহে শারীরিক অস্বাচ্ছন্দ্যের শিকার হওয়া ব্যক্তিদের জন্য নিউ ইয়র্ক সিটি শীতাতপ নিয়ন্ত্রিত সরকারি স্থাপনাগুলোতে কুলিং সেন্টার খুলে থাকে৷<p>একটি কুলিং সেন্টার খুঁজে বের করতে, মানচিত্রের উপরে বাম কোণে অনুসন্ধানের ঘরে আপনার ঠিকানা বা ইন্টারসেকশনের নাম লিখুন এবং “Enter” চাপুন; অথবা মানচিত্রে আপনার মহল্লার অবস্থানের জায়গায় জুম ও প্যান করুন৷</p><p>শুধু হুইলচেয়ার প্রবেশযোগ্য সেন্টারগুলো খুঁজতে, নিচের “শুধু হুইলচেয়ার প্রবেশযোগ্য” (“Accessible Only”) বাটনে ক্লিক করুন; সব কেন্দ্র খোঁজার জন্য ফিরে যেতে বা স্ট্যাটাস দেখতে “সব সেন্টার” (“All Centers”) অপশনে ক্লিক করুন৷</p><p><b>দ্রষ্টব্য:</b> অনুগ্রহ করে এই সাইট প্রতিদিন চেক করুন৷ কুলিং সেন্টারগুলো খোলা থাকার সময়সূচি পরিবর্তিত হতে পারে৷</p><p><a href=\"http://www1.nyc.gov/site/em/ready/extreme-heat.page\" target=\"_blank\">ঠাণ্ডা থাকার উপায়গুলো সম্পর্কে আরো জানুন৷</a></p>',
 	acc_all: "সব সেন্টার",
 	acc_only: "শুধু হুইলচেয়ার প্রবেশযোগ্য",
 	btn_legend: 'ব্যাখ্যা',
@@ -174,7 +177,8 @@ messages.bn = {
 	thursday: "বৃহস্পতিবার",    
 	friday: "শুক্রবার",
 	saturday: "শনিবার",
-	msg_extended: "তাপ সংক্রান্ত জরুরি পরিস্থিতিতে সময় বাড়ানো হতে পারে"
+	msg_extended: "তাপ সংক্রান্ত জরুরি পরিস্থিতিতে সময় বাড়ানো হতে পারে",
+	"msg-vw-list": "কুলিং সেন্টারগুলোর তালিকা দেখুন"
 }
 messages.ht = {
 	cc_title: "Zouti pou Chèche Sant Refwadisman",
@@ -207,7 +211,8 @@ messages.ht = {
 	thursday: "Jedi",	
 	friday: "Vandredi",
 	saturday: "Samdi",
-	msg_extended: 'Èdtan yo ka pwolonje pandan yon ijans chalè.'
+	msg_extended: 'Èdtan yo ka pwolonje pandan yon ijans chalè.',
+	"msg-vw-list": "Gade lis Sant Refwadisman yo"
 }
 messages.ko = {
 	cc_title: "뉴욕시 쿨링 센터 검색",
@@ -216,13 +221,13 @@ messages.ko = {
 	acc_all: "전 센터",
 	acc_only: "이용 가능 센터",
 	legend_cornerstone: "Cornerstone 프로그램",
-	btn_legend: '레전드',
+	btn_legend: '범례',
 	legend_comm: "커뮤니티 센터",
 	legend_senior: "노인 센터",
 	legend_library: "도서관",
 	legend_school: "학교",
 	legend_other: "기타",
-	pop_name: "이름",
+	pop_name: "시설명",
 	pop_type: "시설 종류",
 	pop_address: "주소",
 	pop_phone: "전화번호",
@@ -240,21 +245,23 @@ messages.ko = {
 	thursday: "목요일",    
 	friday: "금요일",
 	saturday: "토요일",
-	msg_extended: "폭염 비상시에는 운영 시간 변경 가능"
+	msg_extended: "폭염 비상시에는 운영 시간 변경 가능",
+	"msg-no": "없음",
+	"msg-vw-list": "쿨링 센터 목록 보기"
 }
 messages.po = {
-	cc_title: "Znajdź Centrum Chłodzenia",
+	cc_title: "Znajdź centrum chłodzenia",
 	btn_cooling_centers: 'Centra chłodzenia',
-	panel_note: "<p>Miasto Nowy Jork otwiera centra chłodzenia w klimatyzowanych obiektach publicznych dla osób doświadczających trudności fizycznych podczas fali upałów.</p><p>W celu znalezienia centrum chłodzenia, należy po prostu wpisać adres lub skrzyżowanie w pole wyszukiwania w lewym górnym rogu mapy i nacisnąć “Enter” lub powiększyć mapę wokół własnej lokalizacji.</p><p>W celu wyszukiwania lub sprawdzenia tylko center dostępnych dla osób niepełnosprawnych naciśnij  poniższy przycisk \"Tylko centra dostępne dla osób niepełnosprawnych\", naciśnij \"Wszystkie centra\", żeby wrócić do wyszukiwania wszystkich center lub sprawdzenia statusu.</p><p><a href=\"http://www1.nyc.gov/site/em/ready/extreme-heat.page\" target=\"_blank\">Dowiedzcie się więcej o tym, jak się chłodzić</a>.</p>",
+	panel_note: "<p>Miasto Nowy Jork otwiera centra chłodzenia w klimatyzowanych obiektach publicznych dla osób doświadczających trudności fizycznych podczas fali upałów.</p><p>W celu znalezienia centrum chłodzenia, należy po prostu wpisać adres lub skrzyżowanie w pole wyszukiwania w lewym górnym rogu mapy i nacisnąć “Enter” lub powiększyć mapę wokół własnej lokalizacji.</p><p>W celu wyszukiwania lub sprawdzenia tylko centrów dostępnych dla osób niepełnosprawnych naciśnij  poniższy przycisk \"Tylko centra dostępne dla osób niepełnosprawnych\", naciśnij \"Wszystkie centra\", żeby wrócić do wyszukiwania wszystkich centrów lub sprawdzenia statusu.</p><p><a href=\"http://www1.nyc.gov/site/em/ready/extreme-heat.page\" target=\"_blank\">Dowiedzcie się więcej o tym, jak się chłodzić</a>.</p>",
 	acc_all: "Wszystkie centra",
 	acc_only: "Tylko dostępne dla wózków",
 	btn_legend: 'Legenda',
-	legend_comm: "Ośrodki społeczno-kulturalne",
-	legend_senior: "Ośrodki dla emerytów",
+	legend_comm: "Ośrodek społeczno-kulturalny",
+	legend_senior: "Ośrodek dla emerytów",
 	legend_cornerstone: "Program Środowiskowy",
 	legend_library: "Biblioteka",
 	legend_school: "Szkoła",
-	legend_other: "Inny",
+	legend_other: "Inne",
 	pop_name: "Imię i nazwisko",
 	pop_type: "Rodzaj obiektu",
 	pop_address: "Adres",
@@ -273,7 +280,8 @@ messages.po = {
 	thursday: "czwartek",	
 	friday: "piątek",
 	saturday: "sobota",
-	msg_extended: "Godziny otwarcia mogą być przedłużone w czasie zagrażających zdrowiu temperatur."
+	msg_extended: "Godziny otwarcia mogą być przedłużone w czasie zagrażających zdrowiu temperatur.",
+	"msg-vw-list": "Zobacz listę centrów chłodzenia"
 }
 messages.ru = {
 	cc_title: "Поиск центров охлаждения",
@@ -308,12 +316,13 @@ messages.ru = {
 	thursday: "четверг",	
 	friday: "пятница",
 	saturday: "суббота",
-	msg_extended: "в случае экстремальной жары часы могут быть продлены"
+	msg_extended: "в случае экстремальной жары часы могут быть продлены",
+	"msg-vw-list": "Смотреть список центров охлаждения"
 }
 messages.es = {
 	cc_title: "Directorio de centros de enfriamiento",
-	btn_cooling_centers: 'Centro de<br>Enfriamiento',
-	panel_note: '<p>La Ciudad de Nueva York abre centros de enfriamiento en instalaciones públicas con aire acondicionado, para quienes experimenten molestias físicas durante una ola de calor. </p><p>Para encontrar un centro de enfriamiento, simplemente escriba su dirección o intersección en el campo de búsqueda en la esquina superior izquierda del mapa y luego presione &ldquo;Enter&rdquo;; o amplíe y explore el mapa correspondiente a su vecindario.</p><p>Para buscar o ver solamente los centros con acceso para personas con discapacidades, haga clic en el botón &ldquo;Solo centros accesibles&rdquo; para personas con discapacidades más abajo; haga clic en &ldquo;Todos los centros&rdquo; para volver a la búsqueda de todos los centros o ver el estado.</p><p><strong>NOTA:</strong> Por favor, revise este sitio diariamente. Los horarios de operación de los centros de enfriamiento pueden cambiar. </p><p><a href="http://www1.nyc.gov/site/em/ready/extreme-heat.page" target="_blank">Obtenga más información sobre formas de mantenerse fresco</a>.</p>',
+	btn_cooling_centers: 'Centros de<br>enfriamiento',
+	panel_note: '<p>La Ciudad de Nueva York abre centros de enfriamiento en instalaciones públicas con aire acondicionado, para quienes experimenten molestias físicas durante una ola de calor. </p><p>Para encontrar un centro de enfriamiento, simplemente escriba su dirección o intersección en el campo de búsqueda en la esquina superior izquierda del mapa y luego presione &ldquo;Enter&rdquo;; o amplíe y explore el mapa correspondiente a su vecindario.</p><p>Para buscar o ver solamente los centros con acceso para personas con discapacidades, haga clic más abajo en el botón &ldquo;Solo centros accesibles&rdquo; para personas con discapacidades; haga clic en &ldquo;Todos los centros&rdquo; para volver a la búsqueda de todos los centros o ver el estado.</p><p><strong>NOTA:</strong> Por favor, revise este sitio diariamente. Los horarios de operación de los centros de enfriamiento pueden cambiar. </p><p><a href=\"http://www1.nyc.gov/site/em/ready/extreme-heat.page\" target=\"_blank\">Obtenga más información sobre formas de mantenerse fresco</a>.</p>',
 	acc_all: "Todos los centros",
 	acc_only: "Solo centros accesibles",
 	btn_legend: 'Leyenda',
@@ -341,14 +350,15 @@ messages.es = {
 	thursday: "Jueves",	
 	friday: "Viernes",
 	saturday: "Sábado",
-	msg_extended: "El horario puede extenderse durante una emergencia de calor."
+	msg_extended: "El horario puede extenderse durante una emergencia de calor.",
+	"msg-vw-list": "Ver lista de centros de enfriamiento"
 }
 messages.ur = {
 	cc_title: "کولنگ سینٹر  تلاش کرنے کا ذریعہ",
 	btn_cooling_centers: 'کولنگ سینٹر (ٹھنڈا رہنے کے مراکز)',
 	panel_note: 'نیو یارک شہر گرمی کی لہر میں جسمانی تکلیف کا سامنا کرنے والے افراد کے لئے ایئر کنڈیشنڈ والی عوامی سہولیات میں کولنگ سینٹر کھولتا ہے۔<p>کولنگ سینٹر کو تلاش کرنے کے لئے، بس نقشے کے اوپری بائیں کونے پر تلاش کی جگہ میں اپنے ایڈریس یا انٹرسیکشن کو ٹائپ کریں اور پھر "اینٹر" دبائیں؛ یا نقشہ کو اپنا علاقہ دیکھنے کے لئے زوم اور پین کریں۔</p><p>صرف قابل رسائی مراکز تلاش کرنے یا دیکھنے کے لئے ذیل میں صرف قابل رسائی بٹن پر کلک کریں؛ تمام مراکز کو دوبارہ تلاش کرنے اور دیکھنےکیلئے "تمام مراکز" پر کلک کریں۔</p><p>نوٹ: براہ مہربانی اس سائٹ کو روزانہ ملاحظہ کریں۔ کولنگ سینٹر اوقات کار تبدیل کر سکتے ہیں۔</p><p><a href="http://www1.nyc.gov/site/em/ready/extreme-heat.page" target="_blank">ٹھنڈا رہنے کے طریقوں کے بارے میں مزید معلومات حاصل کریں۔۔</a></p>',
 	acc_all: "تمام مراکز",
-	acc_only: "صرف قابل رسائی",
+	acc_only: "معذور افراد کیلئے",
 	btn_legend: 'علامات',
 	legend_comm: "کمیونٹی سینٹر",
 	legend_senior: "سینئیر سینٹر",
@@ -374,7 +384,8 @@ messages.ur = {
 	thursday: "جمعرات",	
 	friday: "جمعہ",
 	saturday: "ہفتہ",
-	msg_extended: 'شدید گرمی کے دوران اوقات میں توسیع کی جاسکتی ہے'
+	msg_extended: 'شدید گرمی کے دوران اوقات میں توسیع کی جاسکتی ہے',
+	"msg-vw-list": "کولنگ سینٹرز کی فہرست دیکھئیے"
 }
 
 export default {messages, languages}
