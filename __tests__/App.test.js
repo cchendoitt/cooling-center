@@ -139,7 +139,7 @@ describe('constructor', () => {
     expect(FinderApp).toHaveBeenCalledTimes(1)
 
     expect(FinderApp.mock.calls[0][0].title).toBe('<span class=cc_title>Cooling Center Finder</span>')
-    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe(coolingCenter.CENTER_CSV_URL)
+    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe(coolingCenter.CENTER_UPLOADER_URL)
 
     expect(CsvPoint).toHaveBeenCalledTimes(1)
     expect(CsvPoint.mock.calls[0][0].x).toBe('X')

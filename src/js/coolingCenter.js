@@ -19,7 +19,8 @@ const cacheBust = nyc.cacheBust(5)
 */
 const coolingCenter = {
   CONTENT_URL: `data/content.csv?${cacheBust}`,
-  CENTER_CSV_URL: `data/center.csv?${cacheBust}`,
+  CENTER_UPLOADER_URL: `data/center.csv?${cacheBust}`,
+  CENTER_FME_URL: `/data/csv/cooling-center/center.csv?${cacheBust}`,
   GEOCLIENT_URL: 'https://maps.nyc.gov/geoclient/v2/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example',
   DIRECTIONS_URL: 'https://maps.googleapis.com/maps/api/js?&sensor=false&libraries=visualization',
   DESCRIPTION_HTML: '<p>New York City opens cooling centers in air-conditioned public facilities for those experiencing physical discomfort in a heat wave.</p>'
@@ -32,14 +33,17 @@ const coolingCenter = {
       url: coolingCenter.CONTENT_URL
     }).then(content => {
       if (content.message('active') === 'no') {
-        coolingCenter.redirect()
+        coolingCenter.redirect('inactive.html')
       } else if (!app) {
-        new App(content)
+        const app = new App(content)
+        coolingCenter.automation = content.message('automation')
+      } else if (content.message('automation') !== coolingCenter.automation) {
+        coolingCenter.redirect('./')
       }
     })
   },
-  redirect: () => {
-    window.location.href = 'inactive.html'
+  redirect: (url) => {
+    window.location.href = url
   }
 }
 

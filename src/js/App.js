@@ -29,7 +29,11 @@ class App extends FinderApp {
     const arcGisUrl = content.message('cc_url')
     let url = arcGisUrl
     if (url === '') {
-      url = coolingCenter.CENTER_CSV_URL
+      if (content.message('automation') === 'yes') {
+        url = coolingCenter.CENTER_FME_URL
+      } else {
+        url = coolingCenter.CENTER_UPLOADER_URL
+      }
       format = new CsvPoint({
         x: 'X',
         y: 'Y',
