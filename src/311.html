@@ -23,9 +23,9 @@
 <body>
   <iframe src="./"></iframe>
   <script>
-      var iframe = $('iframe'), timeout, finderApp;
+      var iframe = $('iframe'), win, timeout, finderApp;
       function getApp() {
-        var win = iframe.get(0).contentWindow;
+        win = iframe.get(0).contentWindow;
         finderApp = win.finderApp;
         if (finderApp) {
           clearTimeout(timeout);
@@ -33,6 +33,8 @@
           finderApp.tabs.find('.btns h2').not('.active').remove();
           finderApp.tabs.find('.container').height($(window).height() - 120);
           win.$('#screen-reader-info').remove();
+          win.$('head').append('<link rel="stylesheet" href="css/311.css">');
+          iframe.on('load', getApp);
         } else {
           timeout = setTimeout(getApp, 200);
         }
