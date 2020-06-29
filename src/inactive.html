@@ -38,7 +38,11 @@
 			nyc.Content.loadCsv({
 	      url: './data/content.csv?' + cacheBust
 			}).then(function(content) {
-				$('#message b').append(content.message('message'));
+				var msg_inactive = content.message('message');
+				if (msg_inactive && msg_inactive.length > 9)
+					$('#message b').append(msg_inactive);
+				else 
+					$('#message b').append('At this time, the Cooling Center Finder application is NOT activated.');
 			});
 
 			setTimeout(function() {
