@@ -18,6 +18,7 @@ const cacheBust = nyc.cacheBust(5)
 * @const {Object<string, string>}
 */
 const coolingCenter = {
+  REFRESH_MINS: 5,
   CONTENT_URL: `data/content.csv?${cacheBust}`,
   CENTER_UPLOADER_URL: `data/center.csv?${cacheBust}`,
   CENTER_FME_URL: `/data/csv/cooling-center/center.csv?${cacheBust}`,
