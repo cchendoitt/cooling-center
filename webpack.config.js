@@ -10,13 +10,13 @@ const replaceOptions = [{
     replace: build.projVer
   }]
 }]
-if (process.env.REFRESH_MINS) {
+if (!build.isStg && !build.isPrd && process.env.REFRESH_MINS) {
   replaceOptions.push({
     dir: 'dist/js',
     files: ['coolingCenter.js'],
     rules: [{
       search: /REFRESH_MINS\: 5/,
-      replace: 'REFRESH_MINS: ' +process.env.REFRESH_MINS
+      replace: 'REFRESH_MINS: ' + process.env.REFRESH_MINS
     }]
   })
 }
