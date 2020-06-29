@@ -33,6 +33,7 @@
 	<script src="https://maps.nyc.gov/nyc-lib/v1.3.91/js/nyc-ol-lib.js"></script>
   <script src="https://maps.nyc.gov/nyc-lib/v1.3.91/js/babel-polyfill.js"></script>
 	<script>
+		var REFRESH_MINS = 5; /* set REFRESH_MINS in env to change - unset for 5 minute default */
 		$(document).ready(function() {
 			var cacheBust = nyc.cacheBust(5);
 			nyc.Content.loadCsv({
@@ -47,7 +48,7 @@
 
 			setTimeout(function() {
 				document.location = './';
-			}, .2 * 60 * 1000);
+			}, REFRESH_MINS * 60 * 1000);
 		});
 	</script>
 </head>

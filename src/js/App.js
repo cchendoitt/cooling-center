@@ -78,7 +78,7 @@ class App extends FinderApp {
         }
       ],
       refresh: {
-        minutes: .2, 
+        minutes: coolingCenter.REFRESH_MINS, 
         callback: () => {
           coolingCenter.status(true)
           finderApp.removeFeatures.call(finderApp)

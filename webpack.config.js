@@ -19,6 +19,14 @@ if (!build.isStg && !build.isPrd && process.env.REFRESH_MINS) {
       replace: 'REFRESH_MINS: ' + process.env.REFRESH_MINS
     }]
   })
+  replaceOptions.push({
+    dir: 'dist',
+    files: ['inactive.html'],
+    rules: [{
+      search: /REFRESH_MINS = 5/,
+      replace: 'REFRESH_MINS = ' + process.env.REFRESH_MINS
+    }]
+  })
 }
 
 module.exports = require('nyc-build-helper').config.defaultWebpackConfig(
