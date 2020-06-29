@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+   <title>Cooling Center Finder</title>
+   <style>
+     body, html {
+       padding: 0;
+       margin: 0;
+       top: 0;
+       bottom: 0;
+       left: 0;
+       max-width: 700px;
+     }
+     iframe {
+       border: none;
+       width: 100%;
+     }
+   </style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+  <iframe src="./"></iframe>
+  <script>
+      var iframe = $('iframe'), timeout, finderApp;
+      function getApp() {
+        var win = iframe.get(0).contentWindow;
+        finderApp = win.finderApp;
+        if (finderApp) {
+          clearTimeout(timeout);
+          finderApp.tabs.open('#facilities');
+          finderApp.tabs.find('.btns h2').not('.active').remove();
+          finderApp.tabs.find('.container').height($(window).height() - 120);
+          win.$('#screen-reader-info').remove();
+        } else {
+          timeout = setTimeout(getApp, 200);
+        }
+      }
+      timeout = setTimeout(getApp, 200);
+      $(document).ready(function(event) {
+        iframe.height($(window).height());
+        $(window).resize(function() {
+          iframe.height($(window).height());
+          if (finderApp) {
+            finderApp.tabs.find('.container').height($(window).height() - 120);
+          }
+        });
+      });
+  </script>
+</body>
+</html>
