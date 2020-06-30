@@ -13,6 +13,7 @@ import Filters from 'nyc-lib/nyc/ol/Filters'
 import Translate from 'nyc-lib/nyc/lang/Translate'
 import message from '../src/js/message'
 import nyc from 'nyc-lib/nyc'
+import { set } from 'ol/transform'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('nyc-lib/nyc/ol/format/CsvPoint')
@@ -133,7 +134,7 @@ describe('constructor', () => {
     const app = new App(mockContent, true)
     expect(FinderApp.mock.calls[0][0].splashOptions).toBeUndefined()
   })
-  test('constructor - data as csv', () => {
+  test('constructor - data as csv from uploader', () => {
     expect.assertions(47)
 
     mockContent.messages.cc_url = ''
@@ -145,6 +146,76 @@ describe('constructor', () => {
 
     expect(FinderApp.mock.calls[0][0].title).toBe('<span class=cc_title>Cooling Center Finder</span>')
     expect(FinderApp.mock.calls[0][0].facilityUrl).toBe(`${coolingCenter.CENTER_UPLOADER_URL}?cache-bust`)
+
+    expect(CsvPoint).toHaveBeenCalledTimes(1)
+    expect(CsvPoint.mock.calls[0][0].x).toBe('X')
+    expect(CsvPoint.mock.calls[0][0].y).toBe('Y')    
+    expect(CsvPoint.mock.calls[0][0].dataProjection).toBe('EPSG:2263')
+    
+    expect(FinderApp.mock.calls[0][0].facilityTabTitle).toBe('<span class=btn_cooling_centers>Cooling Centers</span>')
+
+    expect(FinderApp.mock.calls[0][0].decorations.length).toBe(2)
+    expect(FinderApp.mock.calls[0][0].decorations[0].content).toBe(mockContent)
+    expect(FinderApp.mock.calls[0][0].decorations[0].facilityStyle).toBe(facilityStyle)
+    expect(FinderApp.mock.calls[0][0].decorations[1]).toBe(decorations.decorations)
+
+    expect(FinderApp.mock.calls[0][0].geoclientUrl).toBe(coolingCenter.GEOCLIENT_URL)
+    expect(FinderApp.mock.calls[0][0].directionsUrl).toBe(coolingCenter.DIRECTIONS_URL)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions.length).toBe(2)
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].title).toBe('<span class=pop_type>Facility Type</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices.length).toBe(6)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].values).toEqual(['Community center'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].label).toBe('<span class=legend_comm>Community Center</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[0].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].values).toEqual(['Senior center'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].label).toBe('<span class=legend_senior>Senior Center</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[1].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].values).toEqual(['Cornerstone Program'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].label).toBe('<span class=legend_cornerstone>Cornerstone Program</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[2].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].values).toEqual(['Library'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].label).toBe('<span class=legend_library>Library</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[3].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].values).toEqual(['School'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].label).toBe('<span class=legend_school>School</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[4].checked).toBe(true)
+
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].name).toBe('FACILITY_TYPE')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].values).toEqual(['Other'])
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].label).toBe('<span class=legend_other>Other</span>')
+    expect(FinderApp.mock.calls[0][0].filterChoiceOptions[0].choices[5].checked).toBe(true)
+
+    expect(App.prototype.addDescription).toHaveBeenCalledTimes(1)
+    expect(App.prototype.addLangClasses).toHaveBeenCalledTimes(1)
+    expect(App.prototype.constructIconUrl).toHaveBeenCalledTimes(0)
+    expect(App.prototype.fetchIconUrl).toHaveBeenCalledTimes(0)
+    expect(App.prototype.filterIconsUrl).toHaveBeenCalledTimes(0)
+
+  })
+  test('constructor - data as csv from fme', () => {
+    expect.assertions(47)
+
+    mockContent.messages.cc_url = ''
+    mockContent.messages.automation = 'yes'
+    
+    const app = new App(mockContent)
+
+    expect(app instanceof FinderApp).toBe(true)
+    expect(FinderApp).toHaveBeenCalledTimes(1)
+
+    expect(FinderApp.mock.calls[0][0].title).toBe('<span class=cc_title>Cooling Center Finder</span>')
+    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe(`${coolingCenter.CENTER_FME_URL}?cache-bust`)
 
     expect(CsvPoint).toHaveBeenCalledTimes(1)
     expect(CsvPoint.mock.calls[0][0].x).toBe('X')
@@ -215,6 +286,8 @@ describe('addDescription', () => {
   })
 
   test('addDescription', () => {
+    expect.assertions(2)
+
     const app = new App(mockContent)
     app.addDescription = addDescription
     app.addDescription()
@@ -227,6 +300,7 @@ describe('addDescription', () => {
 describe('constructIconUrl', () => {
   test('constructIconUrl', () => {
     expect.assertions(1)
+
     let arcGisUrl = 'http://cc-endpoint/query?param1=value1&param2=value2&token=tokenvalue'
     
     let app = new App(mockContent)
@@ -256,6 +330,7 @@ describe('fetchIconUrl', () => {
   
   test('fetchIconUrl', done => {
     expect.assertions(7)
+
     const app = new App(mockContent)
     app.layer = new Layer()
 
@@ -406,4 +481,28 @@ test('ready', () => {
   expect(app.source.removeFeature.mock.calls[1][0]).toBe('closed2')
   expect(FinderApp.prototype.ready).toHaveBeenCalledTimes(1)
   expect(FinderApp.prototype.ready.mock.calls[0][0]).toBe('mock-features')
+})
+
+describe('refresh callback', () => {
+  const status = coolingCenter.status
+  beforeEach(() => {
+    coolingCenter.status = jest.fn()
+    global.finderApp = {
+      removeFeatures: jest.fn()
+    }
+  })
+  afterEach(() => {
+  coolingCenter.status = status
+  delete global.finderApp
+  })
+
+  test('refresh callback', () => {
+    expect.assertions(3)
+  
+    App.refreshCallback()
+    expect(coolingCenter.status).toHaveBeenCalledTimes(1)
+    expect(coolingCenter.status.mock.calls[0][0]).toBe(true)
+    expect(global.finderApp.removeFeatures).toHaveBeenCalledTimes(1)
+
+  })
 })

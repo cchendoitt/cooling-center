@@ -79,10 +79,7 @@ class App extends FinderApp {
       ],
       refresh: {
         minutes: coolingCenter.REFRESH_MINS, 
-        callback: () => {
-          coolingCenter.status(true)
-          finderApp.removeFeatures.call(finderApp)
-        }
+        callback: App.refreshCallback
       }
     })
     
@@ -159,4 +156,10 @@ class App extends FinderApp {
     super.ready(this.source.getFeatures())
   }
 }
+
+App.refreshCallback = () => {
+  coolingCenter.status(true)
+  global.finderApp.removeFeatures()
+}
+
 export default App

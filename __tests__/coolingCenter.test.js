@@ -78,7 +78,7 @@ test('status active=yes, automation unchanged, has app', done => {
   messages.automation = 'no'
   coolingCenter.automation = 'no'
   
-  coolingCenter.status('mock-app')
+  coolingCenter.status(true)
 
   setTimeout(() => {
     expect(Content.loadCsv).toHaveBeenCalledTimes(1)
@@ -97,7 +97,7 @@ test('status active=yes, automation has changed, has app', done => {
   messages.automation = 'yes'
   coolingCenter.automation = 'no'
   
-  coolingCenter.status('mock-app')
+  coolingCenter.status(true)
 
   setTimeout(() => {
     expect(Content.loadCsv).toHaveBeenCalledTimes(1)
