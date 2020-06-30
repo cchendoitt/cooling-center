@@ -32,7 +32,11 @@ if (!build.isStg && !build.isPrd && process.env.REFRESH_MINS) {
 module.exports = require('nyc-build-helper').config.defaultWebpackConfig(
   __dirname,
   {
-      copyOptions: ['src/inactive.html', 'src/311.html'],
+      copyOptions: [
+        'src/inactive.html', 
+        'src/311.html', 
+        {from: 'src/css/311.css', to: 'css'}
+      ],
       replaceOptions
   }
 )
