@@ -24,7 +24,7 @@ const center1Source = {
   Tuesday: '6p-10p',
   Wednesday: '6p-10p',
   Thursday: '6p-10p',
-  Friday: '6p-10p',
+  Friday: '12:30p-10p',
   Saturday: '10a-5p',
   Sunday: '',
   STATUS: 'OPEN',

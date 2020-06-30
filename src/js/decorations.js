@@ -5,8 +5,11 @@
 const closedFeatures = []
   
 const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="opens">Opens</th><th class="closes">Closes</th></tr></thead><tbody><tr><td class="sunday">Sunday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="monday">Monday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="tuesday">Tuesday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="wednesday">Wednesday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="thursday">Thursday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="friday">Friday</td><td class="op"></td><td class="cl"></td></tr><tr><td class="saturday">Saturday</td><td class="op"></td><td class="cl"></td></tr></tbody></table>'
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
  const decorations = {
+  HOURS_TABLE: HOURS_TABLE,
+  DAYS: DAYS,
   extendFeature() {
     if (this.get('STATUS') !== 'OPEN') {
       closedFeatures.push(this)
@@ -15,8 +18,8 @@ const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="opens"
     this.setId(this.get('OBJECTID'))
     this.set(
       'search_label',
-      `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>
-      <span class="srch-lbl-sm">${this.getAddress1()}</span>`
+      `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>` +
+      `<span class="srch-lbl-sm">${this.getAddress1()}</span>`
     )
     this.set('search_name', `${this.getName()}, ${this.getAddress1()}, ${this.getCityStateZip()}`)
   },
@@ -82,9 +85,8 @@ const HOURS_TABLE = '<table><thead><tr><th class="day">Day</th><th class="opens"
   },
   getHours(table) {
     const me = this
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     table = table || $(HOURS_TABLE).get(0)
-    days.forEach((day, i) => {
+    DAYS.forEach((day, i) => {
       this.times(day, table.rows[i + 1])
     })
     global.nycTranslateInstance.on('change', () => {
