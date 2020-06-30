@@ -19,9 +19,9 @@ const cacheBust = nyc.cacheBust(5)
 */
 const coolingCenter = {
   REFRESH_MINS: 5, /* set REFRESH_MINS in env to change - unset for 5 minute default */
-  CONTENT_URL: `data/content.csv?${cacheBust}`,
-  CENTER_UPLOADER_URL: `data/center.csv?${cacheBust}`,
-  CENTER_FME_URL: `/data/csv/cooling-center/center.csv?${cacheBust}`,
+  CONTENT_URL: 'data/content.csv',
+  CENTER_UPLOADER_URL: 'data/center.csv',
+  CENTER_FME_URL: '/data/csv/cooling-center/center.csv',
   GEOCLIENT_URL: 'https://maps.nyc.gov/geoclient/v2/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example',
   DIRECTIONS_URL: 'https://maps.googleapis.com/maps/api/js?&sensor=false&libraries=visualization',
   DESCRIPTION_HTML: '<p>New York City opens cooling centers in air-conditioned public facilities for those experiencing physical discomfort in a heat wave.</p>'
@@ -31,10 +31,10 @@ const coolingCenter = {
     + '<a href="https://www1.nyc.gov/site/em/ready/extreme-heat.page">Learn more about ways to stay cool.</a>',
   status: (app) => {
     Content.loadCsv({
-      url: coolingCenter.CONTENT_URL
+      url: `${coolingCenter.CONTENT_URL}?${nyc.cacheBust(5)}`
     }).then(content => {
       if (content.message('active') === 'no') {
-        coolingCenter.redirect(`inactive.html?${cacheBust}`)
+        coolingCenter.redirect(`inactive.html?${nyc.cacheBust(5)}`)
       } else if (!app) {
         new App(content)
         coolingCenter.automation = content.message('automation')
