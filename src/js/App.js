@@ -30,9 +30,9 @@ class App extends FinderApp {
     let url = arcGisUrl
     if (url === '') {
       if (content.message('automation') === 'yes') {
-        url = coolingCenter.CENTER_FME_URL
+        url = `${coolingCenter.CENTER_FME_URL}?${nyc.cacheBust(5)}`
       } else {
-        url = coolingCenter.CENTER_UPLOADER_URL
+        url = `${coolingCenter.CENTER_UPLOADER_URL}?${nyc.cacheBust(5)}`
       }
       format = new CsvPoint({
         x: 'X',

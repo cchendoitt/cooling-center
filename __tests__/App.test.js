@@ -12,6 +12,7 @@ import Source from 'ol/source/Vector'
 import Filters from 'nyc-lib/nyc/ol/Filters'
 import Translate from 'nyc-lib/nyc/lang/Translate'
 import message from '../src/js/message'
+import nyc from 'nyc-lib/nyc'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('nyc-lib/nyc/ol/format/CsvPoint')
@@ -34,9 +35,12 @@ const addLangClasses = App.prototype.addLangClasses
 const constructIconUrl = App.prototype.constructIconUrl
 const fetchIconUrl = App.prototype.fetchIconUrl
 const filterIconsUrl = App.prototype.filterIconsUrl
-
+const cacheBust = nyc.cacheBust
 
 beforeEach(() => {
+  nyc.cacheBust = jest.fn(() => {
+    return 'cache-bust'
+  })
   FinderApp.mockClear()
   CsvPoint.mockClear()
   Translate.mockClear()
@@ -51,6 +55,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  nyc.cacheBust = cacheBust
   App.prototype.constructIconUrl = constructIconUrl
   App.prototype.fetchIconUrl = fetchIconUrl
   App.prototype.filterIconsUrl = filterIconsUrl
@@ -139,7 +144,7 @@ describe('constructor', () => {
     expect(FinderApp).toHaveBeenCalledTimes(1)
 
     expect(FinderApp.mock.calls[0][0].title).toBe('<span class=cc_title>Cooling Center Finder</span>')
-    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe(coolingCenter.CENTER_UPLOADER_URL)
+    expect(FinderApp.mock.calls[0][0].facilityUrl).toBe(`${coolingCenter.CENTER_UPLOADER_URL}?cache-bust`)
 
     expect(CsvPoint).toHaveBeenCalledTimes(1)
     expect(CsvPoint.mock.calls[0][0].x).toBe('X')
