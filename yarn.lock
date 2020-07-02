@@ -1112,9 +1112,9 @@
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
 "@types/tapable@*":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.5.tgz#9adbc12950582aa65ead76bffdf39fe0c27a3c02"
-  integrity sha512-/gG2M/Imw7cQFp8PGvz/SwocNrmKFjFsm5Pb8HdbHkZ1K8pmuPzOX4VeVoiEecFCVf4CsN1r3/BRvx+6sNqwtQ==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.6.tgz#a9ca4b70a18b270ccb2bc0aaafefd1d486b7ea74"
+  integrity sha512-W+bw9ds02rAQaMvaLYxAbJ6cvguW/iJXNT6lTssS1ps6QdrMKttqEAMEG/b5CR8TZl3/L7/lH0ZV5nNR1LXikA==
 
 "@types/uglify-js@*":
   version "3.9.2"
@@ -1133,9 +1133,9 @@
     source-map "^0.7.3"
 
 "@types/webpack@^4.4.31":
-  version "4.41.17"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.17.tgz#0a69005e644d657c85b7d6ec1c826a71bebd1c93"
-  integrity sha512-6FfeCidTSHozwKI67gIVQQ5Mp0g4X96c2IXxX75hYEQJwST/i6NyZexP//zzMOBb+wG9jJ7oO8fk9yObP2HWAw==
+  version "4.41.18"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.18.tgz#2945202617866ecdffa582087f1b6de04a7eed55"
+  integrity sha512-mQm2R8vV2BZE/qIDVYqmBVLfX73a8muwjs74SpjEyJWJxeXBbsI9L65Pcia9XfYLYWzD1c1V8m+L0p30y2N7MA==
   dependencies:
     "@types/anymatch" "*"
     "@types/node" "*"
@@ -6866,10 +6866,10 @@ nyc-build-helper@^0.0.35:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.4.7.tgz#5a33a2f994be808a05c1b12a85f6ae140c01034f"
-  integrity sha512-WJsdr1R7WcHk+TzgWyUSZ6Mb3RPBpMrOjtKT9XKcykLewKmOcWP0I8hdkrUj8dMw3Ipiy+auNNnbkNRfOXqvZA==
+nyc-lib@^1.4.8:
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.4.8.tgz#4e2bb8fed54595700bf436d3045d0f92c4187ff3"
+  integrity sha512-h+lHJUO8kqJBYNtBSsL1eeU+M7ro0TEoXMNpCex9lZvx7xIczVYRjwrle1qjX9m4Pjzf5fEg1PIMC5orQ+ksrw==
   dependencies:
     eslint-config-openlayers "^11.0.0"
     eslint-import-resolver-alias "^1.1.2"
@@ -8978,9 +8978,9 @@ terser-webpack-plugin@^1.3.0:
     worker-farm "^1.7.0"
 
 terser@^4.1.2:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-4.7.0.tgz#15852cf1a08e3256a80428e865a2fa893ffba006"
-  integrity sha512-Lfb0RiZcjRDXCC3OSHJpEkxJ9Qeqs6mp2v4jf2MHfy8vGERmVDuvjXdd/EnP5Deme5F2yBRBymKmKHCBg2echw==
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-4.8.0.tgz#63056343d7c70bb29f3af665865a46fe03a0df17"
+  integrity sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==
   dependencies:
     commander "^2.20.0"
     source-map "~0.6.1"

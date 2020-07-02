@@ -383,12 +383,22 @@ describe ('detailsHtml', () => {
   beforeEach(() => {
     global.nycTranslateInstance.messages = {'en': {'pop_type': 'Facility Type', 'pop_address': 'Address', 'pop_phone': 'Phone', 'pop_hours': 'Hours', 'pop_extended': 'Extended Hours', 'pop_access': 'Wheelchair Accessible'}}
   })
-
+  afterEach(() => {
+    center1.set('PHONE', '(212)942-2445')
+  })
   test('detailsHtml - status OPEN', () => {
     expect.assertions(2)
 
     expect(center1.getStatus()).toBe('OPEN')
     expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Facility Type</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">Address</span>: </b><div class="notranslate">4790 Broadway</div></li><li><b><span class="pop_phone">Phone</span>: </b><div class="notranslate">(212)942-2445</div></li><li><b><span class="pop_hours">Hours</span>: </b><table><thead><tr><th class="day">Day</th><th class="opens">Opens</th><th class="closes">Closes</th></tr></thead><tbody><tr><td class="sunday">Sunday</td><td class="op"><span class="closed">Closed</span></td><td class="cl"><span class="closed">Closed</span></td></tr><tr><td class="monday">Monday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="tuesday">Tuesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="wednesday">Wednesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="thursday">Thursday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="friday">Friday</td><td class="op">12:30 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="saturday">Saturday</td><td class="op">10:00 AM</td><td class="cl">5:00 PM</td></tr></tbody></table></li><li><b><span class="pop_extended">Extended Hours</span>: </b><span class="msg-no"></span></li><li><b><span class="pop_access">Wheelchair Accessible</span>: </b><span class="msg-yes"></span></li></ul>')
+  })
+
+  test('detailsHtml - no phone', () => {
+    expect.assertions(2)
+
+    center1.set('PHONE', '')
+    expect(center1.getStatus()).toBe('OPEN')
+    expect(center1.detailsHtml().html()).toBe('<ul><li><b><span class="pop_type">Facility Type</span>: </b><span class="legend_library"></span></li><li><b><span class="pop_address">Address</span>: </b><div class="notranslate">4790 Broadway</div></li><li><b><span class="pop_hours">Hours</span>: </b><table><thead><tr><th class="day">Day</th><th class="opens">Opens</th><th class="closes">Closes</th></tr></thead><tbody><tr><td class="sunday">Sunday</td><td class="op"><span class="closed">Closed</span></td><td class="cl"><span class="closed">Closed</span></td></tr><tr><td class="monday">Monday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="tuesday">Tuesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="wednesday">Wednesday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="thursday">Thursday</td><td class="op">6:00 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="friday">Friday</td><td class="op">12:30 PM</td><td class="cl">10:00 PM</td></tr><tr><td class="saturday">Saturday</td><td class="op">10:00 AM</td><td class="cl">5:00 PM</td></tr></tbody></table></li><li><b><span class="pop_extended">Extended Hours</span>: </b><span class="msg-no"></span></li><li><b><span class="pop_access">Wheelchair Accessible</span>: </b><span class="msg-yes"></span></li></ul>')
   })
 })
 
