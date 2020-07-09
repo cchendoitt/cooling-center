@@ -1,6 +1,6 @@
 import Translate from "nyc-lib/nyc/lang/Translate"
 
-const ccLanguages = ['en', 'ar', 'bn', 'zh', 'fr', 'ht', 'ko', 'po', 'ru', 'es', 'ur']
+const ccLanguages = ['en', 'ar', 'bn', 'zh', 'fr', 'ht', 'ko', 'pl', 'ru', 'es', 'ur']
 const languages = {}
 
 ccLanguages.forEach(lang => {
