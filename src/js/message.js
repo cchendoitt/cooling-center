@@ -249,7 +249,7 @@ messages.ko = {
 	"msg-no": "없음",
 	"msg-vw-list": "쿨링 센터 목록 보기"
 }
-messages.po = {
+messages.pl = {
 	cc_title: "Znajdź centrum chłodzenia",
 	btn_cooling_centers: 'Centra chłodzenia',
 	panel_note: "<p>Miasto Nowy Jork otwiera centra chłodzenia w klimatyzowanych obiektach publicznych dla osób doświadczających trudności fizycznych podczas fali upałów.</p><p>W celu znalezienia centrum chłodzenia, należy po prostu wpisać adres lub skrzyżowanie w pole wyszukiwania w lewym górnym rogu mapy i nacisnąć “Enter” lub powiększyć mapę wokół własnej lokalizacji.</p><p>W celu wyszukiwania lub sprawdzenia tylko centrów dostępnych dla osób niepełnosprawnych naciśnij  poniższy przycisk \"Tylko centra dostępne dla osób niepełnosprawnych\", naciśnij \"Wszystkie centra\", żeby wrócić do wyszukiwania wszystkich centrów lub sprawdzenia statusu.</p><p><a href=\"http://www1.nyc.gov/site/em/ready/extreme-heat.page\" target=\"_blank\">Dowiedzcie się więcej o tym, jak się chłodzić</a>.</p>",
