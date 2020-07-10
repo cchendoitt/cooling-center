@@ -1,4 +1,4 @@
 key,value
-active,no
+active,yes
+automation,yes
 message,"At this time, the Cooling Center Finder application is NOT activated."
-automation,no
