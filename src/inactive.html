@@ -40,11 +40,16 @@
 			nyc.Content.loadCsv({
 	      url: './data/content.csv?' + cacheBust
 			}).then(function(content) {
-				var msg_inactive = content.message('message');
-				if (msg_inactive && msg_inactive.length > 9)
-					$('#message b').append(msg_inactive);
-				else 
-					$('#message b').append('At this time, the Cooling Center Finder application is NOT activated.');
+				var status = content.message('active');
+				if (status && status.trim().toUpperCase() == 'YES') {
+					document.location = './';
+				} else {
+					var msg_inactive = content.message('message');
+					if (msg_inactive && msg_inactive.trim().length > 0)
+						$('#message b').append(msg_inactive);
+					else 
+						$('#message b').append('At this time, the Cooling Center Finder application is NOT activated.');
+				}
 			});
 
 			setTimeout(function() {
@@ -60,7 +65,7 @@
 <li class="nav-home hidden-phone"><a href="//www1.nyc.gov/site/em/index.page">Home</a></li>
 <li><a href="//www1.nyc.gov/site/em/about/overview.page">About</a></li>
 <li class="active"><a href="//www1.nyc.gov/site/em/ready/ready-new-york.page">Be Ready</a></li>
-<li><a href="//www1.nyc.gov/site/em/community_business/nyc-cert.page">Community &amp; Business</a></li>
+<li><a href="//www1.nyc.gov/site/em/volunteer/be-involved.page">Volunteer</a></li>
 <li><a href="//www1.nyc.gov/site/em/resources/tips-links.page">Resources</a></li>
 <li><a href="//www1.nyc.gov/site/em/contact/contact.page">Contact</a></li>
 <li class="hidden-phone toggle-search-wide-background-ico-search" id="toggle-search-wide"></li>
