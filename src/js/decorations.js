@@ -52,7 +52,8 @@ const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
   },
   times(day, row) {
     const times = this.get(day)
-    if (times) {
+    const patt = new RegExp("(^$)|(^\s+$)|(^[0-9][0-9]?(:[0-9][0-9])?(a|p)-[0-9][0-9]?(:[0-9][0-9])?(a|p)$)")
+    if (times && patt.test(times)) {
       const hoursOfOp = []
       times.split('-').forEach(time => {
         const ampm = `${time.substr(time.length - 1).toUpperCase()}M`
